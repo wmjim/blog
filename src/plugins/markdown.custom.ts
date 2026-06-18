@@ -164,6 +164,38 @@ const rehypeGithubCallout = () => {
 };
 
 
+// 解析平台视频 URL，返回 embed iframe 地址，不支持的平台返回 null
+function getPlatformEmbed(rawUrl: string): string | null {
+  if (!rawUrl) return null;
+  const url = rawUrl.trim();
+
+  // Bilibili: https://www.bilibili.com/video/BV... 或 https://www.bilibili.com/video/av...
+  const biliMatch = url.match(/bilibili\.com\/video\/((?:BV|av)[\w]+)/i);
+  if (biliMatch) {
+    const vid = biliMatch[1];
+    const timeMatch = url.match(/[?&]t=([\d.]+)/);
+    const time = timeMatch ? `&t=${timeMatch[1]}` : '';
+    return `//player.bilibili.com/player.html?bvid=${vid}&page=1${time}&high_quality=1&danmaku=0`;
+  }
+
+  // Bilibili 短链接: https://b23.tv/xxxxx — 需要跟随重定向，暂不支持
+  // （b23.tv 需要实际请求才能获取真实地址，无法在构建时解析）
+
+  // YouTube: https://www.youtube.com/watch?v=VIDEO_ID 或 https://youtu.be/VIDEO_ID
+  let ytId: string | null = null;
+  const ytWatchMatch = url.match(/(?:youtube\.com\/watch\?.*v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]{11})/i);
+  if (ytWatchMatch) {
+    ytId = ytWatchMatch[1];
+  }
+  if (ytId) {
+    const timeMatch = url.match(/[?&]t=(\d+)s?/);
+    const start = timeMatch ? `?start=${timeMatch[1]}` : '';
+    return `https://www.youtube.com/embed/${ytId}${start}`;
+  }
+
+  return null;
+}
+
 //  处理 HTML 标签
 const addClassNames = () => {
   return (tree: any) => {
@@ -186,7 +218,27 @@ const addClassNames = () => {
         // 处理 section 标签
       } else if (node.tagName === 'section') {
         if (node.properties.class && node.properties.class.includes('vh-vhVideo')) {
-          node.children = [{ type: 'element', tagName: 'section', properties: { class: 'vh-space-loading' }, children: [{ type: 'element', tagName: 'span' }, { type: 'element', tagName: 'span' }, { type: 'element', tagName: 'span' }] }];
+          const videoUrl = (node.properties['data-url'] || '') as string;
+          const embedUrl = getPlatformEmbed(videoUrl);
+          if (embedUrl) {
+            // 平台视频（Bilibili / YouTube）→ 使用 iframe 嵌入
+            node.properties.class += ' vh-video-embed';
+            node.children = [{
+              type: 'element',
+              tagName: 'iframe',
+              properties: {
+                src: embedUrl,
+                allowfullscreen: '',
+                allow: 'autoplay; encrypted-media; picture-in-picture; fullscreen',
+                frameborder: '0',
+                scrolling: 'no',
+              },
+              children: [],
+            }];
+          } else {
+            // 直链视频文件 → 使用 DPlayer 播放器（保留加载占位）
+            node.children = [{ type: 'element', tagName: 'section', properties: { class: 'vh-space-loading' }, children: [{ type: 'element', tagName: 'span' }, { type: 'element', tagName: 'span' }, { type: 'element', tagName: 'span' }] }];
+          }
         }
       }
     });

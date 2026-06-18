@@ -4,7 +4,7 @@ declare const DPlayer: any;
 declare const Hls: any;
 // 初始化视频播放器
 export default async (videoList: any[]) => {
-  const videoDOM: any = document.querySelectorAll(".vh-node.vh-vhVideo");
+  const videoDOM: any = document.querySelectorAll(".vh-node.vh-vhVideo:not(.vh-video-embed)");
   if (videoDOM.length === 0) return;
   // 载入依赖
   if (typeof Hls === "undefined") await LoadScript("https://registry.npmmirror.com/hls.js/1.5.20/files/dist/hls.min.js");
@@ -12,13 +12,12 @@ export default async (videoList: any[]) => {
   videoDOM.forEach((i: any) => {
     const dp = new DPlayer({
       container: i,
-      logo: "/assets/images/logo.png",
       volume: 0.7,
       mutex: true,
       video: {
         url: i.getAttribute("data-url"),
         type: "auto",
-        pic: i.getAttribute("data-poster") || '',
+        pic: i.getAttribute("data-poster") || undefined,
         customType: {
           hls: (video: any) => {
             if (Hls.isSupported()) {
@@ -32,6 +31,9 @@ export default async (videoList: any[]) => {
         }
       }
     });
+    // DPlayer 初始化后清除加载骨架屏，避免遮挡播放器交互
+    const skeleton = i.querySelector('.vh-space-loading');
+    if (skeleton) skeleton.remove();
     videoList.push(dp);
   });
 };
