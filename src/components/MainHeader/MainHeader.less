@@ -1,104 +1,122 @@
 .header-main {
-  position: relative;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.88rem;
-  width: 100%;
-  height: var(--vh-main-header-height);
-  transition: height 0.58s ease-in-out;
-  z-index: 1;
+	position: relative;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0.75rem;
+	width: 100%;
+	height: var(--vh-main-header-height);
+	transition: height 0.4s ease;
+	z-index: 1;
 
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: var(--vh-home-banner);
-    z-index: -1;
-  }
+	// Banner 背景 + 暗色渐变叠加层
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background: var(--vh-home-banner);
+		z-index: -2;
+	}
 
-  &>.avatar {
-    width: 8.5rem;
-    height: 8.5rem;
-    border: 2px solid var(--vh-white-color);
-    border-radius: 50%;
-    transition: transform 0.3s ease-in-out;
-    overflow: hidden;
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background: linear-gradient(
+			180deg,
+			rgba(0, 0, 0, 0.15) 0%,
+			rgba(0, 0, 0, 0.05) 50%,
+			rgba(0, 0, 0, 0.2) 100%
+		);
+		z-index: -1;
+	}
 
-    &:hover {
-      transform: rotate(18.88deg);
-    }
+	&>.avatar {
+		width: 5.5rem;
+		height: 5.5rem;
+		border: 2px solid rgba(255, 255, 255, 0.8);
+		border-radius: 50%;
+		transition: transform 0.3s ease;
+		overflow: hidden;
 
-    &>img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
+		&:hover {
+			transform: rotate(12deg);
+		}
 
-  &>.auther {
-    padding-top: 1.88rem;
-    font-size: 1.88rem;
-    font-weight: 600;
-    color: var(--vh-white-color);
-  }
+		&>img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
 
-  &>.desc {
-    position: relative;
-    box-sizing: border-box;
-    padding: 0.66rem 0.66rem 0;
-    width: 100%;
-    max-width: 28.88rem;
-    height: max-content;
-    color: var(--vh-white-color);
-    text-align: center;
-    font-size: 0.88rem;
-    line-height: 1.5rem;
+	&>.auther {
+		padding-top: 0.5rem;
+		font-size: 2rem;
+		font-weight: 600;
+		color: var(--vh-white-color);
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	}
 
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 1px;
-      opacity: .5;
-      background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgb(0 0 0 / 70%)), color-stop(35%, var(--vh-white-color)), color-stop(65%, var(--vh-white-color)), color-stop(100%, rgb(0 0 0 / 70%)));
-    }
+	&>.desc {
+		position: relative;
+		box-sizing: border-box;
+		padding: 0.5rem 1rem 0;
+		width: 100%;
+		max-width: 26rem;
+		height: max-content;
+		color: rgba(255, 255, 255, 0.9);
+		text-align: center;
+		font-size: 0.925rem;
+		line-height: 1.6;
 
-    &::after {
-      content: "|";
-      padding-left: 0.188rem;
-      display: inline-block;
-      animation: blink 1s infinite;
-      color: #fff;
-    }
+		// 顶部分隔线
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			left: 50%;
+			top: 0;
+			transform: translateX(-50%);
+			width: 3rem;
+			height: 1px;
+			background: rgba(255, 255, 255, 0.4);
+		}
 
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
-    }
-  }
+		// 打字机光标
+		&::after {
+			content: "|";
+			padding-left: 0.125rem;
+			display: inline-block;
+			animation: blink 1s infinite;
+			color: rgba(255, 255, 255, 0.7);
+		}
+
+		@keyframes blink {
+			50% {
+				opacity: 0;
+			}
+		}
+	}
 }
 
 
-
 @media screen and (max-width: 1150px) {
-  .header-main {
-    height: 26rem;
+	.header-main {
+		height: 18rem;
 
-    &>.avatar {
-      width: 6rem;
-      height: 6rem;
-    }
+		&>.avatar {
+			width: 5rem;
+			height: 5rem;
+		}
 
-    &>.auther {
-      padding-top: 0;
-    }
-  }
+		&>.auther {
+			font-size: 1.625rem;
+			padding-top: 0.25rem;
+		}
+	}
 }

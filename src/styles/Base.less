@@ -3,20 +3,24 @@
 :root {
 	// 白色颜色
 	--vh-white-color: #fff;
-	// BoxShadow
-	--vh-box-shadow: 0 3px 8px 6px #07111b0d;
+	// BoxShadow — 更轻盈的阴影
+	--vh-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+	// 卡片悬停阴影
+	--vh-box-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
 	// Body 背景颜色
-	--vh-body-bg: #F8F8F8;
+	--vh-body-bg: #F9FAFB;
 	// Back Top 按钮位置
 	--vh-back-top: calc((calc(100vw - 2rem) - min((100vw - 2rem), var(--vh-main-max-width))) / 2 + 1rem);
-	// 字体颜色
+	// 边框颜色
+	--vh-border-color: #EEF1F4;
+	// 字体颜色 alpha 变体
 	--vh-font-88: rgb(from var(--vh-font-color) r g b / 88%);
 	--vh-font-66: rgb(from var(--vh-font-color) r g b / 66%);
 	--vh-font-56: rgb(from var(--vh-font-color) r g b / 56%);
 	--vh-font-28: rgb(from var(--vh-font-color) r g b / 28%);
 	--vh-font-16: rgb(from var(--vh-font-color) r g b / 16%);
 	--vh-font-6: rgb(from var(--vh-font-color) r g b / 6%);
-	// 主题色
+	// 主题色 alpha 变体
 	--vh-main-color-88: rgb(from var(--vh-main-color) r g b / 88%);
 	--vh-main-color-66: rgb(from var(--vh-main-color) r g b / 66%);
 	--vh-main-color-56: rgb(from var(--vh-main-color) r g b / 56%);
@@ -24,46 +28,29 @@
 	--vh-main-color-16: rgb(from var(--vh-main-color) r g b / 16%);
 	--vh-main-color-6: rgb(from var(--vh-main-color) r g b / 6%);
 
-	// Default 
+	// Semantic colors
 	--vh-default: #BEC4CC;
 	--vh-default-hover: #BEC4CC18;
-	// Info 
 	--vh-info: #3253b4;
 	--vh-info-hover: #3253b418;
-	// Success
 	--vh-success: #01C4B6;
 	--vh-success-hover: #01C4B618;
-	// Warning
 	--vh-warning: #DD8636;
 	--vh-warning-hover: #DD863618;
-	// Error
 	--vh-error: #DE3C3D;
 	--vh-error-hover: #DE3C3D18;
-	// Import
 	--vh-import: #B984DF;
 	--vh-import-hover: #B984DF18;
 }
 
 * {
-	// IOS 点击阴影
 	-webkit-tap-highlight-color: transparent;
-	// 隐藏滚动条
-	scrollbar-width: none;
-	-ms-overflow-style: none;
-	// 去除下划线
 	text-decoration: none;
-	// 消除边框
 	outline: none;
-
-	// 隐藏滚动条
-	::-webkit-scrollbar {
-		display: none;
-	}
 }
 
 // 设置文本选中颜色
-::selection,
-::-webkit-selection {
+::selection {
 	color: #fff;
 	background: var(--vh-main-color-88);
 }
@@ -86,19 +73,7 @@ html {
 		font-weight: 400;
 		cursor: url('/assets/images/default.cur'), default;
 		overflow-x: hidden;
-
-		&::before {
-			content: "";
-			position: fixed;
-			left: 0;
-			top: 0;
-			width: 100vw;
-			height: 100vh;
-			// background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='8' height='8' fill='none' stroke='rgb(0 0 0 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
-			background: #fff url('/assets/images/bg.png');
-			opacity: 0.188;
-			z-index: -1;
-		}
+		background-color: var(--vh-body-bg);
 
 		&>footer {
 			box-sizing: border-box;
@@ -115,6 +90,11 @@ code {
 
 a {
 	color: var(--vh-font-color);
+	transition: color 0.2s ease;
+
+	&:hover {
+		color: var(--vh-main-color);
+	}
 }
 
 img {
@@ -123,42 +103,41 @@ img {
 }
 
 img[data-vh-lz-src] {
-	transition: all 0.18s ease-in;
+	transition: filter 0.3s ease;
 
 	&:not(.loaded) {
-		filter: blur(0.88rem) brightness(1);
+		filter: blur(0.75rem) brightness(0.95);
 	}
 }
 
 
-// ===================================================================== Other 
-// 悬浮背景 a 标签
+// ===================================================================== Utilities
+
+// 悬浮背景 a 标签 — 简化为底部边框高亮
 .vh-hover {
 	position: relative;
-	transition: all 0.18s ease-in-out;
+	transition: color 0.2s ease;
 
 	&:hover,
 	&.active {
-		color: var(--vh-white-color) !important;
+		color: var(--vh-main-color) !important;
 
-		&::before {
-			transform: scale(1.2);
-			opacity: 1;
+		&::after {
+			transform: scaleX(1);
 		}
 	}
 
-	&::before {
+	&::after {
 		content: "";
 		position: absolute;
 		left: 0;
-		top: 0;
+		bottom: 0;
 		width: 100%;
-		height: 100%;
-		border-radius: .5rem;
-		background-color: var(--vh-main-color-88);
-		opacity: 0;
-		z-index: -1;
-		transition: all 0.18s ease-in-out;
+		height: 2px;
+		border-radius: 2px;
+		background-color: var(--vh-main-color);
+		transform: scaleX(0);
+		transition: transform 0.2s ease;
 	}
 }
 
@@ -168,9 +147,8 @@ img[data-vh-lz-src] {
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
-	word-break: break-all; // 解决纯数字/字母换行问题
+	word-break: break-all;
 
-	// 单行省略（默认）
 	&:not([class*="line-"]) {
 		white-space: nowrap;
 		display: block;
@@ -181,7 +159,6 @@ img[data-vh-lz-src] {
 		-webkit-line-clamp: @lines;
 	}
 
-	// 动态生成行数类
 	&.line-2 {
 		.line-clamp(2)
 	}
@@ -192,55 +169,51 @@ img[data-vh-lz-src] {
 }
 
 @media screen and (max-width: 768px) {
-	// 手机端 禁止选择
-	user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
+	body {
+		user-select: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+	}
 }
 
-// 设置图片懒加载样式
+// 图片懒加载样式
 .main-inner>.main-inner-content,
 .avatar {
 	img[data-vh-lz-src] {
-		transition: all 0.18s ease-in;
+		transition: filter 0.3s ease;
 
 		&:not(.loaded) {
-			filter: blur(0.88rem) brightness(1);
+			filter: blur(0.75rem) brightness(0.95);
 		}
 	}
 }
 
-// 首次加载效果
+// 首次加载动画
 .vh-animation.vh-animation-init {
 	opacity: 0;
-	animation: 300ms vh-init-show;
+	animation: 0.4s vh-init-show ease;
 	animation-fill-mode: forwards;
-	transition: opacity 0.18s ease-in-out, transform 0.18s ease-in-out;
 }
 
 // swup 动画效果
 html.swup-enabled,
 html.is-changing {
-	.vh-animation {
-		&.vh-animation-init {
-			transform: translateY(0);
-			opacity: 1;
-			animation: none;
-		}
+	.vh-animation.vh-animation-init {
+		transform: translateY(0);
+		opacity: 1;
+		animation: none;
 	}
 }
 
 html.is-animating {
-	.vh-animation {
-		&.vh-animation-init {
-			transform: translateY(0.88rem);
-			opacity: 0;
-		}
+	.vh-animation.vh-animation-init {
+		transform: translateY(0.75rem);
+		opacity: 0;
 	}
 }
 
-// 占位加载
+// 占位加载动画
 .vh-space-loading {
 	box-sizing: border-box;
 	display: flex;
@@ -248,32 +221,28 @@ html.is-animating {
 	justify-content: center;
 	grid-column: span 3;
 	width: 100%;
-	height: 8.88rem;
+	height: 8rem;
 	overflow: hidden;
 
 	&>span {
-		background-color: #000;
+		background-color: var(--vh-font-28);
 		position: relative;
-		width: 5px;
-		height: 5px;
+		width: 4px;
+		height: 4px;
 		margin: 3px;
-		border-radius: 5px;
+		border-radius: 4px;
 
 		&:nth-of-type(1) {
-			-webkit-animation: scale .8s ease infinite;
-			animation: vh-loading-animation .8s ease infinite
+			animation: vh-loading-animation 0.8s ease infinite;
 		}
 
 		&:nth-of-type(2) {
-			-webkit-animation: scale .8s ease .2s infinite;
-			animation: vh-loading-animation .8s ease .2s infinite
+			animation: vh-loading-animation 0.8s ease 0.2s infinite;
 		}
 
 		&:nth-of-type(3) {
-			-webkit-animation: scale .8s ease .4s infinite;
-			animation: vh-loading-animation .8s ease .4s infinite
+			animation: vh-loading-animation 0.8s ease 0.4s infinite;
 		}
-
 	}
 }
 
@@ -283,7 +252,7 @@ html.is-animating {
 	display: block;
 	width: 100%;
 	height: max-content;
-	min-height: 5.88rem;
+	min-height: 5rem;
 	overflow: hidden !important;
 	z-index: 1;
 
@@ -293,7 +262,7 @@ html.is-animating {
 		padding: 0.75rem;
 		border-radius: 0.5rem;
 		background-color: var(--vh-white-color);
-		box-shadow: var(--vh-box-shadow);
+		border: 1px solid var(--vh-border-color);
 		overflow: hidden;
 
 		&::before {
@@ -307,19 +276,19 @@ html.is-animating {
 		top: 30%;
 		transform: translate(-50%, -50%);
 		content: '广告加载中...';
-		color: #e3e4e6;
+		color: var(--vh-font-16);
 		z-index: -1;
 	}
 }
 
 
+// ===================================================================== Keyframes
 
 @keyframes vh-init-show {
 	0% {
 		transform: translateY(2rem);
 		opacity: 0;
 	}
-
 	100% {
 		transform: translateY(0);
 		opacity: 1;
@@ -327,79 +296,26 @@ html.is-animating {
 }
 
 @keyframes vh-loading-animation {
+	0% {
+		height: 4px;
+	}
 	50% {
-		height: 25px
+		height: 20px;
 	}
-
-	0% {
-		height: 5px
-	}
-}
-
-@-webkit-keyframes vh-init-show {
-	0% {
-		transform: translateY(2rem);
-		opacity: 0;
-	}
-
 	100% {
-		transform: translateY(0);
-		opacity: 1;
+		height: 4px;
 	}
 }
 
-@-webkit-keyframes vh-loading-animation {
-	50% {
-		height: 25px
-	}
-
-	0% {
-		height: 5px
-	}
-}
-
-
-// 动画效果
 @keyframes talking-tag-active {
-	0% {
-		transform: translateX(0);
-	}
-
-	25% {
-		transform: translateX(-1.66px);
-	}
-
-	50% {
-		transform: translateX(1.66px);
-	}
-
-	75% {
-		transform: translateX(-1.66px);
-	}
-
+	0%,
 	100% {
 		transform: translateX(0);
 	}
-}
-
-@-webkit-keyframes talking-tag-active {
-	0% {
-		transform: translateX(0);
-	}
-
 	25% {
-		transform: translateX(-1.66px);
+		transform: translateX(-1.5px);
 	}
-
-	50% {
-		transform: translateX(1.66px);
-	}
-
 	75% {
-		transform: translateX(-1.66px);
-	}
-
-	100% {
-		transform: translateX(0);
+		transform: translateX(1.5px);
 	}
 }

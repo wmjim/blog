@@ -28,9 +28,9 @@ export default {
   HomeBanner: {
     enable: true,
     // 首页高度
-    HomeHeight: '38.88rem',
+    HomeHeight: '22rem',
     // 其他页面高度
-    PageHeight: '28.88rem',
+    PageHeight: '16rem',
     // 背景
     background: "url('/assets/images/home-banner.webp') no-repeat center 60%/cover",
   },
@@ -38,13 +38,13 @@ export default {
   Theme: {
     // 颜色请用 16 进制颜色码
     // 主题颜色
-    "--vh-main-color": "#00b5cd",
+    "--vh-main-color": "#5B889C",
     // 字体颜色
-    "--vh-font-color": "#34495e",
+    "--vh-font-color": "#2C3E50",
     // 侧边栏宽度
-    "--vh-aside-width": "318px",
+    "--vh-aside-width": "300px",
     // 全局圆角
-    "--vh-main-radius": "0.85rem",
+    "--vh-main-radius": "0.625rem",
     // 主体内容宽度
     "--vh-main-max-width": "1458px",
   },

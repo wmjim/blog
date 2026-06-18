@@ -1,53 +1,54 @@
 .vh-about {
-  gap: 1.25rem;
+	gap: 1.25rem;
 
-  &>main {
-    box-sizing: border-box;
-    padding: 1rem;
-    width: 100%;
-    height: max-content;
-    min-height: 5.5rem;
-    border-radius: 0.5rem;
-    background-color: var(--vh-white-color);
-    box-shadow: var(--vh-box-shadow);
-    overflow: hidden;
+	&>main {
+		box-sizing: border-box;
+		padding: 1.25rem;
+		width: 100%;
+		height: max-content;
+		min-height: 5.5rem;
+		border-radius: 0.75rem;
+		background-color: var(--vh-white-color);
+		border: 1px solid var(--vh-border-color);
+		overflow: hidden;
 
-    &>h3 {
-      box-sizing: border-box;
-      padding: 0.88rem 0;
-      width: 100%;
-      height: max-content;
-      font-size: 1.125rem;
-    }
+		&>h3 {
+			box-sizing: border-box;
+			padding: 0.5rem 0 0.75rem;
+			width: 100%;
+			height: max-content;
+			font-size: 1.125rem;
+			font-weight: 600;
+		}
 
-    &>.language-tool {
-      padding-top: 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.56rem;
-      width: 100%;
-      max-width: 100%;
-      height: max-content;
+		&>.language-tool {
+			padding-top: 1rem;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+			width: 100%;
+			max-width: 100%;
+			height: max-content;
 
-      &>a {
-        width: max-content;
-        max-width: 100%;
-        height: 2rem;
-        line-height: 1;
-        overflow: hidden;
-        transition: transform 0.18s ease-in-out;
+			&>a {
+				width: max-content;
+				max-width: 100%;
+				height: 2rem;
+				line-height: 1;
+				overflow: hidden;
+				transition: transform 0.2s ease;
 
-        &>img {
-          height: calc(100% - 1px);
-          width: auto;
-          object-fit: contain;
-          border-bottom: 1px solid #2563eb;
-        }
+				&>img {
+					height: calc(100% - 1px);
+					width: auto;
+					object-fit: contain;
+					border-bottom: 2px solid var(--vh-main-color);
+				}
 
-        &:hover {
-          transform: translateY(-0.12rem);
-        }
-      }
-    }
-  }
+				&:hover {
+					transform: translateY(-2px);
+				}
+			}
+		}
+	}
 }
