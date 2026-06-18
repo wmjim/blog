@@ -1,7 +1,9 @@
 ---
 title: "搭建以termux为底座的安卓手机开发环境"
 categories: 安卓优化
-tags: ['termux', 'android']
+tags:
+   - termux
+   - android
 id: "3d9f55037a84f360"
 date: 2025-12-09 20:30:42
 cover: "https://raw.githubusercontent.com/wmjim/blogimages/main/20260618191515237.png"

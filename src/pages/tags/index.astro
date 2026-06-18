@@ -1,0 +1,127 @@
+---
+import { getAllTags } from "@/utils/getArchive";
+const tagList = await getAllTags();
+const top10 = tagList.slice(0, 10);
+import SITE_CONFIG from "@/config";
+const { Description } = SITE_CONFIG;
+import Layout from "@/layouts/Layout/Layout.astro";
+---
+
+<Layout title="标签" description={Description} activeNav="tags">
+  <section class="vh-container">
+    <ul class="tags-list">
+      {
+        tagList.map(({ name, count }) => (
+          <li>
+            <a href={`/tags/${name}`} class="tags-item">
+              <span class="tags-name"># {name}</span>
+              <span class="tags-count">{count}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+  <section class="vh-container">
+    <h2 class="rank-title">🏆 Top 10</h2>
+    <ol class="rank-list">
+      {
+        top10.map(({ name, count }, i) => (
+          <li class="rank-item">
+            <span class={`rank-badge ${i < 3 ? 'rank-top3' : ''}`}>{i + 1}</span>
+            <a href={`/tags/${name}`} class="rank-name"># {name}</a>
+            <span class="rank-count">{count} 篇</span>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</Layout>
+
+<style>
+.tags-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+}
+.tags-item {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .45rem .9rem;
+  border-radius: .55rem;
+  text-decoration: none;
+  color: var(--vh-font-color);
+  border: 1px solid var(--vh-main-color);
+  transition: all .28s;
+}
+.tags-item:hover {
+  background: var(--vh-main-color);
+  color: #fff;
+}
+.tags-count {
+  background: var(--vh-main-color);
+  color: #fff;
+  font-size: .8rem;
+  padding: .1rem .45rem;
+  border-radius: .8rem;
+}
+.tags-item:hover .tags-count {
+  background: #fff;
+  color: var(--vh-main-color);
+}
+.rank-title {
+  margin: 2rem 0 1rem;
+  font-size: 1.2rem;
+}
+.rank-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+}
+.rank-item {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .55rem .85rem;
+  border-radius: .55rem;
+  border: 1px solid #e3e8f7;
+  transition: all .28s;
+}
+.rank-item:hover {
+  border-color: var(--vh-main-color);
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: .4rem;
+  font-size: .8rem;
+  font-weight: 600;
+  background: #e3e8f7;
+  color: #666;
+}
+.rank-badge.rank-top3 {
+  background: var(--vh-main-color);
+  color: #fff;
+}
+.rank-name {
+  flex: 1;
+  text-decoration: none;
+  color: var(--vh-font-color);
+}
+.rank-name:hover {
+  color: var(--vh-main-color);
+}
+.rank-count {
+  font-size: .85rem;
+  color: #999;
+}
+</style>

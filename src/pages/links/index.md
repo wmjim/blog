@@ -13,8 +13,8 @@ type: "links"
 :::
 
 ```yaml
-name: 韩小韩博客
-link: https://www.vvhan.com/
+name: 海上一孤舟
+link: https://wmjim.github.io
 avatar: https://q1.qlogo.cn/g?b=qq&nk=1655466387&s=640
-desc: 运气是计划之外的东西.
+desc: 专注于分享和总结，记录我的学习、感想和生活点滴.
 ```

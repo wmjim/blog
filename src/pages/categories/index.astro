@@ -1,0 +1,60 @@
+---
+import { getAllCategories } from "@/utils/getArchive";
+const categoryList = await getAllCategories();
+import SITE_CONFIG from "@/config";
+const { Description } = SITE_CONFIG;
+import Layout from "@/layouts/Layout/Layout.astro";
+---
+
+<Layout title="分类" description={Description} activeNav="categories">
+  <section class="vh-container">
+    <ul class="categories-list">
+      {
+        categoryList.map(({ name, count }) => (
+          <li>
+            <a href={`/categories/${name}`} class="categories-item">
+              <span class="categories-name">{name}</span>
+              <span class="categories-count">{count}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Layout>
+
+<style>
+.categories-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+}
+.categories-item {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .45rem .9rem;
+  border-radius: .55rem;
+  text-decoration: none;
+  color: var(--vh-font-color);
+  border: 1px solid var(--vh-main-color);
+  transition: all .28s;
+}
+.categories-item:hover {
+  background: var(--vh-main-color);
+  color: #fff;
+}
+.categories-count {
+  background: var(--vh-main-color);
+  color: #fff;
+  font-size: .8rem;
+  padding: .1rem .45rem;
+  border-radius: .8rem;
+}
+.categories-item:hover .categories-count {
+  background: #fff;
+  color: var(--vh-main-color);
+}
+</style>

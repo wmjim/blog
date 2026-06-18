@@ -1,6 +1,6 @@
 export default {
   // 网站标题
-  Title: "海上一孤舟 - Blog",
+  Title: "海上一孤舟",
   // 网站地址
   Site: 'https://wmjim.github.io',
   // 网站副标题
@@ -52,9 +52,11 @@ export default {
   Navs: [
     // 仅支持 SVG 且 SVG 需放在 public/assets/images/svg/ 目录下，填入文件名即可 <不需要文件后缀名>（封装了 SVG 组件 为了极致压缩 SVG）
     // 建议使用 https://tabler.io/icons 直接下载 SVG
+    { text: '归档', link: '/archives', icon: 'Nav_archives' },
+    { text: '分类', link: '/categories', icon: 'Nav_categories' },
+    { text: '标签', link: '/tags', icon: 'Nav_tags' },
     { text: '朋友', link: '/links', icon: 'Nav_friends' },
     { text: '动态', link: '/talking', icon: 'Nav_talking' },
-    { text: '归档', link: '/archives', icon: 'Nav_archives' },
     { text: '留言', link: '/message', icon: 'Nav_message' },
     { text: '关于', link: '/about', icon: 'Nav_about' },
   ],

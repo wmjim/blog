@@ -1,0 +1,25 @@
+---
+import { getTagsList } from "@/utils/getArchive";
+import { getCollection } from "astro:content";
+export async function getStaticPaths(): Promise<any> {
+  const posts = await getCollection("blog");
+  const tagSet = new Set<string>();
+  posts.forEach((post: any) => {
+    (post.data.tags || []).forEach((tag: string) => tagSet.add(tag));
+  });
+  return Array.from(tagSet).map((tag: string) => ({
+    params: { tags: tag },
+    props: { tag },
+  }));
+}
+const { tags } = Astro.params;
+const articleList = await getTagsList(tags);
+import SITE_CONFIG from "@/config";
+const { Description } = SITE_CONFIG;
+import Layout from "@/layouts/Layout/Layout.astro";
+import Archive from "@/components/Archive/Archive.astro";
+---
+
+<Layout title={`标签 ${tags} 下的文章`} description={Description} activeNav="tags">
+  <Archive articleList={articleList} />
+</Layout>

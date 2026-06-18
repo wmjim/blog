@@ -36,4 +36,31 @@ const getArchiveList = async () => {
   return fmtArticleList(articleList);
 }
 
-export { getCategoriesList, getTagsList, getArchiveList };
+// 获取全部分类列表
+const getAllCategories = async () => {
+  const posts = await getCollection("blog");
+  const cateMap = new Map<string, number>();
+  posts.forEach((post: any) => {
+    const cate = post.data.categories;
+    cateMap.set(cate, (cateMap.get(cate) || 0) + 1);
+  });
+  return Array.from(cateMap.entries())
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count);
+};
+
+// 获取全部标签列表
+const getAllTags = async () => {
+  const posts = await getCollection("blog");
+  const tagMap = new Map<string, number>();
+  posts.forEach((post: any) => {
+    (post.data.tags || []).forEach((tag: string) => {
+      tagMap.set(tag, (tagMap.get(tag) || 0) + 1);
+    });
+  });
+  return Array.from(tagMap.entries())
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count);
+};
+
+export { getCategoriesList, getTagsList, getArchiveList, getAllCategories, getAllTags };
