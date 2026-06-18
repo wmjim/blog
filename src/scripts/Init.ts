@@ -19,6 +19,8 @@ import { searchFn, vhSearchInit } from "@/scripts/Search";
 import vhLzImgInit from "@/scripts/vhLazyImg";
 // 图片灯箱
 import ViewImage from "@/scripts/ViewImage";
+// GitHub 仓库卡片
+import GitHubCardInit from "@/scripts/GitHubCard";
 // 底部网站运行时间
 import initWebSiteTime from "@/scripts/Footer";
 // 友情链接初始化
@@ -61,6 +63,8 @@ const indexInit = async (only: boolean = true) => {
   vhLzImgInit();
   // 初始化 LivePhoto
   livePhotoInit();
+  // GitHub 仓库卡片初始化
+  GitHubCardInit();
   // 文章视频播放器初始化
   videoInit(videoList);
   // 文章音乐播放器初始化

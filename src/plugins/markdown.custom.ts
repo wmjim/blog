@@ -53,8 +53,12 @@ const remarkNote = () => {
         if (name == 'picture') {
           node.children = node.children.flatMap((child: any) => (child.type === 'paragraph' ? child.children : child));
         }
-        // 处理 video 组件
+        // 处理 video/music/livephoto 等 vh 组件
         if (name.startsWith('vh')) {
+          Object.keys(node.attributes).forEach((i: any) => (hProperties[`data-${i}`] = node.attributes[i]));
+        }
+        // 处理 github 仓库卡片组件
+        if (name === 'github') {
           Object.keys(node.attributes).forEach((i: any) => (hProperties[`data-${i}`] = node.attributes[i]));
         }
         // 设置 class
