@@ -1,18 +1,18 @@
 export default {
   // 网站标题
-  Title: '韩小韩博客',
+  Title: "海上一孤舟 - Blog",
   // 网站地址
-  Site: 'https://www.vvhan.com',
+  Site: 'https://wmjim.github.io',
   // 网站副标题
-  Subtitle: '不曾与你分享的时间,我在进步.',
+  Subtitle: 'Hello, World!',
   // 网站描述
-  Description: '韩小韩博客 专注于前开发与相关技术的实战分享，涵盖Vue框架、Node.js、Serverless等，并涉及Node、Python、Linux、Docker等领域。同时，博客也分享作者的生活、音乐和旅行的热爱。',
+  Description: '专注于分享和总结，记录我的学习、感想和生活点滴.',
   // 网站作者
-  Author: '.𝙃𝙖𝙣',
+  Author: '海上一孤舟',
   // 作者头像
-  Avatar: 'https://q1.qlogo.cn/g?b=qq&nk=1655466387&s=640',
+  Avatar: '/assets/images/avator.jpg',
   // 网站座右铭
-  Motto: '运气是计划之外的东西.',
+  Motto: '有利的情况和主动的恢复，产生于“再坚持一下”的努力之中。',
   // Cover 网站缩略图
   Cover: '/assets/images/banner/072c12ec85d2d3b5.webp',
   // 网站侧边栏公告 (不填写即不开启)
@@ -23,7 +23,7 @@ export default {
     "I am making progress in the time I haven't shared with you.",
   ],
   // 网站创建时间
-  CreateTime: '2021-09-01',
+  CreateTime: '2023-09-01',
   // 顶部 Banner 配置
   HomeBanner: {
     enable: true,
@@ -38,13 +38,13 @@ export default {
   Theme: {
     // 颜色请用 16 进制颜色码
     // 主题颜色
-    "--vh-main-color": "#01C4B6",
+    "--vh-main-color": "#00b5cd",
     // 字体颜色
     "--vh-font-color": "#34495e",
     // 侧边栏宽度
     "--vh-aside-width": "318px",
     // 全局圆角
-    "--vh-main-radius": "0.88rem",
+    "--vh-main-radius": "0.85rem",
     // 主体内容宽度
     "--vh-main-max-width": "1458px",
   },
@@ -55,16 +55,15 @@ export default {
     { text: '朋友', link: '/links', icon: 'Nav_friends' },
     { text: '圈子', link: '/friends', icon: 'Nav_rss' },
     { text: '动态', link: '/talking', icon: 'Nav_talking' },
-    { text: '昔日', link: '/archives', icon: 'Nav_archives' },
+    { text: '归档', link: '/archives', icon: 'Nav_archives' },
     { text: '留言', link: '/message', icon: 'Nav_message' },
     { text: '关于', link: '/about', icon: 'Nav_about' },
-    { text: 'API', link: 'https://api.vvhan.com/', target: true, icon: 'Nav_link' },
   ],
   // 侧边栏个人网站
   WebSites: [
     // 仅支持 SVG 且 SVG 需放在 public/assets/images/svg/ 目录下，填入文件名即可 <不需要文件后缀名>（封装了 SVG 组件 为了极致压缩 SVG）
     // 建议使用 https://tabler.io/icons 直接下载 SVG
-    { text: 'Github', link: 'https://github.com/uxiaohan', icon: 'WebSite_github' },
+    { text: 'Github', link: 'https://github.com/wmjim', icon: 'WebSite_github' },
     { text: '韩小韩API', link: 'https://api.vvhan.com', icon: 'WebSite_api' },
     { text: '每日热榜', link: 'https://hot.vvhan.com', icon: 'WebSite_hot' },
     { text: '骤雨重山图床', link: 'https://wp-cdn.4ce.cn', icon: 'WebSite_img' },
@@ -106,7 +105,7 @@ export default {
     }
   },
   // Han Analytics 统计（https://github.com/uxiaohan/HanAnalytics）
-  HanAnalytics: { enable: true, server: 'https://analytics.vvhan.com', siteId: 'Hello-HanHexoBlog' },
+  HanAnalytics: { enable: false, server: 'https://analytics.vvhan.com', siteId: 'Hello-HanHexoBlog' },
   // Google 广告
   GoogleAds: {
     ad_Client: '', //ca-pub-xxxxxx
@@ -118,9 +117,9 @@ export default {
   // 文章内赞赏码
   Reward: {
     // 支付宝收款码
-    AliPay: '/assets/images/alipay.webp',
+    AliPay: '/assets/images/PayQrcode.png',
     // 微信收款码
-    WeChat: '/assets/images/wechat.webp'
+    WeChat: '/assets/images/PayQrcode.png'
   },
   // 访问网页 自动推送到搜索引擎
   SeoPush: {
