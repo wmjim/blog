@@ -36,7 +36,7 @@ hide:  ： false # 是否隐藏文章
 const init = async () => {
   // 写文件
   const now = dayjs();
-  const targetDir = path.join(__dirname, '../src/content/blog', `${now.year()}/${now.format('MM')}`);
+  const targetDir = path.join(__dirname, '../src/content/blog');
   try {
     await fs.mkdir(targetDir, { recursive: true });
     await fs.writeFile(path.join(targetDir, `${articleName}.md`), ArticleContent, 'utf8');
