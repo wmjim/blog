@@ -11,7 +11,7 @@ import remarkMath from "remark-math";
 import rehypeSlug from "rehype-slug";
 import rehypeKatex from "rehype-katex";
 import remarkDirective from "remark-directive";
-import { remarkNote, addClassNames } from './src/plugins/markdown.custom'
+import { remarkNote, addClassNames, rehypeGithubCallout } from './src/plugins/markdown.custom'
 // Markdown 配置================
 import SITE_INFO from './src/config';
 import swup from '@swup/astro';
@@ -48,7 +48,7 @@ export default defineConfig({
 				trust: true,
 				strict: false
 			}
-		], rehypeSlug, addClassNames],
+		], rehypeSlug, rehypeGithubCallout, addClassNames],
 		syntaxHighlight: 'shiki',
 		shikiConfig: { theme: 'github-light' },
 	},
