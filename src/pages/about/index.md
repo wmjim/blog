@@ -6,13 +6,11 @@ layout: "@/layouts/PageLayout/PageLayout.astro"
 type: "about"
 ---
 
-:::note{type="success"}
 你好，欢迎浏览我的博客！
 
 我目前是一名嵌入式软件工程师。
 
 喜欢看动漫，对各种电子产品极感兴趣，喜好折腾。
-:::
 
 
 ## 语言和工具
