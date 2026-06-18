@@ -36,7 +36,7 @@ import "./Layout.less";
 		<Fragment
 			set:html={`<style>:root {${Object.entries(Theme)
 				.map(([key, value]) => `${key}:${value};`)
-				.join("")}--vh-main-header-height:${Home ? HomeBanner.HomeHeight : HomeBanner.PageHeight};--vh-home-banner:${HomeBanner.background}}</style>`}
+				.join("")}--vh-main-header-height:${HomeBanner.HomeHeight};--vh-home-banner:${HomeBanner.background}}</style>`}
 		/>
 	</Head>
 	<body>
