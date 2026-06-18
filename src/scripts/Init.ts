@@ -5,6 +5,8 @@ import TypeWriteInit from "@/scripts/TypeWrite";
 import PaoPaoInit from "@/scripts/PaoPao";
 // 初始化文章代码块
 import codeInit from "@/scripts/Code";
+// 初始化 Mermaid 图表
+import mermaidInit from "@/scripts/Mermaid";
 // 初始化视频播放器
 import videoInit from "@/scripts/Video";
 // 初始化音乐播放器
@@ -72,6 +74,8 @@ const indexInit = async (only: boolean = true) => {
   only && ViewImage();
   // 初始化文章代码块
   codeInit();
+  // 初始化 Mermaid 图表
+  mermaidInit();
   // 图片懒加载初始化
   vhLzImgInit();
   // 初始化 LivePhoto

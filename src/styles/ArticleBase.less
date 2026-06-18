@@ -781,6 +781,37 @@
 		}
 
 
+		// Mermaid 图表 — GitHub 风格
+		pre.mermaid {
+			box-sizing: border-box;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: max-content;
+			margin: 1rem 0;
+			padding: 1rem;
+			border-radius: var(--vh-radius-md);
+			border: 1px solid var(--vh-border-color);
+			background-color: var(--vh-white-color);
+			overflow-x: auto;
+			font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace;
+			font-size: 0.85rem;
+			line-height: 1.6;
+			text-align: center;
+
+			svg {
+				max-width: 100%;
+				height: auto;
+			}
+		}
+
+		// Mermaid 错误信息
+		pre.mermaid .error-text {
+			color: var(--vh-error);
+			font-size: 0.8rem;
+		}
+
 		// OverlayScrollbars 自定义
 		.os-theme-dark.os-scrollbar {
 			&>.os-scrollbar-track {
