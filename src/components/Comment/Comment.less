@@ -3,7 +3,7 @@
   padding: 2rem 1rem 6.88rem;
   width: 100%;
   height: max-content;
-  border-radius: 0.5rem;
+  border-radius: var(--vh-radius-md);
   background-color: var(--vh-white-color);
   box-shadow: var(--vh-box-shadow);
   overflow: hidden;
@@ -27,7 +27,7 @@
       ul:not(.OwO-items):not(.OwO-packages),
       ol {
         li {
-          color: #33333388;
+          color: var(--vh-font-56);
           font-size: 0.875rem;
           line-height: 1.6;
         }
@@ -65,7 +65,7 @@
           transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
 
           &:hover {
-            box-shadow: inset 0 -1.5rem var(--vh-main-color-38);
+            box-shadow: inset 0 -1.5rem var(--vh-main-color-28);
           }
         }
       }
@@ -82,14 +82,14 @@
       }
 
       .tk-admin-warn p {
-        color: #000;
+        color: var(--vh-font-color);
       }
     }
 
     // 评论输入框Focus边框颜色
     .el-input__inner:focus,
     .el-textarea__inner:focus {
-      border-color: #9999ff !important;
+      border-color: var(--vh-comment-accent) !important;
     }
 
     // 及背景颜色
@@ -108,7 +108,7 @@
             &>.tk-input.el-textarea {
               box-sizing: border-box;
               padding: 6px 0 26px;
-              border: 1px solid #f0f0f0;
+              border: 1px solid var(--vh-border-color);
 
               &>textarea {
                 border: none;
@@ -139,7 +139,7 @@
                     position: relative;
 
                     strong {
-                      color: #9999ff;
+                      color: var(--vh-comment-accent);
                       line-height: 1.18rem;
                     }
 
@@ -154,7 +154,7 @@
                         bottom: 0;
                         width: 0;
                         height: 1px;
-                        background-color: #9999ff;
+                        background-color: var(--vh-comment-accent);
                         transition: all 0.28s;
                       }
 
@@ -204,7 +204,7 @@
 
           .tk-main {
             padding-bottom: 20px;
-            border-bottom: 1px dashed #ddd;
+            border-bottom: 1px solid var(--vh-border-color);
 
             // 头部
             .tk-row {
@@ -244,8 +244,8 @@
                 }
 
                 .tk-tag {
-                  color: #000;
-                  border-color: #000;
+                  color: var(--vh-font-color);
+                  border-color: var(--vh-font-28);
                   background-color: transparent;
                   border-radius: 2px;
                   font-size: 0.72rem;
@@ -255,7 +255,7 @@
                 }
 
                 .tk-time {
-                  color: #999;
+                  color: var(--vh-font-56);
                 }
               }
             }
@@ -291,7 +291,7 @@
               .tk-extra {
                 box-sizing: border-box;
                 padding: 4px;
-                border-radius: 0.2rem;
+                border-radius: var(--vh-radius-sm);
                 background-color: var(--vh-font-6);
               }
             }
@@ -376,9 +376,9 @@
             }
 
             .wl-badge {
-              color: #9999ff;
+              color: var(--vh-comment-accent);
               font-weight: 600;
-              border-color: #9999ff;
+              border-color: var(--vh-comment-accent);
             }
           }
 
@@ -408,7 +408,7 @@
           }
 
           &>.wl-quote {
-            border-left: solid 0.25rem var(--vh-main-color-38);
+            border-left: solid 0.25rem var(--vh-main-color-28);
           }
         }
 

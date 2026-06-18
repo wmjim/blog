@@ -17,13 +17,14 @@ section.vh-art-page {
 		justify-content: center;
 		width: 2.25rem;
 		height: 2.25rem;
-		border-radius: 0.5rem;
+		border-radius: var(--vh-radius-md);
 		border: 1px solid var(--vh-border-color);
 		background-color: var(--vh-white-color);
 		font-size: 0.875rem;
+		font-weight: 500;
 		color: var(--vh-font-56);
 		user-select: none;
-		transition: all 0.2s ease;
+		transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 		cursor: pointer;
 		overflow: hidden;
 
@@ -31,19 +32,22 @@ section.vh-art-page {
 			color: var(--vh-main-color);
 			border-color: var(--vh-main-color-28);
 			background-color: var(--vh-main-color-6);
+			transform: translateY(-1px);
 		}
 
 		&.active {
 			background-color: var(--vh-main-color);
 			border-color: var(--vh-main-color);
 			color: var(--vh-white-color);
+			font-weight: 600;
 			cursor: default;
 			pointer-events: none;
+			box-shadow: 0 2px 8px var(--vh-main-color-28);
 		}
 
 		&.disabled {
 			pointer-events: none;
-			opacity: 0.3;
+			opacity: 0.25;
 		}
 
 		&>svg {

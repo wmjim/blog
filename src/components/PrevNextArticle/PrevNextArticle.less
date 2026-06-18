@@ -5,7 +5,7 @@
 	grid-template-columns: 1fr 1fr;
 	width: 100%;
 	height: 5.5rem;
-	border-radius: 0.75rem;
+	border-radius: var(--vh-radius-lg);
 	background-color: var(--vh-white-color);
 	border: 1px solid var(--vh-border-color);
 	overflow: hidden;
@@ -13,13 +13,13 @@
 	&>.art-item {
 		position: relative;
 		box-sizing: border-box;
-		padding: 0 1rem;
+		padding: 0 1.25rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 100%;
 		height: 100%;
-		background: #fff url('/assets/images/lazy-loading.webp') no-repeat center center;
+		background: var(--vh-body-bg) url('/assets/images/lazy-loading.webp') no-repeat center center;
 		background-size: cover;
 		overflow: hidden;
 
@@ -31,18 +31,20 @@
 			width: 100%;
 			height: 100%;
 			background: rgba(0, 0, 0, 0.35);
-			transition: background-color 0.2s ease;
+			transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 		}
 
 		&:hover::before {
-			background-color: rgba(0, 0, 0, 0.2);
+			background-color: rgba(0, 0, 0, 0.18);
 		}
 
 		&>span {
 			color: var(--vh-white-color);
 			font-size: 0.875rem;
+			font-weight: 500;
 			line-height: 1.5;
 			z-index: 1;
+			text-align: center;
 		}
 	}
 }

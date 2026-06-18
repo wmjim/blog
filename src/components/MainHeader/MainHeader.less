@@ -5,13 +5,13 @@
 	align-items: center;
 	flex-direction: column;
 	justify-content: center;
-	gap: 0.75rem;
+	gap: 0.5rem;
 	width: 100%;
 	height: var(--vh-main-header-height);
-	transition: height 0.4s ease;
+	transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 	z-index: 1;
 
-	// Banner 背景 + 暗色渐变叠加层
+	// Banner 背景
 	&::before {
 		content: "";
 		position: absolute;
@@ -21,6 +21,7 @@
 		z-index: -2;
 	}
 
+	// 柔和的暗色渐变叠加层
 	&::after {
 		content: "";
 		position: absolute;
@@ -28,9 +29,10 @@
 		pointer-events: none;
 		background: linear-gradient(
 			180deg,
-			rgba(0, 0, 0, 0.15) 0%,
-			rgba(0, 0, 0, 0.05) 50%,
-			rgba(0, 0, 0, 0.2) 100%
+			rgba(0, 0, 0, 0.12) 0%,
+			rgba(0, 0, 0, 0.03) 40%,
+			rgba(0, 0, 0, 0.06) 70%,
+			rgba(0, 0, 0, 0.18) 100%
 		);
 		z-index: -1;
 	}
@@ -38,13 +40,16 @@
 	&>.avatar {
 		width: 5.5rem;
 		height: 5.5rem;
-		border: 2px solid rgba(255, 255, 255, 0.8);
+		border: 2.5px solid rgba(255, 255, 255, 0.85);
 		border-radius: 50%;
-		transition: transform 0.3s ease;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+		transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+					box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 		overflow: hidden;
 
 		&:hover {
-			transform: rotate(12deg);
+			transform: rotate(8deg) scale(1.05);
+			box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
 		}
 
 		&>img {
@@ -57,22 +62,24 @@
 	&>.auther {
 		padding-top: 0.5rem;
 		font-size: 2rem;
-		font-weight: 600;
+		font-weight: 700;
+		letter-spacing: 0.03em;
 		color: var(--vh-white-color);
-		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+		text-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
 	}
 
 	&>.desc {
 		position: relative;
 		box-sizing: border-box;
-		padding: 0.5rem 1rem 0;
+		padding: 0.75rem 1rem 0;
 		width: 100%;
 		max-width: 26rem;
 		height: max-content;
-		color: rgba(255, 255, 255, 0.9);
+		color: rgba(255, 255, 255, 0.92);
 		text-align: center;
 		font-size: 0.925rem;
 		line-height: 1.6;
+		font-weight: 400;
 
 		// 顶部分隔线
 		&::before {
@@ -82,9 +89,10 @@
 			left: 50%;
 			top: 0;
 			transform: translateX(-50%);
-			width: 3rem;
-			height: 1px;
-			background: rgba(255, 255, 255, 0.4);
+			width: 2.5rem;
+			height: 1.5px;
+			border-radius: 1px;
+			background: rgba(255, 255, 255, 0.45);
 		}
 
 		// 打字机光标
@@ -92,7 +100,8 @@
 			content: "|";
 			padding-left: 0.125rem;
 			display: inline-block;
-			animation: blink 1s infinite;
+			font-weight: 300;
+			animation: blink 1s step-end infinite;
 			color: rgba(255, 255, 255, 0.7);
 		}
 
@@ -110,13 +119,17 @@
 		height: 18rem;
 
 		&>.avatar {
-			width: 5rem;
-			height: 5rem;
+			width: 4.5rem;
+			height: 4.5rem;
 		}
 
 		&>.auther {
 			font-size: 1.625rem;
 			padding-top: 0.25rem;
+		}
+
+		&>.desc {
+			font-size: 0.875rem;
 		}
 	}
 }

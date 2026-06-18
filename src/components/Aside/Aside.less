@@ -12,7 +12,7 @@ aside.vh-aside {
 	&>.sticky-aside {
 		position: -webkit-sticky;
 		position: sticky;
-		top: calc(3.5rem + 1rem);
+		top: calc(3.25rem + 1rem);
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
@@ -23,7 +23,7 @@ aside.vh-aside {
 	.vh-aside-item {
 		position: relative;
 		box-sizing: border-box;
-		padding: 1.125rem;
+		padding: 1rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -31,18 +31,19 @@ aside.vh-aside {
 		width: 100%;
 		max-width: 100%;
 		height: max-content;
-		border-radius: 0.75rem;
+		border-radius: var(--vh-radius-lg);
 		background-color: var(--vh-white-color);
 		border: 1px solid var(--vh-border-color);
 		overflow: hidden;
+		transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
 		&>h3 {
 			width: 100%;
-			font-size: 0.68rem;
-			font-weight: 500;
+			font-size: 0.72rem;
+			font-weight: 600;
 			color: var(--vh-font-56);
 			text-transform: uppercase;
-			letter-spacing: 0.05em;
+			letter-spacing: 0.08em;
 		}
 
 		// 用户信息卡片
@@ -51,16 +52,23 @@ aside.vh-aside {
 
 			&>.vh-aside-avatar {
 				position: relative;
-				width: 5rem;
-				height: 5rem;
-				border-radius: 0.75rem;
+				width: 4.5rem;
+				height: 4.5rem;
+				border-radius: var(--vh-radius-xl);
 				overflow: hidden;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+				transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+				&:hover {
+					transform: scale(1.05);
+				}
 			}
 
 			&>.vh-aside-auther {
 				position: relative;
 				font-size: 1.15rem;
-				font-weight: 600;
+				font-weight: 700;
+				letter-spacing: 0.02em;
 
 				&::after {
 					content: '';
@@ -72,15 +80,16 @@ aside.vh-aside {
 					width: 40%;
 					height: 2px;
 					border-radius: 2px;
-					background-color: var(--vh-main-color-88);
+					background-color: var(--vh-main-color-56);
 				}
 			}
 
 			&>.vh-aside-motto {
-				font-size: 0.85rem;
+				font-size: 0.82rem;
 				color: var(--vh-font-56);
 				line-height: 1.6;
 				text-align: center;
+				max-width: 80%;
 			}
 
 			&>.vh-aside-links {
@@ -95,15 +104,18 @@ aside.vh-aside {
 					justify-content: center;
 					width: 2rem;
 					height: 2rem;
-					border-radius: 0.375rem;
+					border-radius: var(--vh-radius-md);
 					color: var(--vh-font-color);
 					background-color: var(--vh-body-bg);
-					transition: color 0.2s ease, background-color 0.2s ease;
+					transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+								background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+								transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 					overflow: hidden;
 
 					&:hover {
 						color: var(--vh-white-color);
 						background-color: var(--vh-main-color);
+						transform: translateY(-1px);
 					}
 
 					&>svg {
@@ -130,7 +142,7 @@ aside.vh-aside {
 					justify-content: center;
 					gap: 0.25rem;
 					text-align: center;
-					border-radius: 0.5rem;
+					border-radius: var(--vh-radius-md);
 					user-select: none;
 					transition: background-color 0.2s ease;
 
@@ -173,7 +185,7 @@ aside.vh-aside {
 				justify-content: flex-start;
 				gap: 0.25rem;
 				font-size: 0.95rem;
-				font-weight: 500;
+				font-weight: 600;
 
 				&>svg {
 					margin-bottom: 0.125rem;
@@ -186,7 +198,7 @@ aside.vh-aside {
 			}
 
 			&>.tips-content {
-				font-size: 0.875rem;
+				font-size: 0.85rem;
 				color: var(--vh-font-66);
 				line-height: 1.6;
 
@@ -218,15 +230,17 @@ aside.vh-aside {
 					align-items: center;
 					justify-content: space-between;
 					width: 100%;
-					height: 2.25rem;
+					height: 2.5rem;
 					font-size: 0.875rem;
-					border-radius: 0.375rem;
+					font-weight: 500;
+					border-radius: var(--vh-radius-sm);
 					padding: 0 0.5rem;
 					color: var(--vh-font-color);
-					transition: background-color 0.2s ease;
+					transition: background-color 0.2s ease, color 0.2s ease;
 
 					&:hover {
 						background-color: var(--vh-body-bg);
+						color: var(--vh-main-color);
 
 						&>i {
 							color: var(--vh-white-color);
@@ -243,7 +257,8 @@ aside.vh-aside {
 						color: var(--vh-font-56);
 						font-size: 0.68rem;
 						font-style: normal;
-						border-radius: 0.25rem;
+						font-weight: 500;
+						border-radius: var(--vh-radius-sm);
 						background-color: var(--vh-font-6);
 						transition: background-color 0.2s ease, color 0.2s ease;
 						overflow: hidden;
@@ -268,16 +283,20 @@ aside.vh-aside {
 					display: flex;
 					align-items: center;
 					gap: 0.125rem;
-					padding: 0.25rem 0.625rem;
-					border-radius: 0.25rem;
+					padding: 0.3rem 0.7rem;
+					border-radius: var(--vh-radius-sm);
 					font-size: 0.8rem;
+					font-weight: 500;
 					color: var(--vh-font-66);
 					background-color: var(--vh-body-bg);
-					transition: color 0.2s ease, background-color 0.2s ease;
+					transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+								background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+								transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
 					&:hover {
 						color: var(--vh-white-color);
 						background-color: var(--vh-main-color);
+						transform: translateY(-1px);
 					}
 
 					&>span {
@@ -304,7 +323,7 @@ aside.vh-aside {
 				display: flex;
 				width: 100%;
 				height: max-content;
-				border-radius: 0.5rem;
+				border-radius: var(--vh-radius-md);
 				overflow: hidden;
 
 				&>img {
@@ -319,7 +338,7 @@ aside.vh-aside {
 			&>.vh-aside-articles {
 				display: flex;
 				flex-direction: column;
-				gap: 0.75rem;
+				gap: 0.25rem;
 				width: 100%;
 				height: max-content;
 				overflow: hidden;
@@ -332,8 +351,8 @@ aside.vh-aside {
 					width: 100%;
 					height: max-content;
 					overflow: hidden;
-					padding: 0.5rem;
-					border-radius: 0.375rem;
+					padding: 0.625rem 0.5rem;
+					border-radius: var(--vh-radius-sm);
 					transition: background-color 0.2s ease;
 
 					&:hover {
@@ -356,6 +375,7 @@ aside.vh-aside {
 							min-width: 0;
 							font-size: 0.85rem;
 							font-style: normal;
+							font-weight: 500;
 							line-height: 1.5;
 							color: var(--vh-font-color);
 							transition: color 0.2s ease;
@@ -365,11 +385,12 @@ aside.vh-aside {
 							flex-shrink: 0;
 							width: 1.125rem;
 							height: 1.125rem;
-							border-radius: 0.18rem;
+							border-radius: var(--vh-radius-sm);
 							color: var(--vh-white-color);
 							text-align: center;
 							font-size: 0.66rem;
 							font-style: normal;
+							font-weight: 600;
 							line-height: 1.125rem;
 							background-color: var(--vh-font-28);
 

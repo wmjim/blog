@@ -27,13 +27,14 @@ article.vh-article-main {
 
 	&>header {
 		box-sizing: border-box;
-		padding: 2rem 1.25rem 1rem;
+		padding: 2.5rem 2rem 1.5rem;
 		display: flex;
 		flex-direction: column;
+		gap: 0.75rem;
 		width: 100%;
 		height: max-content;
 		background-color: var(--vh-white-color);
-		border-radius: 0.75rem 0.75rem 0 0;
+		border-radius: var(--vh-radius-lg) var(--vh-radius-lg) 0 0;
 		border: 1px solid var(--vh-border-color);
 		border-bottom: none;
 		overflow: hidden;
@@ -46,8 +47,9 @@ article.vh-article-main {
 		&>.article-meta {
 			box-sizing: border-box;
 			display: flex;
+			flex-wrap: wrap;
 			align-items: center;
-			gap: 1rem;
+			gap: 1.25rem;
 			font-size: 0.85rem;
 			width: 100%;
 			height: max-content;
@@ -56,32 +58,36 @@ article.vh-article-main {
 			&>.article-meta-item {
 				display: flex;
 				align-items: center;
-				gap: 0.25rem;
+				gap: 0.35rem;
 				width: max-content;
 
 				&>svg {
 					flex-shrink: 0;
-					height: 0.875rem;
+					height: 0.9rem;
 					width: auto;
 					object-fit: contain;
+					color: var(--vh-font-28);
 				}
 
 				&>time {
 					color: var(--vh-font-56);
+					font-size: 0.85rem;
 				}
 
 				&>span {
+					font-size: 0.85rem;
+
 					&.count {
 						padding-left: 0.25rem;
-						color: #3FA67F;
+						color: var(--vh-success);
 
-						strong { color: #3FA67F; }
+						strong { color: var(--vh-success); font-weight: 600; }
 					}
 
 					&.time {
-						color: #E9B740;
+						color: var(--vh-warning);
 
-						strong { color: #E9B740; }
+						strong { color: var(--vh-warning); font-weight: 600; }
 					}
 				}
 			}
@@ -90,13 +96,13 @@ article.vh-article-main {
 
 	&>main {
 		box-sizing: border-box;
-		padding: 1rem 1.25rem;
+		padding: 1.5rem 2rem;
 		display: flex;
 		flex-direction: column;
 		width: 100%;
 		height: max-content;
 		background-color: var(--vh-white-color);
-		border-radius: 0 0 0.75rem 0.75rem;
+		border-radius: 0 0 var(--vh-radius-lg) var(--vh-radius-lg);
 		border: 1px solid var(--vh-border-color);
 		border-top: none;
 		overflow: hidden;
@@ -117,35 +123,39 @@ article.vh-article-main {
 
 		// 文章标签列表
 		&>.tag-list {
-			margin-top: 2rem;
+			margin-top: 2.5rem;
+			padding-top: 1.25rem;
 			position: relative;
 			box-sizing: border-box;
-			padding: 1rem 0;
 			display: flex;
 			flex-wrap: wrap;
 			gap: 0.5rem;
 			width: 100%;
+			border-top: 1px solid var(--vh-border-color);
 
 			&>a {
 				position: relative;
 				box-sizing: border-box;
-				padding: 0.25rem 0.75rem;
+				padding: 0.3rem 0.85rem;
 				display: flex;
 				align-items: center;
 				gap: 0.25rem;
 				width: max-content;
 				height: max-content;
-				border-radius: 0.25rem;
+				border-radius: var(--vh-radius-sm);
 				font-size: 0.8rem;
 				font-weight: 500;
 				color: var(--vh-font-66);
 				background-color: var(--vh-body-bg);
-				transition: color 0.2s ease, background-color 0.2s ease;
+				transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+							background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+							transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 				overflow: hidden;
 
 				&:hover {
 					color: var(--vh-white-color);
 					background-color: var(--vh-main-color);
+					transform: translateY(-1px);
 				}
 
 				&>svg {
@@ -167,8 +177,16 @@ article.vh-article-main {
 
 @media screen and (max-width: 999px) {
 	article.vh-article-main {
-		&>header>h1 {
-			font-size: 1.36rem;
+		&>header {
+			padding: 2rem 1.25rem 1.25rem;
+
+			&>h1 {
+				font-size: 1.36rem;
+			}
+		}
+
+		&>main {
+			padding: 1.25rem 1.25rem;
 		}
 
 		h1 { font-size: 1.36rem; }

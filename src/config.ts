@@ -39,12 +39,12 @@ export default {
     // 颜色请用 16 进制颜色码
     // 主题颜色
     "--vh-main-color": "#5B889C",
-    // 字体颜色
-    "--vh-font-color": "#2C3E50",
+    // 字体颜色 — 加深以增强对比度
+    "--vh-font-color": "#1E2D3D",
     // 侧边栏宽度
     "--vh-aside-width": "300px",
-    // 全局圆角
-    "--vh-main-radius": "0.625rem",
+    // 全局圆角 — 统一为中等圆角
+    "--vh-main-radius": "0.5rem",
     // 主体内容宽度
     "--vh-main-max-width": "1458px",
   },

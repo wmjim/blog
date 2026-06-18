@@ -7,7 +7,7 @@
 	justify-content: center;
 	width: 100%;
 	height: max-content;
-	background-color: #F4F5F7;
+	background-color: var(--vh-body-bg);
 	border-top: 1px solid var(--vh-border-color);
 	user-select: none;
 
@@ -28,14 +28,15 @@
 			align-items: center;
 			justify-content: center;
 			gap: 0.5rem;
-			font-size: 0.85rem;
+			font-size: 0.82rem;
 			color: var(--vh-font-56);
-			line-height: 1;
+			line-height: 1.5;
 
 			&>a {
 				color: var(--vh-font-66);
 				line-height: 1;
-				transition: color 0.2s ease;
+				font-weight: 500;
+				transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
 				&:hover {
 					color: var(--vh-main-color);
@@ -49,9 +50,9 @@
 				align-items: center;
 				width: max-content;
 				height: 1.2rem;
-				background-color: #25C2A0;
+				background-color: var(--vh-success);
 				font-size: 0.68rem;
-				border-radius: 0.18rem;
+				border-radius: var(--vh-radius-sm);
 				overflow: hidden;
 
 				&>cite,
@@ -66,7 +67,7 @@
 				}
 
 				&>em {
-					background-color: #5D5D5D;
+					background-color: var(--vh-font-56);
 				}
 
 				&>svg {

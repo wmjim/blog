@@ -1,18 +1,44 @@
 @import url('/assets/font/index.css');
 
 :root {
-	// 白色颜色
+	// ===== Color Tokens =====
 	--vh-white-color: #fff;
-	// BoxShadow — 更轻盈的阴影
-	--vh-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
-	// 卡片悬停阴影
-	--vh-box-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
-	// Body 背景颜色
-	--vh-body-bg: #F9FAFB;
+	--vh-white-88: rgb(255 255 255 / 88%);
+	--vh-white-66: rgb(255 255 255 / 66%);
+	--vh-white-28: rgb(255 255 255 / 28%);
+	--vh-body-bg: #F4F6F8;
+	--vh-border-color: #EBEEF2;
+	--vh-border-color-strong: #DDE1E7;
+
+	// ===== Shadow Tokens — 更轻盈统一 =====
+	--vh-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+	--vh-box-shadow-hover: 0 2px 12px rgba(0, 0, 0, 0.06);
+	--vh-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+	--vh-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+	--vh-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+	// ===== Radius Tokens =====
+	--vh-radius-sm: 0.375rem;
+	--vh-radius-md: 0.5rem;
+	--vh-radius-lg: 0.75rem;
+	--vh-radius-xl: 1rem;
+
+	// ===== Spacing Scale =====
+	--vh-space-xs: 0.25rem;
+	--vh-space-sm: 0.5rem;
+	--vh-space-md: 0.75rem;
+	--vh-space-lg: 1rem;
+	--vh-space-xl: 1.5rem;
+	--vh-space-2xl: 2rem;
+
+	// ===== Transition Tokens =====
+	--vh-transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+	--vh-transition-base: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	--vh-transition-slow: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
 	// Back Top 按钮位置
 	--vh-back-top: calc((calc(100vw - 2rem) - min((100vw - 2rem), var(--vh-main-max-width))) / 2 + 1rem);
-	// 边框颜色
-	--vh-border-color: #EEF1F4;
+
 	// 字体颜色 alpha 变体
 	--vh-font-88: rgb(from var(--vh-font-color) r g b / 88%);
 	--vh-font-66: rgb(from var(--vh-font-color) r g b / 66%);
@@ -20,6 +46,7 @@
 	--vh-font-28: rgb(from var(--vh-font-color) r g b / 28%);
 	--vh-font-16: rgb(from var(--vh-font-color) r g b / 16%);
 	--vh-font-6: rgb(from var(--vh-font-color) r g b / 6%);
+
 	// 主题色 alpha 变体
 	--vh-main-color-88: rgb(from var(--vh-main-color) r g b / 88%);
 	--vh-main-color-66: rgb(from var(--vh-main-color) r g b / 66%);
@@ -28,7 +55,7 @@
 	--vh-main-color-16: rgb(from var(--vh-main-color) r g b / 16%);
 	--vh-main-color-6: rgb(from var(--vh-main-color) r g b / 6%);
 
-	// Semantic colors
+	// ===== Semantic Colors =====
 	--vh-default: #BEC4CC;
 	--vh-default-hover: #BEC4CC18;
 	--vh-info: #3253b4;
@@ -41,12 +68,36 @@
 	--vh-error-hover: #DE3C3D18;
 	--vh-import: #B984DF;
 	--vh-import-hover: #B984DF18;
+
+	// ===== Component Accents =====
+	--vh-comment-accent: #7C7CB8;
+
+	// ===== Category Colors =====
+	--vh-cat-default: #9B7BB8;
+	--vh-cat-code: #C48A4C;
+	--vh-cat-daily: #7B82D0;
+	--vh-cat-software: #5C9E6F;
+	--vh-cat-share: #D4728A;
 }
 
-* {
+// ===================================================================== Base Elements
+
+*,
+*::before,
+*::after {
 	-webkit-tap-highlight-color: transparent;
 	text-decoration: none;
+}
+
+// 只在键盘导航时显示焦点环，鼠标点击时不显示
+*:focus {
 	outline: none;
+}
+
+*:focus-visible {
+	outline: 2px solid var(--vh-main-color-56);
+	outline-offset: 2px;
+	border-radius: 2px;
 }
 
 // 设置文本选中颜色
@@ -60,6 +111,10 @@ html {
 	overflow-wrap: break-word;
 	font-size: 16px;
 	font-weight: 400;
+	scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
 
 	&>body {
 		position: relative;
@@ -69,7 +124,7 @@ html {
 		width: 100vw;
 		height: max-content;
 		color: var(--vh-font-color);
-		font-family: 'HarmonyOS Sans SC', serif;
+		font-family: 'HarmonyOS Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		font-weight: 400;
 		cursor: url('/assets/images/default.cur'), default;
 		overflow-x: hidden;
@@ -83,27 +138,33 @@ html {
 	}
 }
 
+// 图片基础样式
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	user-select: none;
+	-webkit-user-drag: none;
+}
+
+// 代码字体
 pre,
 code {
-	font-family: 'SF Mono' !important;
+	font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Consolas', 'Monaco', 'Menlo', monospace !important;
 }
 
 a {
 	color: var(--vh-font-color);
-	transition: color 0.2s ease;
+	transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
 	&:hover {
 		color: var(--vh-main-color);
 	}
 }
 
-img {
-	user-select: none;
-	-webkit-user-drag: none;
-}
-
+// 懒加载图片
 img[data-vh-lz-src] {
-	transition: filter 0.3s ease;
+	transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 	&:not(.loaded) {
 		filter: blur(0.75rem) brightness(0.95);
@@ -113,10 +174,20 @@ img[data-vh-lz-src] {
 
 // ===================================================================== Utilities
 
-// 悬浮背景 a 标签 — 简化为底部边框高亮
+// 容器布局（归档、分类、标签页使用）
+.vh-container {
+	box-sizing: border-box;
+	width: 100%;
+	height: max-content;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+// 悬浮下划线效果 — 更平滑的动画
 .vh-hover {
 	position: relative;
-	transition: color 0.2s ease;
+	transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
 	&:hover,
 	&.active {
@@ -137,7 +208,8 @@ img[data-vh-lz-src] {
 		border-radius: 2px;
 		background-color: var(--vh-main-color);
 		transform: scaleX(0);
-		transition: transform 0.2s ease;
+		transform-origin: left;
+		transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 }
 
@@ -168,12 +240,13 @@ img[data-vh-lz-src] {
 	}
 }
 
+// 移动端保留文本选择能力（阅读体验）
 @media screen and (max-width: 768px) {
 	body {
-		user-select: none;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
+		-webkit-user-select: auto;
+		-moz-user-select: auto;
+		-ms-user-select: auto;
+		user-select: auto;
 	}
 }
 
@@ -181,7 +254,7 @@ img[data-vh-lz-src] {
 .main-inner>.main-inner-content,
 .avatar {
 	img[data-vh-lz-src] {
-		transition: filter 0.3s ease;
+		transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
 		&:not(.loaded) {
 			filter: blur(0.75rem) brightness(0.95);
@@ -192,7 +265,7 @@ img[data-vh-lz-src] {
 // 首次加载动画
 .vh-animation.vh-animation-init {
 	opacity: 0;
-	animation: 0.4s vh-init-show ease;
+	animation: 0.5s vh-init-show cubic-bezier(0.4, 0, 0.2, 1);
 	animation-fill-mode: forwards;
 }
 
@@ -260,7 +333,7 @@ html.is-animating {
 		margin-bottom: 1rem;
 		box-sizing: border-box;
 		padding: 0.75rem;
-		border-radius: 0.5rem;
+		border-radius: var(--vh-radius-md);
 		background-color: var(--vh-white-color);
 		border: 1px solid var(--vh-border-color);
 		overflow: hidden;
@@ -286,7 +359,7 @@ html.is-animating {
 
 @keyframes vh-init-show {
 	0% {
-		transform: translateY(2rem);
+		transform: translateY(1.5rem);
 		opacity: 0;
 	}
 	100% {
@@ -317,5 +390,28 @@ html.is-animating {
 	}
 	75% {
 		transform: translateX(1.5px);
+	}
+}
+
+// 尊重用户减少动画偏好
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+
+	html {
+		scroll-behavior: auto;
+	}
+
+	.vh-hover::after {
+		transition: none;
+	}
+
+	img[data-vh-lz-src] {
+		transition: none;
 	}
 }
