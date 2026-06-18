@@ -2,15 +2,15 @@
 import { getDescription, fmtTime } from "@/utils/index";
 const { post } = Astro.props;
 const description = getDescription(post);
-import getCover from "@/utils/getCover";
-const ARTICLE_COVER: string = await getCover(post.data.cover);
 import "./ArticleCard.less";
 ---
 
 <article class={`vh-article-item vh-animation vh-animation-init${post.data.top ? " active" : ""}`}>
-	<a class="vh-article-thumb" href={`/article/${post.data.id}`}>
-		<img src="/assets/images/lazy-loading.webp" data-vh-lz-src={ARTICLE_COVER} alt={post.data.title} />
-	</a>
+	{post.data.cover && (
+		<a class="vh-article-thumb" href={`/article/${post.data.id}`}>
+			<img src="/assets/images/lazy-loading.webp" data-vh-lz-src={post.data.cover} alt={post.data.title} />
+		</a>
+	)}
 	<div class="vh-article-body">
 		<header>
 			<a class="vh-article-cat" href={`/categories/${post.data.categories}`}>{post.data.categories}</a>

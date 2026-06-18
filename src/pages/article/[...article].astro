@@ -9,8 +9,7 @@ export async function getStaticPaths() {
 // 处理文章内容
 const post: any = Astro.props;
 // 获取封面图
-import getCover from "@/utils/getCover";
-const ARTICLE_COVER: string = await getCover(post.data.cover);
+const ARTICLE_COVER = post.data.cover;
 // 获取文章数据
 import { getPrevNextPosts } from "@/utils/getPostInfo";
 const { prev, next } = getPrevNextPosts(post.data.id);
