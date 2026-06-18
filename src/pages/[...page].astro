@@ -33,11 +33,11 @@ const currentPage = page_data.url.current.replace("/", "");
 
 <Layout title={currentPage ? `第${currentPage}页文章` : ""} description={Description} Home={true}>
 	<section class="article-list-main">
-		<section class="article-list">
+		<div class="article-list-card">
 			<!-- 文章列表 -->
 			{data.map((post, index) => <ArticleCard post={post} index={index} />)}
 			<!-- 分页 -->
-		</section>
+		</div>
 		<Pagination data={page_data.url} />
 	</section>
 </Layout>

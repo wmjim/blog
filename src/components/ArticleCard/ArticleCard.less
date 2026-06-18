@@ -3,219 +3,210 @@
 	box-sizing: border-box;
 	padding-bottom: 5rem;
 	width: 100%;
+	max-width: 46rem;
 	height: max-content;
 
-	&>section.article-list {
-		position: relative;
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 1.25rem;
+	// ========================================
+	// 卡片容器
+	// ========================================
+	.article-list-card {
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
 		width: 100%;
-		min-width: 0;
-		height: max-content;
+		padding: 0 1.25rem;
+		border: 1px solid var(--vh-border-color);
+		border-radius: var(--vh-radius-lg);
+		background-color: var(--vh-white-color);
 		overflow: hidden;
 
-		&>.vh-article-item {
+		// ========================================
+		// 列表项
+		// ========================================
+		.vh-article-item {
 			position: relative;
 			box-sizing: border-box;
 			display: flex;
-			flex-direction: column;
+			align-items: flex-start;
+			gap: 1.5rem;
 			width: 100%;
-			height: initial;
-			min-height: max-content;
-			border: 1px solid var(--vh-border-color);
-			border-radius: var(--vh-radius-lg);
-			background-color: var(--vh-white-color);
-			overflow: hidden;
-			transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-						box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-						border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			padding: 1.75rem 0;
+			border-bottom: 1px solid var(--vh-border-color);
+			transition: border-color var(--vh-transition-base);
+
+			&:last-child {
+				border-bottom: none;
+			}
 
 			&:hover {
-				transform: translateY(-2px);
-				box-shadow: var(--vh-shadow-lg);
-				border-color: var(--vh-main-color-16);
+				border-color: var(--vh-border-color-strong);
 
-				&>.vh-article-banner>img {
-					transform: scale(1.04);
-				}
+				.title a { color: var(--vh-main-color); }
+				.vh-article-thumb img { transform: scale(1.06); }
 			}
 
-			// 置顶标记 — 更精致的设计
-			&.active {
-				&::before {
-					content: "置顶";
-					position: absolute;
-					top: 0.625rem;
-					left: 0.625rem;
-					box-sizing: border-box;
-					padding: 0.15rem 0.6rem;
-					width: max-content;
-					height: max-content;
-					font-size: 0.7rem;
-					font-weight: 600;
-					color: #fff;
-					border-radius: var(--vh-radius-sm);
-					background: rgba(0, 0, 0, 0.35);
-					backdrop-filter: blur(8px);
-					-webkit-backdrop-filter: blur(8px);
-					letter-spacing: 0.04em;
-					z-index: 1;
-				}
-
-				&>.vh-article-banner::before {
-					content: '';
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					background: rgba(0, 0, 0, 0.06);
-					z-index: 1;
-					pointer-events: none;
-				}
+			// 置顶标记
+			&.active .title a::before {
+				content: "置顶";
+				display: inline-block;
+				margin-right: 0.4rem;
+				padding: 0.05rem 0.35rem;
+				font-size: 0.62rem;
+				font-weight: 600;
+				line-height: 1.5;
+				color: #fff;
+				background: var(--vh-main-color);
+				border-radius: 2px;
+				vertical-align: middle;
 			}
+		}
+	}
 
+	// ========================================
+	// 缩略图
+	// ========================================
+	.vh-article-thumb {
+		flex-shrink: 0;
+		display: block;
+		width: 14rem;
+		aspect-ratio: 16 / 10;
+		border-radius: var(--vh-radius-md);
+		overflow: hidden;
+		background-color: var(--vh-body-bg);
 
-			&>.vh-article-banner {
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+	}
+
+	// ========================================
+	// 右侧内容
+	// ========================================
+	.vh-article-body {
+		flex: 1;
+		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.45rem;
+
+		// 顶行：分类 + 标题 + 日期
+		& > header {
+			display: flex;
+			align-items: baseline;
+			gap: 0.5rem;
+			width: 100%;
+
+			.vh-article-cat {
 				flex-shrink: 0;
-				position: relative;
-				box-sizing: border-box;
-				width: 100%;
-				aspect-ratio: 16 / 10;
-				overflow: hidden;
-				background-color: var(--vh-body-bg);
-
-				&>img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
-					transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-				}
+				padding: 0.08rem 0.4rem;
+				font-size: 0.68rem;
+				font-weight: 600;
+				letter-spacing: 0.02em;
+				color: var(--vh-main-color);
+				background-color: var(--vh-main-color-6);
+				border-radius: var(--vh-radius-sm);
 			}
 
-			&>header {
-				box-sizing: border-box;
-				padding: 0.875rem 1rem 0;
-				display: flex;
-				flex-direction: column;
-				gap: 0.5rem;
-				width: 100%;
-				height: max-content;
+			.title {
+				flex: 1;
+				min-width: 0;
+				overflow: hidden;
 
-				&>h3 {
-					display: flex;
-					align-items: center;
-					justify-content: space-between;
-					width: 100%;
-					height: max-content;
-
-					&>.vh-article-cat {
-						flex-shrink: 0;
-						box-sizing: border-box;
-						padding: 0.15rem 0.5rem;
-						width: max-content;
-						font-size: 0.72rem;
-						font-weight: 600;
-						letter-spacing: 0.02em;
-						border-radius: var(--vh-radius-sm);
-
-						// Category colors — 统一的柔和风格
-						color: var(--vh-main-color);
-							background-color: var(--vh-main-color-6);
-
-					}
-
-					&>time {
-						box-sizing: border-box;
-						font-size: 0.78rem;
-						font-weight: 400;
-						color: var(--vh-font-56);
-						width: max-content;
-					}
-				}
-
-				&>.title {
-					box-sizing: border-box;
-					width: 100%;
-					height: max-content;
+				a {
+					display: block;
+					font-size: 1.1rem;
+					font-weight: 600;
+					line-height: 1.35;
+					color: var(--vh-font-color);
+					transition: color var(--vh-transition-base);
 					overflow: hidden;
-
-					&>a {
-						font-size: 1.05rem;
-						font-weight: 600;
-						line-height: 1.4;
-						color: var(--vh-font-color);
-						transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-
-						&:hover {
-							color: var(--vh-main-color);
-						}
-					}
+					text-overflow: ellipsis;
+					white-space: nowrap;
 				}
 			}
 
-			&>.vh-article-excerpt {
-				box-sizing: border-box;
-				padding: 0 1rem;
-				width: 100%;
-				height: max-content;
+			time {
+				flex-shrink: 0;
+				font-size: 0.75rem;
 				color: var(--vh-font-56);
-				font-size: 0.85rem;
-				font-weight: 400;
-				line-height: 1.6;
-			}
-
-
-			&>.vh-article-taglist {
-				margin-top: auto;
-				box-sizing: border-box;
-				padding: 0.625rem 1rem 1rem;
-				width: 100%;
-				height: max-content;
-				overflow: hidden;
-
-				&>a {
-					box-sizing: border-box;
-					margin-right: 0.625rem;
-					color: var(--vh-font-56);
-					font-size: 0.72rem;
-					font-weight: 400;
-					transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-
-					&:hover {
-						color: var(--vh-main-color);
-					}
-
-					&::before {
-						content: "#";
-						margin-right: 0.0625rem;
-						color: var(--vh-font-28);
-					}
-				}
 			}
 		}
 
-		&>.vh-article-pagination {
-			position: absolute;
-			bottom: 0;
-			right: 0;
+		.vh-article-excerpt {
+			font-size: 0.875rem;
+			line-height: 1.65;
+			color: var(--vh-font-56);
+			margin: 0;
+		}
+
+		.vh-article-taglist {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+
+			a {
+				font-size: 0.72rem;
+				color: var(--vh-font-56);
+				transition: color var(--vh-transition-base);
+
+				&:hover { color: var(--vh-main-color); }
+			}
 		}
 	}
 }
 
-@media screen and (max-width: 1150px) {
+// ========================================
+// 响应式
+// ========================================
+@media screen and (max-width: 768px) {
 	.article-list-main {
-		&>section.article-list {
-			grid-template-columns: repeat(2, 1fr);
+		.article-list-card {
+			padding: 0 1rem;
+		}
+
+		.vh-article-thumb {
+			width: 8rem;
+		}
+
+		.vh-article-item {
+			gap: 0.875rem;
+			padding: 1rem 0;
+		}
+
+		.vh-article-body > header {
+			flex-wrap: wrap;
+			gap: 0.35rem;
+
+			.title a { font-size: 0.95rem; }
 		}
 	}
 }
 
 @media screen and (max-width: 556px) {
 	.article-list-main {
-		&>section.article-list {
-			grid-template-columns: repeat(1, 1fr);
+		.article-list-card {
+			padding: 0 0.75rem;
+		}
+
+		.vh-article-thumb {
+			width: 6rem;
+			border-radius: var(--vh-radius-sm);
+		}
+
+		.vh-article-item {
+			gap: 0.75rem;
+			padding: 0.875rem 0;
+		}
+
+		.vh-article-excerpt {
+			display: none;
+		}
+
+		.vh-article-body > header time {
+			display: none;
 		}
 	}
 }

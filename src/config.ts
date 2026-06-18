@@ -46,7 +46,7 @@ export default {
     // 全局圆角 — 统一为中等圆角
     "--vh-main-radius": "0.5rem",
     // 主体内容宽度
-    "--vh-main-max-width": "1458px",
+    "--vh-main-max-width": "1400px",
   },
   // 导航栏 (新窗口打开 newWindow: true)
   Navs: [
