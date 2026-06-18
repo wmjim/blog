@@ -1,6 +1,6 @@
 ---
 title: "搭建以termux为底座的安卓手机开发环境"
-categories: 安卓优化
+categories: 安卓玩机
 tags:
    - termux
    - android
