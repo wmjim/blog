@@ -106,6 +106,39 @@ export function initTOC() {
 
 		items.forEach((item) => observer.observe(item.el));
 
+		// 移动端 TOC 按钮事件
+		const mobileBtn = document.getElementById("toc-mobile-btn");
+		const overlay = document.getElementById("toc-overlay");
+		const overlayClose = document.getElementById("toc-overlay-close");
+		const overlayContent = document.getElementById("toc-overlay-content");
+
+		if (mobileBtn && overlay && overlayContent && overlayClose) {
+			mobileBtn.addEventListener("click", () => {
+				overlayContent.innerHTML = tocList.innerHTML;
+				// 重新绑定 overlay 中的链接事件
+				overlayContent.querySelectorAll("a").forEach((a) => {
+					a.addEventListener("click", (e) => {
+						e.preventDefault();
+						const targetId = (a as HTMLAnchorElement).dataset.target;
+						if (targetId) {
+							const target = document.getElementById(targetId);
+							if (target) {
+								const headerH = 3.25 * 16;
+								const top = target.getBoundingClientRect().top + window.scrollY - headerH - 20;
+								window.scrollTo({ top, behavior: "smooth" });
+							}
+						}
+						overlay.classList.remove("active");
+					});
+				});
+				overlay.classList.add("active");
+			});
+			overlayClose.addEventListener("click", () => overlay.classList.remove("active"));
+			overlay.addEventListener("click", (e) => {
+				if (e.target === overlay) overlay.classList.remove("active");
+			});
+		}
+
 		window.addEventListener("beforeunload", () => {
 			items.forEach((item) => observer.unobserve(item.el));
 			observer.disconnect();

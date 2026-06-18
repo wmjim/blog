@@ -1,18 +1,32 @@
 
 import { getCollection } from "astro:content";
 
-// 格式化文章列表
+// 格式化文章列表（按年份 + 月份分组）
 const fmtArticleList = (articleList: any) => {
   // 按年份分类
   const groupedByYear = articleList.reduce((acc: any, item: any) => {
     const year = item.data.date.getFullYear();
-    // 初始化
     !acc[year] && (acc[year] = []);
     acc[year].push(item.data);
     return acc;
   }, {});
-  // 转换为目标格式
-  return Object.keys(groupedByYear).map(year => ({ name: parseInt(year), data: groupedByYear[year] })).reverse();
+  // 转换为目标格式（年份内按月份子分组）
+  return Object.keys(groupedByYear)
+    .map(year => {
+      const yearPosts = groupedByYear[year];
+      // 按月份分组
+      const monthMap = yearPosts.reduce((m: any, p: any) => {
+        const month = p.date.getMonth() + 1;
+        !m[month] && (m[month] = []);
+        m[month].push(p);
+        return m;
+      }, {});
+      const months = Object.keys(monthMap)
+        .map(m => ({ name: parseInt(m), data: monthMap[m] }))
+        .reverse();
+      return { name: parseInt(year), data: yearPosts, months };
+    })
+    .reverse();
 }
 
 // 获取分类下的文章列表

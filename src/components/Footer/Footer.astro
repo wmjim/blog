@@ -1,10 +1,36 @@
 ---
-// 基础 样式
 import "./Footer.less";
+import SITE_CONFIG from "@/config";
+const { Description } = SITE_CONFIG;
 ---
 
 <footer class="vh-footer">
-	<main>
+	<section class="vh-footer-main">
+		<div class="vh-footer-col">
+			<h4>关于本站</h4>
+			<p>{Description}</p>
+		</div>
+		<div class="vh-footer-col">
+			<h4>快速导航</h4>
+			<div class="vh-footer-links">
+				<a href="/archives">归档</a>
+				<a href="/categories">分类</a>
+				<a href="/tags">标签</a>
+				<a href="/links">朋友</a>
+				<a href="/about">关于</a>
+				<a href="/rss.xml">RSS</a>
+			</div>
+		</div>
+		<div class="vh-footer-col">
+			<h4>外部链接</h4>
+			<div class="vh-footer-links">
+				<a href="https://github.com/wmjim" target="_blank" rel="noopener noreferrer">GitHub</a>
+				<a href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a>
+				<a href="/sitemap-index.xml" target="_blank">SiteMap</a>
+			</div>
+		</div>
+	</section>
+	<section class="vh-footer-bottom">
 		<p>
 			<span>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -55,5 +81,5 @@ import "./Footer.less";
 				><img alt="icp" src="/assets/images/footer/icp.svg" /></a
 			>
 		</p>
-	</main>
+	</section>
 </footer>

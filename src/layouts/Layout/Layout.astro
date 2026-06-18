@@ -40,9 +40,10 @@ import "./Layout.less";
 		/>
 	</Head>
 	<body>
+		<a class="vh-skip-link" href="#main-content">跳到主要内容</a>
 		<MobileSidebar />
 		<Header activeNav={activeNav} />
-		<main class="main">
+		<main class="main" id="main-content">
 			{HomeBanner.enable && <MainHeader />}
 			<section class="main-inner" style={`padding-top:${HomeBanner.enable ? "0.88rem" : "calc(66px + 0.68rem)"}`}>
 				<section class="main-inner-content">

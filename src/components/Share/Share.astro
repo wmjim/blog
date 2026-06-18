@@ -1,0 +1,83 @@
+---
+const { url, title } = Astro.props;
+---
+
+<div class="vh-share">
+	<span class="vh-share-label">分享</span>
+	<button class="vh-share-btn" id="share-copy" aria-label="复制链接" title="复制链接">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+			<path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+		</svg>
+		<span>复制链接</span>
+	</button>
+	<a class="vh-share-btn" href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer" aria-label="分享到 Twitter" title="分享到 Twitter">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+		</svg>
+		<span>Twitter</span>
+	</a>
+</div>
+
+<script>
+	const copyBtn = document.getElementById("share-copy");
+	if (copyBtn) {
+		copyBtn.addEventListener("click", () => {
+			navigator.clipboard.writeText(window.location.href).then(() => {
+				copyBtn.classList.add("copied");
+				const span = copyBtn.querySelector("span");
+				if (span) span.textContent = "已复制!";
+				setTimeout(() => {
+					copyBtn.classList.remove("copied");
+					if (span) span.textContent = "复制链接";
+				}, 2000);
+			});
+		});
+	}
+</script>
+
+<style>
+	.vh-share {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-top: 1rem;
+		padding-top: 1rem;
+		border-top: 1px solid var(--vh-border-color);
+		flex-wrap: wrap;
+	}
+
+	.vh-share-label {
+		font-size: 0.8125rem;
+		color: var(--vh-font-56);
+		margin-right: 0.25rem;
+	}
+
+	.vh-share-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		padding: 0.375rem 0.75rem;
+		font-size: 0.8125rem;
+		color: var(--vh-font-66);
+		background: var(--vh-font-6);
+		border: 1px solid var(--vh-border-color);
+		border-radius: var(--vh-radius-sm);
+		cursor: pointer;
+		font-family: inherit;
+		text-decoration: none;
+		transition: all var(--vh-transition-base);
+	}
+
+	.vh-share-btn:hover {
+		color: var(--vh-main-color);
+		border-color: var(--vh-main-color-28);
+		background: var(--vh-main-color-6);
+	}
+
+	.vh-share-btn.copied {
+		color: var(--vh-success);
+		border-color: var(--vh-success);
+		background: var(--vh-success-hover);
+	}
+</style>

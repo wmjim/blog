@@ -1,0 +1,90 @@
+---
+import { getRelatedPosts } from "@/utils/getPostInfo";
+import { fmtTime } from "@/utils/index";
+const { currentId } = Astro.props;
+const related = getRelatedPosts(currentId, 3);
+---
+
+{related.length > 0 && (
+	<nav class="vh-related" aria-label="相关文章">
+		<h3>相关文章</h3>
+		<div class="vh-related-list">
+			{related.map(post => (
+				<a class="vh-related-item" href={`/article/${post.id}`}>
+					<span class="vh-related-title">{post.title}</span>
+					<span class="vh-related-meta">
+						<span class="vh-related-cat">{post.categories}</span>
+						<time datetime={fmtTime(post.date)}>{fmtTime(post.date, "YYYY-MM-DD")}</time>
+					</span>
+				</a>
+			))}
+		</div>
+	</nav>
+)}
+
+<style>
+	.vh-related {
+		margin-top: 2rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--vh-border-color);
+	}
+
+	.vh-related h3 {
+		font-size: 1rem;
+		font-weight: 600;
+		color: var(--vh-font-color);
+		margin: 0 0 0.75rem;
+	}
+
+	.vh-related-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.vh-related-item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.625rem 0.875rem;
+		border: 1px solid var(--vh-border-color);
+		border-radius: var(--vh-radius-sm);
+		text-decoration: none;
+		transition: all var(--vh-transition-base);
+	}
+
+	.vh-related-item:hover {
+		border-color: var(--vh-main-color-28);
+		background: var(--vh-main-color-6);
+	}
+
+	.vh-related-title {
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--vh-font-color);
+		flex: 1;
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.vh-related-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.75rem;
+		color: var(--vh-font-56);
+		flex-shrink: 0;
+	}
+
+	.vh-related-cat {
+		background: var(--vh-main-color-6);
+		color: var(--vh-main-color);
+		padding: 0.125rem 0.5rem;
+		border-radius: var(--vh-radius-sm);
+		font-size: 0.6875rem;
+		font-weight: 500;
+	}
+</style>

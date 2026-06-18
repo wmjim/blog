@@ -21,7 +21,7 @@ import "@/styles/Base.less";
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<title>{Title ? `${Title} | ${SiteName}` : `${SiteName} - ${Subtitle}`}</title>
 	<meta name="keywords" content={(Keywords || ["Astro", "分享", "博客"]).join(", ")} />
 	<meta name="description" content={Description} />
@@ -57,8 +57,16 @@ import "@/styles/Base.less";
 	<!-- DNS预解析 -->
 	{DNSOptimization.map((url: string) => <link rel="dns-prefetch" href={url} />)}
 	{DNSOptimization.map((url: string) => <link rel="preconnect" href={url} />)}
+		<!-- 字体加载：非阻塞样式表 + 预加载关键子集 -->
+		<link rel="preload" href="/assets/font/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Regular/943c4d.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+		<link rel="preload" href="/assets/font/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold/6e5dcc.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+		<link rel="stylesheet" href="/assets/font/index.css" />
+		<!-- 预加载首屏关键资源 -->
+		<link rel="preload" href="/assets/images/home-banner.webp" as="image" />
 	<!-- LINK 标签 -->
 	<link rel="canonical" href={canonicalURL} />
 	<link rel="icon" type="image/x-icon" href="/assets/images/avator.jpg" />
 	<slot />
+	<script is:inline>!function(){const t=localStorage.getItem('theme'),e=window.matchMedia('(prefers-color-scheme:dark)').matches;document.documentElement.dataset.theme=t||(e?'dark':'light')}();document.documentElement.style.colorScheme=document.documentElement.dataset.theme</script>
+	<link rel="manifest" href="/manifest.json" />
 </head>

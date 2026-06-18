@@ -1,5 +1,3 @@
-@import url('/assets/font/index.css');
-
 :root {
 	// ===== Color Tokens =====
 	--vh-white-color: #fff;
@@ -78,7 +76,70 @@
 	--vh-cat-daily: #7B82D0;
 	--vh-cat-software: #5C9E6F;
 	--vh-cat-share: #D4728A;
+
+		// ===== Code Block =====
+		--vh-code-bg: #F8F9FB;
 }
+
+	// ============================================================
+	// Dark Mode
+	// ============================================================
+	[data-theme="dark"] {
+		--vh-white-color: #1E1E2A;
+		--vh-white-88: rgb(30 30 42 / 88%);
+		--vh-white-66: rgb(30 30 42 / 66%);
+		--vh-white-28: rgb(30 30 42 / 28%);
+		--vh-body-bg: #16161E;
+		--vh-border-color: #2D2D3F;
+		--vh-border-color-strong: #3D3D52;
+		--vh-font-color: #E0E0E8;
+
+		--vh-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+		--vh-box-shadow-hover: 0 2px 12px rgba(0, 0, 0, 0.4);
+		--vh-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+		--vh-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.3);
+		--vh-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+		--vh-default: #6B7280;
+		--vh-default-hover: #6B728018;
+		--vh-info: #7B93E0;
+		--vh-info-hover: #7B93E018;
+		--vh-success: #2DD4BF;
+		--vh-success-hover: #2DD4BF18;
+		--vh-warning: #F0A04B;
+		--vh-warning-hover: #F0A04B18;
+		--vh-error: #F06565;
+		--vh-error-hover: #F0656518;
+		--vh-import: #C9A0DC;
+		--vh-import-hover: #C9A0DC18;
+
+		--vh-comment-accent: #9B9BD4;
+
+		--vh-cat-default: #B99BD4;
+		--vh-cat-code: #D4A06C;
+		--vh-cat-daily: #9BA0E0;
+		--vh-cat-software: #7CBE8F;
+		--vh-cat-share: #E492A8;
+
+		--vh-code-bg: #1A1A27;
+
+		.vh-header .theme-toggle {
+			.theme-icon-dark { display: none; }
+			.theme-icon-light { display: inline; }
+		}
+	}
+
+	[data-theme="dark"] {
+		.astro-code,
+		.astro-code-themes {
+			color: var(--shiki-dark) !important;
+			background-color: var(--shiki-dark-bg) !important;
+		}
+		.astro-code span,
+		.astro-code-themes span {
+			color: var(--shiki-dark);
+		}
+	}
 
 // ===================================================================== Base Elements
 
@@ -95,9 +156,10 @@
 }
 
 *:focus-visible {
-	outline: 2px solid var(--vh-main-color-56);
+	outline: 3px solid var(--vh-main-color-56);
 	outline-offset: 2px;
 	border-radius: 2px;
+	box-shadow: 0 0 0 1px var(--vh-main-color-28);
 }
 
 // 设置文本选中颜色
@@ -115,6 +177,24 @@ html {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
+
+	// 跳过导航链接（键盘用户无障碍）
+	.vh-skip-link {
+		position: absolute;
+		top: -100%;
+		left: 1rem;
+		padding: 0.5rem 1rem;
+		background: var(--vh-main-color);
+		color: #fff;
+		font-size: 0.875rem;
+		border-radius: 0 0 var(--vh-radius-sm) var(--vh-radius-sm);
+		z-index: 100;
+		font-weight: 500;
+		text-decoration: none;
+		&:focus {
+			top: 0;
+		}
+	}
 
 	&>body {
 		position: relative;
@@ -265,7 +345,7 @@ img[data-vh-lz-src] {
 // 首次加载动画
 .vh-animation.vh-animation-init {
 	opacity: 0;
-	animation: 0.5s vh-init-show cubic-bezier(0.4, 0, 0.2, 1);
+	animation: 0.25s vh-init-show cubic-bezier(0.4, 0, 0.2, 1);
 	animation-fill-mode: forwards;
 }
 
@@ -281,7 +361,7 @@ html.is-changing {
 
 html.is-animating {
 	.vh-animation.vh-animation-init {
-		transform: translateY(0.75rem);
+		transform: translateY(0.5rem);
 		opacity: 0;
 	}
 }
@@ -360,7 +440,7 @@ html.is-animating {
 
 @keyframes vh-init-show {
 	0% {
-		transform: translateY(1.5rem);
+		transform: translateY(0.75rem);
 		opacity: 0;
 	}
 	100% {

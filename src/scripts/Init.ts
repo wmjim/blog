@@ -42,6 +42,19 @@ import SmoothScroll from "@/scripts/Smoothscroll";
 // TOC 目录初始化
 import { initTOC } from "@/scripts/TOC";
 
+// 主题切换
+function initThemeToggle() {
+  const toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+  toggle.addEventListener('click', () => {
+    const html = document.documentElement;
+    const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+    html.dataset.theme = next;
+    html.style.colorScheme = next;
+    localStorage.setItem('theme', next);
+  });
+}
+
 // ============================================================
 
 // 页面初始化 Only
@@ -93,6 +106,8 @@ const indexInit = async (only: boolean = true) => {
   initMobileSidebar();
   // TOC 目录初始化（每次页面切换都需要）
   initTOC();
+  // 主题切换初始化（每次页面切换都需重新绑定，因为 Swup 会替换 Header）
+  initThemeToggle();
 };
 
 export default () => {

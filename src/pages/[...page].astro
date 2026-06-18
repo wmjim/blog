@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import type { GetStaticPathsOptions } from "astro";
 import setSearchJson from "@/utils/vhSearch";
 import moveTopToFirst from "@/utils/moveTopToFirst";
+import readingTime from "reading-time";
 export async function getStaticPaths(options: GetStaticPathsOptions) {
 	const { paginate } = options;
 	const posts = (await getCollection("blog")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -35,7 +36,7 @@ const currentPage = page_data.url.current.replace("/", "");
 	<section class="article-list-main">
 		<div class="article-list-card">
 			<!-- 文章列表 -->
-			{data.map((post, index) => <ArticleCard post={post} index={index} />)}
+			{data.map((post, index) => <ArticleCard post={post} index={index} readTime={Math.ceil(readingTime(post.body || '').minutes) || 1} />)}
 			<!-- 分页 -->
 		</div>
 		<Pagination data={page_data.url} />

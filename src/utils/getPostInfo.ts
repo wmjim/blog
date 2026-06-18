@@ -39,5 +39,25 @@ const getPrevNextPosts = (id: string) => {
   return { prev: noHidePosts[index - 1] ? noHidePosts[index - 1].data : none, next: noHidePosts[index + 1] ? noHidePosts[index + 1].data : none }
 }
 
+// 获取相关文章（按分类 + 标签重叠数排序）
+const getRelatedPosts = (id: string, limit: number = 3) => {
+  const current = posts.find(i => i.data.id === id);
+  if (!current) return [];
+  const others = posts.filter(i => i.data.id !== id && !i.data.hide);
+  const scored = others.map(p => {
+    let score = 0;
+    if (p.data.categories === current.data.categories) score += 3;
+    const currentTags = current.data.tags || [];
+    const postTags = p.data.tags || [];
+    postTags.forEach((t: string) => { if (currentTags.includes(t)) score += 1; });
+    return { post: p, score };
+  });
+  return scored
+    .filter(s => s.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map(s => ({ title: s.post.data.title, date: s.post.data.date, id: s.post.data.id, categories: s.post.data.categories }));
+}
 
-export { getCategories, getTags, getRecommendArticles, getCountInfo, getPrevNextPosts };
+
+export { getCategories, getTags, getRecommendArticles, getCountInfo, getPrevNextPosts, getRelatedPosts };

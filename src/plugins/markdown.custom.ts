@@ -219,6 +219,7 @@ const addClassNames = () => {
         node.properties.class = 'vh-article-img';
         node.properties['data-vh-lz-src'] = node.properties.src;
         node.properties.src = '/assets/images/lazy-loading.webp';
+            node.properties.loading = 'lazy';
         // 处理 section 标签
       } else if (node.tagName === 'section') {
         if (node.properties.class && node.properties.class.includes('vh-vhVideo')) {

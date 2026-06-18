@@ -1,6 +1,6 @@
 ---
 import { getDescription, fmtTime } from "@/utils/index";
-const { post } = Astro.props;
+const { post, readTime = 0 } = Astro.props;
 const description = getDescription(post);
 import "./ArticleCard.less";
 ---
@@ -16,6 +16,7 @@ import "./ArticleCard.less";
 			<a class="vh-article-cat" href={`/categories/${post.data.categories}`}>{post.data.categories}</a>
 			<h2 class="title"><a href={`/article/${post.data.id}`}>{post.data.title}</a></h2>
 			<time datetime={fmtTime(post.data.date)}>{fmtTime(post.data.date, "MM-DD")}</time>
+				{readTime > 0 && <span class="vh-article-readtime">{readTime} 分钟</span>}
 		</header>
 		<p class="vh-article-excerpt vh-ellipsis line-2">{description}</p>
 		<div class="vh-article-taglist">

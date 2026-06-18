@@ -86,7 +86,8 @@ export default {
     'https://analytics.vvhan.com',
     'https://vh-api.4ce.cn',
     'https://registry.npmmirror.com',
-    'https://pagead2.googlesyndication.com'
+    'https://pagead2.googlesyndication.com',
+    'https://raw.githubusercontent.com',
   ],
   // 博客音乐组件解析接口
   vhMusicApi: 'https://vh-api.4ce.cn/blog/meting',

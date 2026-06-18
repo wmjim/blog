@@ -97,6 +97,20 @@ header.vh-header {
 					}
 				}
 
+				// 主题切换按钮
+				&.theme-toggle {
+					cursor: pointer;
+
+					svg {
+						height: 1.125rem;
+						width: auto;
+					}
+
+					// 亮色模式：显示月亮图标（点击切换到暗色）
+					.theme-icon-dark { display: inline; }
+					.theme-icon-light { display: none; }
+				}
+
 				&>svg {
 					height: 1rem;
 					width: auto;
