@@ -37,6 +37,8 @@ import HanAnalyticsInit from "@/scripts/HanAnalytics";
 import SeoPushInit from "@/scripts/SeoPush";
 // SmoothScroll 滚动优化
 import SmoothScroll from "@/scripts/Smoothscroll";
+// TOC 目录初始化
+import { initTOC } from "@/scripts/TOC";
 
 // ============================================================
 
@@ -85,6 +87,8 @@ const indexInit = async (only: boolean = true) => {
   vhSearchInit();
   // 移动端侧边栏初始化
   initMobileSidebar();
+  // TOC 目录初始化（每次页面切换都需要）
+  initTOC();
 };
 
 export default () => {
