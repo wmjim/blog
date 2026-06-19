@@ -135,9 +135,13 @@
 			color: var(--shiki-dark) !important;
 			background-color: var(--shiki-dark-bg) !important;
 		}
+		// !important 必须加：Astro 把亮色主题值写在了每个 span 的内联 style 中，
+		// 内联样式优先级高于样式表规则，不加 !important 永远无法覆盖
+		// 注意：不要给 span 加 background-color，<pre> 已由 ArticleBase 控制背景色，
+		// span 保持透明即可，否则会产生与 pre 背景不一致的矩形色块（"遮罩"）
 		.astro-code span,
 		.astro-code-themes span {
-			color: var(--shiki-dark);
+			color: var(--shiki-dark) !important;
 		}
 	}
 
