@@ -19,6 +19,7 @@ import swup from '@swup/astro';
 // https://astro.build/config
 export default defineConfig({
 	site: SITE_INFO.Site,
+	base: '/blog/',
 	build: { assets: 'vh_static' },
 	integrations: [swup({
 		theme: false,

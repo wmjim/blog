@@ -2,7 +2,7 @@ export default {
   // 网站标题
   Title: "海上一孤舟",
   // 网站地址
-  Site: 'https://wmjim.github.io',
+  Site: 'https://wmjim.github.io/blog',
   // 网站副标题
   Subtitle: 'Hello, World!',
   // 网站描述
