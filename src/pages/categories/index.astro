@@ -12,7 +12,7 @@ import Layout from "@/layouts/Layout/Layout.astro";
       {
         categoryList.map(({ name, count }) => (
           <li>
-            <a href={`/categories/${name}`} class="categories-item">
+            <a href={`${import.meta.env.BASE_URL}categories/${name}`} class="categories-item">
               <span class="categories-name">{name}</span>
               <span class="categories-count">{count}</span>
             </a>

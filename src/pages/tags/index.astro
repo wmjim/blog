@@ -13,7 +13,7 @@ import Layout from "@/layouts/Layout/Layout.astro";
       {
         tagList.map(({ name, count }) => (
           <li>
-            <a href={`/tags/${name}`} class="tags-item">
+            <a href={`${import.meta.env.BASE_URL}tags/${name}`} class="tags-item">
               <span class="tags-name"># {name}</span>
               <span class="tags-count">{count}</span>
             </a>
@@ -29,7 +29,7 @@ import Layout from "@/layouts/Layout/Layout.astro";
         top10.map(({ name, count }, i) => (
           <li class="rank-item">
             <span class={`rank-badge ${i < 3 ? 'rank-top3' : ''}`}>{i + 1}</span>
-            <a href={`/tags/${name}`} class="rank-name"># {name}</a>
+            <a href={`${import.meta.env.BASE_URL}tags/${name}`} class="rank-name"># {name}</a>
             <span class="rank-count">{count} 篇</span>
           </li>
         ))
