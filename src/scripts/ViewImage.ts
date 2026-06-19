@@ -17,7 +17,7 @@ export default async () => {
   try {
     ViewImage.init(ViewImgList.join(","));
   } catch (error) {
-    await LoadScript("/assets/js/view-image.min.js");
+    await LoadScript(import.meta.env.BASE_URL + "assets/js/view-image.min.js");
     ViewImage.init(ViewImgList.join(","));
   }
 }

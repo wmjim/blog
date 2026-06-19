@@ -7,20 +7,20 @@ import "./ArticleCard.less";
 
 <article class={`vh-article-item vh-animation vh-animation-init${post.data.top ? " active" : ""}`}>
 	{post.data.cover && (
-		<a class="vh-article-thumb" href={`/article/${post.data.id}`}>
-			<img src="/assets/images/lazy-loading.webp" data-vh-lz-src={post.data.cover} alt={post.data.title} />
+		<a class="vh-article-thumb" href={`${import.meta.env.BASE_URL}article/${post.data.id}`}>
+			<img src={import.meta.env.BASE_URL + 'assets/images/lazy-loading.webp'} data-vh-lz-src={post.data.cover} alt={post.data.title} />
 		</a>
 	)}
 	<div class="vh-article-body">
 		<header>
-			<a class="vh-article-cat" href={`/categories/${post.data.categories}`}>{post.data.categories}</a>
-			<h2 class="title"><a href={`/article/${post.data.id}`}>{post.data.title}</a></h2>
+			<a class="vh-article-cat" href={`${import.meta.env.BASE_URL}categories/${post.data.categories}`}>{post.data.categories}</a>
+			<h2 class="title"><a href={`${import.meta.env.BASE_URL}article/${post.data.id}`}>{post.data.title}</a></h2>
 			<time datetime={fmtTime(post.data.date)}>{fmtTime(post.data.date, "MM-DD")}</time>
 				{readTime > 0 && <span class="vh-article-readtime">{readTime} 分钟</span>}
 		</header>
 		<p class="vh-article-excerpt vh-ellipsis line-2">{description}</p>
 		<div class="vh-article-taglist">
-			{post.data.tags.map((tag: string) => <a href={`/tag/${tag}`}>#{tag}</a>)}
+			{post.data.tags.map((tag: string) => <a href={`${import.meta.env.BASE_URL}tag/${tag}`}>#{tag}</a>)}
 		</div>
 	</div>
 </article>

@@ -1,5 +1,5 @@
 
-import { getCollection } from "astro:content";
+import { getBlogPosts } from "./getBlogPosts";
 
 // 格式化文章列表（按年份 + 月份分组）
 const fmtArticleList = (articleList: any) => {
@@ -31,28 +31,28 @@ const fmtArticleList = (articleList: any) => {
 
 // 获取分类下的文章列表
 const getCategoriesList = async (categories: string) => {
-  const posts = await getCollection("blog");
-  const articleList = posts.filter((i: any) => i.data.categories == categories).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());;
+  const posts = await getBlogPosts();
+  const articleList = posts.filter((i: any) => i.data.categories == categories).sort((a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf());;
   return fmtArticleList(articleList);
 }
 
 // 获取标签下的文章列表
 const getTagsList = async (tags: string) => {
-  const posts = await getCollection("blog");
-  const articleList = posts.filter((i: any) => (i.data.tags || []).map((_i: any) => (String(_i))).includes(tags)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const posts = await getBlogPosts();
+  const articleList = posts.filter((i: any) => (i.data.tags || []).map((_i: any) => (String(_i))).includes(tags)).sort((a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf());
   return fmtArticleList(articleList);
 }
 
 // 获取归档列表
 const getArchiveList = async () => {
-  const posts = await getCollection("blog");
-  const articleList = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());;
+  const posts = await getBlogPosts();
+  const articleList = posts.sort((a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf());;
   return fmtArticleList(articleList);
 }
 
 // 获取全部分类列表
 const getAllCategories = async () => {
-  const posts = await getCollection("blog");
+  const posts = await getBlogPosts();
   const cateMap = new Map<string, number>();
   posts.forEach((post: any) => {
     const cate = post.data.categories;
@@ -60,12 +60,12 @@ const getAllCategories = async () => {
   });
   return Array.from(cateMap.entries())
     .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count);
+    .sort((a: any, b: any) => b.count - a.count);
 };
 
 // 获取全部标签列表
 const getAllTags = async () => {
-  const posts = await getCollection("blog");
+  const posts = await getBlogPosts();
   const tagMap = new Map<string, number>();
   posts.forEach((post: any) => {
     (post.data.tags || []).forEach((tag: string) => {
@@ -74,7 +74,7 @@ const getAllTags = async () => {
   });
   return Array.from(tagMap.entries())
     .map(([name, count]) => ({ name, count }))
-    .sort((a, b) => b.count - a.count);
+    .sort((a: any, b: any) => b.count - a.count);
 };
 
 export { getCategoriesList, getTagsList, getArchiveList, getAllCategories, getAllTags };

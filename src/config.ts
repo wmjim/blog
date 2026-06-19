@@ -10,7 +10,7 @@ export default {
   // 网站作者
   Author: '海上一孤舟',
   // 作者头像
-  Avatar: '/assets/images/avator.jpg',
+  Avatar: import.meta.env.BASE_URL + 'assets/images/avator.jpg',
   // 网站座右铭
   Motto: '有利的情况和主动的恢复，产生于“再坚持一下”的努力之中。',
   // 网站侧边栏公告 (不填写即不开启)
@@ -30,7 +30,7 @@ export default {
     // 其他页面高度
     PageHeight: '16rem',
     // 背景
-    background: "url('/assets/images/home-banner.webp') no-repeat center 60%/cover",
+    background: "url('" + import.meta.env.BASE_URL + "assets/images/home-banner.webp') no-repeat center 60%/cover",
   },
   // 博客主题配置
   Theme: {
@@ -117,9 +117,9 @@ export default {
   // 文章内赞赏码
   Reward: {
     // 支付宝收款码
-    AliPay: '/assets/images/PayQrcode.png',
+    AliPay: import.meta.env.BASE_URL + 'assets/images/PayQrcode.png',
     // 微信收款码
-    WeChat: '/assets/images/PayQrcode.png'
+    WeChat: import.meta.env.BASE_URL + 'assets/images/PayQrcode.png'
   },
   // 访问网页 自动推送到搜索引擎
   SeoPush: {

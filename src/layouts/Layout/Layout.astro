@@ -31,7 +31,7 @@ import "./Layout.less";
 		<!-- 谷歌广告JS加载项 -->
 		{ad_Client && (asideAD_Slot || articleAD_Slot) && <script is:inline async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ad_Client}`} crossorigin="anonymous" />}
 		<!-- 彩旗🎈 -->
-		<script is:inline src="/assets/js/vhCaiqi.js" defer></script>
+		<script is:inline src={import.meta.env.BASE_URL + 'assets/js/vhCaiqi.js'} defer></script>
 		<!-- 设置主题颜色 -->
 		<Fragment
 			set:html={`<style>:root {${Object.entries(Theme)

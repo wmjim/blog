@@ -201,7 +201,8 @@ function getPlatformEmbed(rawUrl: string): string | null {
 }
 
 //  处理 HTML 标签
-const addClassNames = () => {
+const addClassNames = (options?: { base?: string }) => {
+  const base = options?.base || '/';
   return (tree: any) => {
     visit(tree, (node, index, parent) => {
       // 处理 a 标签
@@ -218,7 +219,7 @@ const addClassNames = () => {
         // 添加 class 和 loading 属性
         node.properties.class = 'vh-article-img';
         node.properties['data-vh-lz-src'] = node.properties.src;
-        node.properties.src = '/assets/images/lazy-loading.webp';
+        node.properties.src = base + 'assets/images/lazy-loading.webp';
             node.properties.loading = 'lazy';
         // 处理 section 标签
       } else if (node.tagName === 'section') {

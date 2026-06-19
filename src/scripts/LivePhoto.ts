@@ -4,7 +4,7 @@ declare const LivePhotosKit: any;
 export default async () => {
   const livePhotoList = document.querySelectorAll('.vh-node.vh-vhLivePhoto');
   if (!livePhotoList.length) return;
-  await LoadScript("/assets/js/livephotoskit.js");
+  await LoadScript(import.meta.env.BASE_URL + "assets/js/livephotoskit.js");
   livePhotoList.forEach((i: any) => {
     const { photo, video } = i.dataset;
     i.innerHTML = `<div class="live-raw"></div>`

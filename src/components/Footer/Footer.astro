@@ -13,12 +13,12 @@ const { Description } = SITE_CONFIG;
 		<div class="vh-footer-col">
 			<h4>快速导航</h4>
 			<div class="vh-footer-links">
-				<a href="/archives">归档</a>
-				<a href="/categories">分类</a>
-				<a href="/tags">标签</a>
-				<a href="/links">朋友</a>
-				<a href="/about">关于</a>
-				<a href="/rss.xml">RSS</a>
+				<a href={import.meta.env.BASE_URL + 'archives'}>归档</a>
+				<a href={import.meta.env.BASE_URL + 'categories'}>分类</a>
+				<a href={import.meta.env.BASE_URL + 'tags'}>标签</a>
+				<a href={import.meta.env.BASE_URL + 'links'}>朋友</a>
+				<a href={import.meta.env.BASE_URL + 'about'}>关于</a>
+				<a href={import.meta.env.BASE_URL + 'rss.xml'}>RSS</a>
 			</div>
 		</div>
 		<div class="vh-footer-col">
@@ -26,7 +26,7 @@ const { Description } = SITE_CONFIG;
 			<div class="vh-footer-links">
 				<a href="https://github.com/wmjim" target="_blank" rel="noopener noreferrer">GitHub</a>
 				<a href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a>
-				<a href="/sitemap-index.xml" target="_blank">SiteMap</a>
+				<a href={import.meta.env.BASE_URL + 'sitemap-index.xml'} target="_blank">SiteMap</a>
 			</div>
 		</div>
 	</section>
@@ -49,12 +49,12 @@ const { Description } = SITE_CONFIG;
 			>
 				<img
 					alt="HanAnalytics"
-					src="/assets/images/footer/hananalytics.svg"
+					src={import.meta.env.BASE_URL + 'assets/images/footer/hananalytics.svg'}
 				/>
-			</a><a href="/sitemap-index.xml" target="_blank"
+			</a><a href={import.meta.env.BASE_URL + 'sitemap-index.xml'} target="_blank"
 				><img
 					alt="sitemap"
-					src="/assets/images/footer/sitemap.svg"
+					src={import.meta.env.BASE_URL + 'assets/images/footer/sitemap.svg'}
 				/></a
 			>
 		</p>
@@ -63,22 +63,22 @@ const { Description } = SITE_CONFIG;
 				href="https://astro.build/"
 				target="_blank"
 				rel="noopener noreferrer"
-				><img alt="Astro" src="/assets/images/footer/astro.svg" /></a
+				><img alt="Astro" src={import.meta.env.BASE_URL + 'assets/images/footer/astro.svg'} /></a
 			><a
 				href="https://github.com/uxiaohan/vhAstro-Theme"
 				target="_blank"
 				rel="noopener noreferrer"
 				><img
 					alt="vhAstro-Theme"
-					src="/assets/images/footer/theme.svg"
+					src={import.meta.env.BASE_URL + 'assets/images/footer/theme.svg'}
 				/></a
-			><a href="/rss.xml" target="_blank"
-				><img alt="rss" src="/assets/images/footer/rss.svg" /></a
+			><a href={import.meta.env.BASE_URL + 'rss.xml'} target="_blank"
+				><img alt="rss" src={import.meta.env.BASE_URL + 'assets/images/footer/rss.svg'} /></a
 			><a
 				href="https://beian.miit.gov.cn/"
 				target="_blank"
 				rel="noopener noreferrer"
-				><img alt="icp" src="/assets/images/footer/icp.svg" /></a
+				><img alt="icp" src={import.meta.env.BASE_URL + 'assets/images/footer/icp.svg'} /></a
 			>
 		</p>
 	</section>

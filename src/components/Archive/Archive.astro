@@ -19,7 +19,7 @@ import "./Archive.less";
 							<>
 								<p class="archive-month-title">{m.name}月</p>
 								{m.data.map((_: any) => (
-									<a href={`/article/${_.id}`}>
+									<a href={`${import.meta.env.BASE_URL}article/${_.id}`}>
 										<em>{fmtTime(_.date, "MM-DD")}</em>
 										<i />
 										<span class="vh-ellipsis">{_.title}</span>
@@ -30,7 +30,7 @@ import "./Archive.less";
 						))
 					) : (
 						i.data.map((_: any) => (
-							<a href={`/article/${_.id}`}>
+							<a href={`${import.meta.env.BASE_URL}article/${_.id}`}>
 								<em>{fmtTime(_.date, "MM-DD")}</em>
 								<i />
 								<span class="vh-ellipsis">{_.title}</span>

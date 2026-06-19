@@ -1,8 +1,8 @@
 ---
 import { getCategoriesList } from "@/utils/getArchive";
-import { getCollection } from "astro:content";
+import { getBlogPosts } from "@/utils/getBlogPosts";
 export async function getStaticPaths(): Promise<any> {
-	const posts = await getCollection("blog");
+	const posts = await getBlogPosts();
 	return posts.map((post: any) => ({ params: { categories: post.data.categories }, props: post }));
 }
 // 获取分类列表

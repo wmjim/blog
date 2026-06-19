@@ -2,7 +2,7 @@
 import { getRelatedPosts } from "@/utils/getPostInfo";
 import { fmtTime } from "@/utils/index";
 const { currentId } = Astro.props;
-const related = getRelatedPosts(currentId, 3);
+const related = await getRelatedPosts(currentId, 3);
 ---
 
 {related.length > 0 && (
@@ -10,7 +10,7 @@ const related = getRelatedPosts(currentId, 3);
 		<h3>相关文章</h3>
 		<div class="vh-related-list">
 			{related.map(post => (
-				<a class="vh-related-item" href={`/article/${post.id}`}>
+				<a class="vh-related-item" href={`${import.meta.env.BASE_URL}article/${post.id}`}>
 					<span class="vh-related-title">{post.title}</span>
 					<span class="vh-related-meta">
 						<span class="vh-related-cat">{post.categories}</span>

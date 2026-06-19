@@ -1,8 +1,8 @@
 ---
 import { getTagsList } from "@/utils/getArchive";
-import { getCollection } from "astro:content";
+import { getBlogPosts } from "@/utils/getBlogPosts";
 export async function getStaticPaths(): Promise<any> {
-  const posts = await getCollection("blog");
+  const posts = await getBlogPosts();
   const tagSet = new Set<string>();
   posts.forEach((post: any) => {
     (post.data.tags || []).forEach((tag: string) => tagSet.add(tag));

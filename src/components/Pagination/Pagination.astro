@@ -4,6 +4,8 @@ const { data } = Astro.props;
 import { fmtPage } from "@/utils/index";
 // 翻页组件样式
 import "./Pagination.less";
+const base = import.meta.env.BASE_URL;
+const page2 = base + '2/';
 ---
 
 <section class="vh-art-page">
@@ -21,7 +23,7 @@ import "./Pagination.less";
 	}
 	<!-- 总页的前一页 -->
 	{
-		(!data.next || !data.last) && data.prev && data.current !== "/2" && (
+		(!data.next || !data.last) && data.prev && data.current !== page2 && (
 			<a class={`vh-pagination-item`} href={data.prev} title={`第${fmtPage(data.prev)}页`}>
 				{fmtPage(data.prev)}
 			</a>
@@ -31,7 +33,7 @@ import "./Pagination.less";
 	<a class="vh-pagination-item active" href="javascript:;" title={`第${fmtPage(data.current)}页`}>{fmtPage(data.current) || "1"}</a>
 	<!-- 第一页的后一页 -->
 	{
-		(!data.prev || !data.first) && data.next && data.last !== "/2" && (
+		(!data.prev || !data.first) && data.next && data.last !== page2 && (
 			<a class="vh-pagination-item" href={data.next} title={`第${fmtPage(data.next)}页`}>
 				{fmtPage(data.next)}
 			</a>

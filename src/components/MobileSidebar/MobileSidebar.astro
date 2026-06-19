@@ -16,7 +16,7 @@ import "./MobileSidebar.less";
 		<div class="vh-mobilesidebar-list vh-link-list">
 			{
 				Navs.map(i => (
-					<a class={i.link.replace("/", "")} href={i.link} target={i.target ? "_blank" : "_self"}>
+					<a class={i.link.replace("/", "")} href={import.meta.env.BASE_URL + i.link.slice(1)} target={i.target ? "_blank" : "_self"}>
 						<Svg src={i.icon} />
 						{i.text}
 					</a>

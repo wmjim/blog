@@ -1,9 +1,9 @@
 ---
 import { getDescription, fmtTime } from "@/utils/index";
-import { getCollection } from "astro:content";
+import { getBlogPosts } from "@/utils/getBlogPosts";
 import { render } from "astro:content";
 export async function getStaticPaths() {
-	const posts = await getCollection("blog");
+	const posts = await getBlogPosts();
 	return posts.map((post: any) => ({ params: { article: post.data.id }, props: post }));
 }
 // 处理文章内容
@@ -12,7 +12,7 @@ const post: any = Astro.props;
 const ARTICLE_COVER = post.data.cover;
 // 获取文章数据
 import { getPrevNextPosts } from "@/utils/getPostInfo";
-const { prev, next } = getPrevNextPosts(post.data.id);
+const { prev, next } = await getPrevNextPosts(post.data.id);
 // 页面 Info
 import SITE_CONFIG from "@/config";
 const { Site, Title, Author, GoogleAds } = SITE_CONFIG;
@@ -57,7 +57,7 @@ import "@/styles/ArticleBase.less";
 						<span class="count"><strong>{article_word_count || "一点"}</strong>字</span>
 						<span class="time"><strong>{parseFloat((Number(reading_time) || 0).toFixed(1).replace(/\.0+$/, ""))}</strong>分钟</span>
 					</span>
-					<a class="article-meta-item" href={`/categories/${post.data.categories}`}>
+					<a class="article-meta-item" href={`${import.meta.env.BASE_URL}categories/${post.data.categories}`}>
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 6h16"></path><path d="M7 12h13"></path><path d="M10 18h10"></path></svg>
 						<span>{post.data.categories}</span>
 					</a>
@@ -68,7 +68,7 @@ import "@/styles/ArticleBase.less";
 				<section class="tag-list">
 					{
 						(post.data.tags || []).map((i: any) => (
-							<a href={`/tag/${i}`}>
+							<a href={`${import.meta.env.BASE_URL}tag/${i}`}>
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 									<path d="M7.5 7.5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />

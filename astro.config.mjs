@@ -50,7 +50,7 @@ export default defineConfig({
 				trust: true,
 				strict: false
 			}
-		], rehypeSlug, rehypeGithubCallout, addClassNames],
+		], rehypeSlug, rehypeGithubCallout, [addClassNames, { base: '/blog/' }]],
 		syntaxHighlight: 'shiki',
 		shikiConfig: { themes: { light: 'github-light', dark: 'github-dark' } },
 	},
