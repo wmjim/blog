@@ -16,7 +16,26 @@ export function initTOC() {
 	if (!article) return;
 
 	const headings = article.querySelectorAll("h2, h3");
-	if (headings.length < 2) {
+	if (headings.length === 0) {
+		tocNav.style.display = "none";
+		return;
+	}
+
+	// 解析标题，跳过文章页脚中的 UI 标题（如「相关文章」「版权」等）
+	const items: TocItem[] = [];
+	headings.forEach((heading) => {
+		const h = heading as HTMLElement;
+		if (h.closest("footer")) return;
+		const level = (h.tagName === "H2" ? 2 : 3) as 2 | 3;
+		let id = h.id;
+		if (!id) {
+			id = "toc-" + Math.random().toString(36).slice(2, 8);
+			h.id = id;
+		}
+		items.push({ el: h, level, id, text: h.textContent || "" });
+	});
+
+	if (items.length < 2) {
 		tocNav.style.display = "none";
 		return;
 	}
@@ -26,19 +45,6 @@ export function initTOC() {
 
 	// 清空旧列表（幂等）
 	tocList.innerHTML = "";
-
-	// 解析标题
-	const items: TocItem[] = [];
-	headings.forEach((heading) => {
-		const h = heading as HTMLElement;
-		const level = (h.tagName === "H2" ? 2 : 3) as 2 | 3;
-		let id = h.id;
-		if (!id) {
-			id = "toc-" + Math.random().toString(36).slice(2, 8);
-			h.id = id;
-		}
-		items.push({ el: h, level, id, text: h.textContent || "" });
-	});
 
 	// 构建扁平列表
 	const fragment = document.createDocumentFragment();
