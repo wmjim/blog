@@ -2,13 +2,13 @@
   "name": "海上一孤舟",
   "short_name": "海上一孤舟",
   "description": "专注于分享和总结，记录我的学习、感想和生活点滴.",
-  "start_url": "/",
+  "start_url": "/blog/",
   "display": "standalone",
   "background_color": "#F4F6F8",
   "theme_color": "#5B889C",
   "icons": [
     {
-      "src": "/assets/images/avator.jpg",
+      "src": "/blog/assets/images/avator.jpg",
       "sizes": "192x192",
       "type": "image/jpeg"
     }
