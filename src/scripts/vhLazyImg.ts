@@ -8,7 +8,7 @@ export default () => {
     // 是否包含data-vh-lz-src
     if (!i.hasAttribute("data-vh-lz-src")) {
       i.setAttribute("data-vh-lz-src", i.getAttribute("src"));
-      i.setAttribute("src", import.meta.env.BASE_URL + 'assets/images/lazy-loading.webp');
+      i.setAttribute("src", '/blog/assets/images/lazy-loading.webp');
     }
   });
   if (lazyLoadStatus) return lazyLoadStatus.update();
