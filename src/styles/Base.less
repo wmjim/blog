@@ -79,6 +79,9 @@
 
 		// ===== Code Block =====
 		--vh-code-bg: #F8F9FB;
+
+		// 主题切换窗帘方向（切换到暗色时：从顶部向下揭示）
+		--vh-theme-reveal-from: 100% 0 0 0;
 }
 
 	// ============================================================
@@ -122,6 +125,9 @@
 		--vh-cat-share: #E492A8;
 
 		--vh-code-bg: #1A1A27;
+
+		// 主题切换窗帘方向（切换到亮色时：从底部向上揭示）
+		--vh-theme-reveal-from: 0 0 100% 0;
 
 		.vh-header .theme-toggle {
 			.theme-icon-dark { display: none; }
@@ -441,6 +447,28 @@ html.is-animating {
 
 
 // ===================================================================== Keyframes
+
+// 主题切换 View Transition 动画
+::view-transition {
+	background: var(--vh-body-bg);
+}
+
+::view-transition-old(theme-transition) {
+	animation: none;
+	mix-blend-mode: normal;
+	z-index: -1;
+}
+
+::view-transition-new(theme-transition) {
+	animation: vh-theme-reveal 0.5s cubic-bezier(0.6, 0, 0.4, 1) forwards;
+	clip-path: inset(0 0 0 0);
+	mix-blend-mode: normal;
+	z-index: 99;
+}
+
+@keyframes vh-theme-reveal {
+	from { clip-path: inset(var(--vh-theme-reveal-from)); }
+}
 
 @keyframes vh-init-show {
 	0% {

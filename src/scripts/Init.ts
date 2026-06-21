@@ -44,16 +44,36 @@ import SmoothScroll from "@/scripts/Smoothscroll";
 // TOC 目录初始化
 import { initTOC } from "@/scripts/TOC";
 
-// 主题切换
+// 主题切换（View Transitions API + clip-path 窗帘动画）
 function initThemeToggle() {
   const toggle = document.getElementById('theme-toggle');
   if (!toggle) return;
   toggle.addEventListener('click', () => {
     const html = document.documentElement;
-    const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
-    html.dataset.theme = next;
-    html.style.colorScheme = next;
-    localStorage.setItem('theme', next);
+    const current = html.dataset.theme;
+    const next = current === 'dark' ? 'light' : 'dark';
+
+    // 不支持 View Transitions 或用户偏好减少动画时，直接切换
+    if (!document.startViewTransition ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      html.dataset.theme = next;
+      html.style.colorScheme = next;
+      localStorage.setItem('theme', next);
+      return;
+    }
+
+    // 为根元素命名，让 View Transitions 捕获整个页面快照
+    html.style.setProperty('view-transition-name', 'theme-transition');
+
+    const transition = document.startViewTransition(() => {
+      html.dataset.theme = next;
+      html.style.colorScheme = next;
+      localStorage.setItem('theme', next);
+    });
+
+    transition.finished.then(() => {
+      html.style.removeProperty('view-transition-name');
+    });
   });
 }
 
