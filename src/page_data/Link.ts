@@ -4,6 +4,12 @@ export default {
   // api 为空则使用 data 静态数据
   data: [
     {
+      "name": "史帙",
+      "link": "https://daybook.page/",
+      "avatar": "https://daybook.page/images/avatar/shelby.jpg",
+      "descr": "笑一个吧，功成名就不是目的."
+    },
+    {
       "name": "韩小韩博客",
       "link": "https://www.vvhan.com",
       "avatar": "https://q1.qlogo.cn/g?b=qq&nk=1655466387&s=640",
