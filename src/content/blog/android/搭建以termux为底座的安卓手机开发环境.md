@@ -65,7 +65,7 @@ termux-wake-unlock
 
 执行后，Termux 的持久通知栏中出现一个选项，表示已启用唤醒锁。
 
-![](https://raw.githubusercontent.com/wmjim/blogimages/main/5e9802f6ff0cc2fd41acf468f3aad6a9.jpeg)
+![](https://raw.githubusercontent.com/wmjim/blogimages/main/20260622212520914.jpeg)
 
 ### 2、禁用 Termux 的电池优化
 
@@ -75,7 +75,7 @@ termux-wake-unlock
 - 查找 **电池** 或 **省电优化** 选项。
 - 将 Termux 设置为 **“不受限制”**、**“不优化”** 或 **“允许后台活动”**。
 
-![](https://raw.githubusercontent.com/wmjim/blogimages/main/c51cbbfedfd67a6296c5318140fca974.jpg)
+![](https://raw.githubusercontent.com/wmjim/blogimages/main/20260622212623190.jpg)
 
 ## 样式美化
 
