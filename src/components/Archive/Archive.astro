@@ -9,35 +9,21 @@ import "./Archive.less";
 		{
 			articleList.map((i: any) => (
 				<div class="archive-list-item">
-					<p class="title">
-						<em>{i.name}</em>
-						<i />
-						<span>{i.data.length}篇文章</span>
-					</p>
-					{i.months ? (
-						i.months.map((m: any) => (
-							<>
-								<p class="archive-month-title">{m.name}月</p>
-								{m.data.map((_: any) => (
-									<a href={`${import.meta.env.BASE_URL}article/${_.id}`}>
-										<em>{fmtTime(_.date, "MM-DD")}</em>
-										<i />
-										<span class="vh-ellipsis">{_.title}</span>
-										<cite class="vh-ellipsis">{_.tags.map((tag: string) => `#${tag}`).join(" ")}</cite>
-									</a>
-								))}
-							</>
-						))
-					) : (
-						i.data.map((_: any) => (
-							<a href={`${import.meta.env.BASE_URL}article/${_.id}`}>
-								<em>{fmtTime(_.date, "MM-DD")}</em>
-								<i />
-								<span class="vh-ellipsis">{_.title}</span>
-								<cite class="vh-ellipsis">{_.tags.map((tag: string) => `#${tag}`).join(" ")}</cite>
-							</a>
-						))
-					)}
+					<h2 class="archive-year-title">
+						<span>{i.name}</span>
+						<i class="line" />
+					</h2>
+					{i.data.map((_: any) => (
+						<a href={`${import.meta.env.BASE_URL}article/${_.id}`}>
+							<em class="date">{fmtTime(_.date, "MM-DD")}</em>
+							<i class="dot" />
+							<div class="entry">
+								<span class="title vh-ellipsis">{_.title}</span>
+								<span class="read-time">{_.readTime} min</span>
+								{_.summary && <p class="summary vh-ellipsis">{_.summary}</p>}
+							</div>
+						</a>
+					))}
 				</div>
 			))
 		}

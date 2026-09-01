@@ -1,7 +1,9 @@
 ---
-import { getArchiveList } from "@/utils/getArchive";
+import { getArchiveList, getArchiveStats } from "@/utils/getArchive";
 // 获取归档列表
 const articleList = await getArchiveList();
+// 归档统计（天数 / 文章数 / 总字数）
+const stats = await getArchiveStats();
 // 页面 Info
 import SITE_CONFIG from "@/config";
 const { Description } = SITE_CONFIG;
@@ -13,6 +15,89 @@ import Archive from "@/components/Archive/Archive.astro";
 
 <Layout title="归档" description={Description} activeNav="archives">
 	<section class="vh-container">
+		<section class="vh-archive-stats">
+			<div class="stat-item">
+				<span class="num" data-count={stats.days}>{stats.days}</span>
+				<span class="unit">天</span>
+			</div>
+			<div class="stat-item">
+				<span class="num" data-count={stats.articles}>{stats.articles}</span>
+				<span class="unit">篇文章</span>
+			</div>
+			<div class="stat-item">
+				<span class="num" data-count={stats.words} data-format="k">{(stats.words / 1000).toFixed(1)}</span>
+				<span class="unit">千字</span>
+			</div>
+		</section>
 		<Archive articleList={articleList} />
 	</section>
 </Layout>
+
+<style>
+	section.vh-archive-stats {
+		display: flex;
+		padding: 1.25rem 0;
+		border-radius: 1rem;
+		background-color: var(--vh-white-color);
+
+		.stat-item {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 0.25rem;
+
+			& + .stat-item {
+				border-left: 1px dashed rgba(0, 0, 0, 0.12);
+			}
+
+			.num {
+				color: var(--vh-font-color);
+				font-size: 1.75rem;
+				font-weight: 700;
+				font-variant-numeric: tabular-nums;
+				line-height: 1;
+			}
+
+			.unit {
+				color: var(--vh-font-56);
+				font-size: 0.875rem;
+			}
+		}
+	}
+
+	@media screen and (max-width: 888px) {
+		section.vh-archive-stats {
+			padding: 1rem 0;
+			background-color: transparent;
+
+			.stat-item {
+				.num {
+					font-size: 1.4rem;
+				}
+			}
+		}
+	}
+</style>
+
+<script>
+	// 统计数字滚动动画（easeOutCubic）
+	document.querySelectorAll("[data-count]").forEach((el) => {
+		const target = Number(el.dataset.count);
+		const isK = el.dataset.format === "k";
+		const duration = 1200;
+		const start = performance.now();
+		const tick = (now: number) => {
+			const p = Math.min((now - start) / duration, 1);
+			// easeOutCubic 缓动
+			const eased = 1 - Math.pow(1 - p, 3);
+			if (isK) {
+				el.textContent = (target * eased / 1000).toFixed(1);
+			} else {
+				el.textContent = String(Math.round(target * eased));
+			}
+			if (p < 1) requestAnimationFrame(tick);
+		};
+		requestAnimationFrame(tick);
+	});
+</script>

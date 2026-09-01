@@ -1,5 +1,20 @@
 
 import { getBlogPosts } from "./getBlogPosts";
+import readingTime from "reading-time";
+import dayjs from "dayjs";
+import SITE_CONFIG from "@/config";
+import { getDescription } from "@/utils/index";
+
+// 计算文章阅读时长与摘要，注入展示所需字段
+const enhancePost = (item: any) => {
+  // 剔除 HTML 标签后计算，避免标签干扰词数统计
+  const text = (item.body || "").replace(/<[^>]+>/g, " ");
+  return {
+    ...item.data,
+    readTime: Math.max(1, Math.ceil(readingTime(text).minutes)),
+    summary: item.data.summary || getDescription(item, 100),
+  };
+};
 
 // 格式化文章列表（按年份 + 月份分组）
 const fmtArticleList = (articleList: any) => {
@@ -7,7 +22,7 @@ const fmtArticleList = (articleList: any) => {
   const groupedByYear = articleList.reduce((acc: any, item: any) => {
     const year = item.data.date.getFullYear();
     !acc[year] && (acc[year] = []);
-    acc[year].push(item.data);
+    acc[year].push(enhancePost(item));
     return acc;
   }, {});
   // 转换为目标格式（年份内按月份子分组）
@@ -50,6 +65,17 @@ const getArchiveList = async () => {
   return fmtArticleList(articleList);
 }
 
+// 获取归档页统计（建站天数 / 文章数 / 总字数）
+const getArchiveStats = async () => {
+  const posts = await getBlogPosts();
+  let words = 0;
+  for (const p of posts) {
+    words += readingTime((p.body || "").replace(/<[^>]+>/g, " ")).words;
+  }
+  const days = dayjs().diff(dayjs(SITE_CONFIG.CreateTime), "day");
+  return { days: Math.max(0, days), articles: posts.length, words };
+}
+
 // 获取全部分类列表
 const getAllCategories = async () => {
   const posts = await getBlogPosts();
@@ -77,4 +103,4 @@ const getAllTags = async () => {
     .sort((a: any, b: any) => b.count - a.count);
 };
 
-export { getCategoriesList, getTagsList, getArchiveList, getAllCategories, getAllTags };
+export { getCategoriesList, getTagsList, getArchiveList, getAllCategories, getAllTags, getArchiveStats };
