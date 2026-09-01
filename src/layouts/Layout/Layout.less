@@ -5,6 +5,8 @@ main.main {
 	align-items: center;
 	width: 100%;
 	height: max-content;
+	// 撑满视口剩余空间，将 Footer 固定在页面底部（内容不足一屏时）
+	flex: 1 0 auto;
 	overflow: visible !important;
 
 	&>.main-inner {
@@ -26,6 +28,13 @@ main.main {
 			min-width: 0;
 			height: max-content;
 			overflow: visible;
+		}
+
+		// 无资料卡页面：宽度对齐文章正文列
+		// = 主容器 − 左侧资料卡 − 正文与目录间距 − 右侧目录
+		// 内容自身还有 1.25rem 左右内边距，故最终正文宽度与文章页一致（约 740px）
+		&.no-aside {
+			max-width: calc(var(--vh-main-max-width) - var(--vh-aside-width) - 1.25rem - var(--vh-aside-width));
 		}
 	}
 }

@@ -56,10 +56,6 @@ export default {
   AsideShow: {
     // 是否展示个人网站
     WebSitesShow: true,
-    // 是否展示分类
-    CategoriesShow: true,
-    // 是否展示标签
-    TagsShow: true,
     // 是否展示推荐文章
     recommendArticleShow: true
   },

@@ -1,5 +1,5 @@
 ---
-const { title, keywords, description, pagecover, activeNav, Home } = Astro.props;
+const { title, keywords, description, pagecover, activeNav, showAside = false } = Astro.props;
 // 网站配置
 import SITE_INFO from "@/config";
 const { GoogleAds, Theme } = SITE_INFO;
@@ -40,11 +40,11 @@ import "./Layout.less";
 		<MobileSidebar />
 		<Header activeNav={activeNav} />
 		<main class="main" id="main-content">
-			<section class="main-inner" style="padding-top:calc(66px + 0.68rem)">
+			<section class={showAside ? "main-inner" : "main-inner no-aside"} style="padding-top:calc(66px + 0.68rem)">
 				<section class="main-inner-content">
 					<slot />
 				</section>
-				<Aside />
+				{showAside && <Aside />}
 			</section>
 			<BackTop />
 		</main>

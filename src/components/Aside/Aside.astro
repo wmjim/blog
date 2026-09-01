@@ -8,12 +8,7 @@ import { fmtTime } from "@/utils/index";
 import SITE_CONFIG from "@/config";
 const { Avatar, Author, Motto, WebSites, GoogleAds, AsideShow } = SITE_CONFIG;
 // 获取文章数据
-import { getCategories, getTags, getRecommendArticles, getCountInfo } from "@/utils/getPostInfo";
-// 获取数据统计
-// 分类列表
-const categories = await getCategories();
-// 热门标签
-const tags = (await getTags()).slice(0, 16);
+import { getRecommendArticles, getCountInfo } from "@/utils/getPostInfo";
 // 获取网站统计数据
 const CountInfo = await getCountInfo();
 // 最新文章
@@ -74,43 +69,6 @@ import "./Aside.less";
 			</section>
 		)
 	}
-
-	<!-- 分类块 -->
-	{
-		AsideShow.CategoriesShow && (
-			<section class="vh-aside-item cat">
-				<h3>分类</h3>
-				<div class="vh-aside-cat">
-					{categories
-						.sort((a: any, b: any) => b.count - a.count)
-						.map(i => (
-							<a href={`${import.meta.env.BASE_URL}categories/${i.title}`}>
-								<span>{i.title}</span>
-								<i>{i.count}</i>
-							</a>
-						))}
-				</div>
-			</section>
-		)
-	}
-
-	<!-- 标签块 -->
-	{
-		AsideShow.TagsShow && (
-			<section class="vh-aside-item tags">
-				<h3>热门标签</h3>
-				<div class="vh-aside-tags">
-					{tags.map(i => (
-						<a href={`${import.meta.env.BASE_URL}tags/${i[0]}`}>
-							<span>{i[0]}</span>
-							<em>{i[1]}</em>
-						</a>
-					))}
-				</div>
-			</section>
-		)
-	}
-
 
 	<section class="sticky-aside">
 		<!-- 最新文章块 -->
