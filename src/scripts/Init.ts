@@ -14,7 +14,7 @@ import livePhotoInit from '@/scripts/LivePhoto'
 // 初始化BackTop组件
 import BackTopInitFn from "@/scripts/BackTop";
 // 搜索
-import { searchFn, vhSearchInit } from "@/scripts/Search";
+import { searchFn, vhSearchInit, vhSearchJumpInit } from "@/scripts/Search";
 // 图片懒加载
 import vhLzImgInit from "@/scripts/vhLazyImg";
 // 图片灯箱
@@ -122,6 +122,8 @@ const indexInit = async (only: boolean = true) => {
   only && searchFn("");
   // 初始化搜索功能
   vhSearchInit();
+  // 从 URL 定位搜索关键词并跳转（仅文章页生效）
+  vhSearchJumpInit();
   // 移动端侧边栏初始化
   initMobileSidebar();
   // TOC 目录初始化（每次页面切换都需要）

@@ -7,7 +7,7 @@ export default async (posts: any[]) => {
     const $ = cheerio.load(`<body>${i.rendered.html}</body>`);
     return {
       title: i.data.title,
-      url: `/article/${i.data.id}`,
+      url: `${import.meta.env.BASE_URL}article/${i.data.id}`,
       content: `${i.data.title} - ` + $('body').text().replace(/\n/g, '').replace(/<[^>]+>/g, '')
     };
   });
