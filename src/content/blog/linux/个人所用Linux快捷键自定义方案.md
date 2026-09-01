@@ -7,6 +7,7 @@ tags:
 id: "e98e010eedf5d67f"
 date: 2026-06-28 08:12:38
 cover: "封面图URL (为空默认随机内置封面 /public/assets/images/banner)"
+draft: true
 ---
 
 ## 快捷键哲学

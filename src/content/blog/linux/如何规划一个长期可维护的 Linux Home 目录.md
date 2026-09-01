@@ -7,6 +7,7 @@ tags:
 id: "27e6d95ca91dccaf"
 date: 2026-06-28 07:18:34
 cover: "封面图URL (为空默认随机内置封面 /public/assets/images/banner)"
+draft: true
 ---
 
 随着在 Linux 桌面系统上安装和使用的软件越来越多，在没有得到管理的情况下，用户家目录（`~`）乱作一团。
