@@ -15,23 +15,8 @@ export default {
   Motto: 'Be the change you wish to see in the world.',
   // 网站侧边栏公告 (不填写即不开启)
   Tips: '<p>欢迎光临我的博客 🎉</p><p>这里会分享我的日常和学习中的收集、整理及总结，希望能对你有所帮助:) 💖</p>',
-  // 首页打字机文案列表
-  TypeWriteList: [
-    '不曾与你分享的时间,我在进步.',
-    "I am making progress in the time I haven't shared with you.",
-  ],
   // 网站创建时间
   CreateTime: '2023-09-01',
-  // 顶部 Banner 配置
-  HomeBanner: {
-    enable: true,
-    // 首页高度
-    HomeHeight: '22rem',
-    // 其他页面高度
-    PageHeight: '16rem',
-    // 背景
-    background: "url('" + import.meta.env.BASE_URL + "assets/images/home-banner.webp') no-repeat center 60%/cover",
-  },
   // 博客主题配置
   Theme: {
     // 颜色请用 16 进制颜色码

@@ -61,8 +61,6 @@ import "@fontsource-variable/noto-serif-sc";
 	{DNSOptimization.map((url: string) => <link rel="preconnect" href={url} />)}
 		<!-- 字体加载：自托管分片字体（LXGW WenKai Screen 正文 / Maple Mono CN 代码），cn-font-split 按 unicode-range 懒加载 -->
 		<link rel="stylesheet" href={import.meta.env.BASE_URL + 'fonts/index.css'} />
-		<!-- 预加载首屏关键资源 -->
-		<link rel="preload" href={import.meta.env.BASE_URL + 'assets/images/home-banner.webp'} as="image" />
 	<!-- LINK 标签 -->
 	<link rel="canonical" href={canonicalURL} />
 	<link rel="icon" type="image/x-icon" href={import.meta.env.BASE_URL + 'assets/images/avator.jpg'} />

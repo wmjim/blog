@@ -1,10 +1,6 @@
 import { inRouter, outRouter } from "@/utils/updateRouter";
-// Banner 打字效果
-import TypeWriteInit from "@/scripts/TypeWrite";
 // 文章总结打字效果
 import ArticleSummaryInit from "@/scripts/ArticleSummary";
-// 泡泡🫧效果
-import PaoPaoInit from "@/scripts/PaoPao";
 // 初始化文章代码块
 import codeInit from "@/scripts/Code";
 // 初始化 Mermaid 图表
@@ -120,12 +116,8 @@ const indexInit = async (only: boolean = true) => {
   checkComment() && commentInit(checkComment(), commentLIst)
   // Han Analytics 统计
   HanAnalyticsInit();
-  // 打字效果
-  only && TypeWriteInit();
   // 文章总结打字效果（每次页面进入都执行，swup 切换时元素是全新的会重新打字）
   ArticleSummaryInit();
-  // 泡泡🫧效果
-  PaoPaoInit();
   // 预加载搜索数据
   only && searchFn("");
   // 初始化搜索功能

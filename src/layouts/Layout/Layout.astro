@@ -2,14 +2,12 @@
 const { title, keywords, description, pagecover, activeNav, Home } = Astro.props;
 // 网站配置
 import SITE_INFO from "@/config";
-const { GoogleAds, Theme, HomeBanner } = SITE_INFO;
+const { GoogleAds, Theme } = SITE_INFO;
 const { ad_Client, asideAD_Slot, articleAD_Slot } = GoogleAds;
 // Head 依赖
 import Head from "@/components/Head/Head.astro";
 // 顶部 Header
 import Header from "@/components/Header/Header.astro";
-// Main 区域 Header
-import MainHeader from "@/components/MainHeader/MainHeader.astro";
 // Aside组件
 import Aside from "@/components/Aside/Aside.astro";
 // 底部 Footer
@@ -34,7 +32,7 @@ import "./Layout.less";
 		<Fragment
 			set:html={`<style>:root {${Object.entries(Theme)
 				.map(([key, value]) => `${key}:${value};`)
-				.join("")}--vh-main-header-height:${HomeBanner.HomeHeight};--vh-home-banner:${HomeBanner.background}}</style>`}
+				.join("")}}</style>`}
 		/>
 	</Head>
 	<body>
@@ -42,8 +40,7 @@ import "./Layout.less";
 		<MobileSidebar />
 		<Header activeNav={activeNav} />
 		<main class="main" id="main-content">
-			{HomeBanner.enable && <MainHeader />}
-			<section class="main-inner" style={`padding-top:${HomeBanner.enable ? "0.88rem" : "calc(66px + 0.68rem)"}`}>
+			<section class="main-inner" style="padding-top:calc(66px + 0.68rem)">
 				<section class="main-inner-content">
 					<slot />
 				</section>
