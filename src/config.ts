@@ -1,6 +1,6 @@
 export default {
   // 网站标题
-  Title: "Viod",
+  Title: "Void",
   // 网站地址
   Site: 'https://wmjim.github.io/blog',
   // 网站副标题
@@ -8,7 +8,7 @@ export default {
   // 网站描述
   Description: '专注于分享和总结，记录我的学习、感想和生活点滴.',
   // 网站作者
-  Author: 'Viod',
+  Author: 'Void',
   // 作者头像
   Avatar: import.meta.env.BASE_URL + 'assets/images/avator.jpg',
   // 网站座右铭
