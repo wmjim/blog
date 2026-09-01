@@ -7,6 +7,7 @@ tags:
 id: "fe799ce02c5cd16f"
 date: 2025-12-12 18:22:35
 cover: "https://raw.githubusercontent.com/wmjim/blogimages/main/20260619002955482.png"
+summary: "文章介绍了安卓去广告方案：通过GKD自动跳过开屏广告，AdGuard过滤网络广告，并关闭无用通知。同时讲解了权限设置、防杀后台、VPN兼容问题及纯净软件建议，最终实现干净的手机使用体验。"
 ---
 
 笔者在使用安卓手机的过程中，深受应用无赖开屏广告的困扰，最终打算解决一下的。

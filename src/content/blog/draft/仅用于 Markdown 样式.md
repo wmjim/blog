@@ -7,6 +7,7 @@ id: "bab5f7242d0f18f9"
 date: 2025-12-10 00:58:33
 cover: "https://raw.githubusercontent.com/wmjim/blogimages/main/20260619011149243.png"
 draft: true
+summary: "文章通过示例系统测试了Markdown标题、引用、段落、列表、代码、表格、链接、脚注及分隔线等要素的排版样式，并给出使用规范与建议，强调结构清晰、分区明确，避免滥用引用和分级过深，以提升文档可读性。"
 ---
 
 这是一篇用于测试博客文章各种 Markdown 要素样式的测试文章。

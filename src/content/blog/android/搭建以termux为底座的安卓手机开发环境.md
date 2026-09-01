@@ -7,6 +7,7 @@ tags:
 id: "3d9f55037a84f360"
 date: 2025-12-09 20:30:42
 cover: "https://raw.githubusercontent.com/wmjim/blogimages/main/20260618191515237.png"
+summary: "Termux 是一款无需 root 即可运行的 Android 终端模拟器，提供最小化 Linux 环境。文章介绍了其安装、SSH 远程连接、防断线设置、界面美化、镜像源切换与包管理，并涵盖 Shell、编辑器及存储权限配置等实用技巧。"
 ---
 
 Termux 是一款 Android 终端模拟器和 Linux 环境应用，无需 root 或额外设置即可直接运行。系统会自动安装一个最小化的基础系统。

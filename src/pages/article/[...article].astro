@@ -64,6 +64,16 @@ import "@/styles/ArticleBase.less";
 				</div>
 			</header>
 			<main>
+				<!-- AI 生成的文章总结（打字机效果） -->
+				{post.data.summary && (
+					<div class="article-summary">
+						<span class="article-summary-label" aria-hidden="true">✨ 文章总结</span>
+						<div class="article-summary-body">
+							<p class="article-summary-text" id="article-summary-text">{post.data.summary}</p>
+							<span class="article-summary-cursor" aria-hidden="true"></span>
+						</div>
+					</div>
+				)}
 				<Content />
 				<section class="tag-list">
 					{

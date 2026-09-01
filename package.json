@@ -9,6 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "newpost": "node ./script/newpost.js",
+    "summary": "node ./script/generate-summary.mjs",
+    "test": "node --test script/*.test.mjs",
     "offdev": "astro preferences disable devToolbar",
     "ondev": "astro preferences enable devToolbar"
   },
@@ -27,6 +29,7 @@
     "vh-plugin": "^1.2.2"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.122.0",
     "@playform/compress": "^0.2.0",
     "@types/dplayer": "^1.25.5",
     "@types/nprogress": "^0.2.3",

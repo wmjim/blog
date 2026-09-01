@@ -8,6 +8,7 @@ id: "27b6a705596126c0"
 date: 2026-06-19 01:17:40
 cover: "https://raw.githubusercontent.com/wmjim/blogimages/main/20260619011149243.png"
 draft: true
+summary: "本文介绍了博客中常用的多种组件，包括按钮、GitHub仓库卡片、Note提示框、图片及LIVE动图、音乐和视频播放器等，并展示了各自的语法与使用示例。这些组件覆盖信息提示、多媒体嵌入等场景，便于丰富文章内容。"
 ---
 
 ## 按钮组件

@@ -107,6 +107,61 @@ article.vh-article-main {
 		border-top: none;
 		overflow: hidden;
 
+		// 文章总结（AI 生成 · 打字机效果）
+		&>.article-summary {
+			box-sizing: border-box;
+			margin-bottom: 1.5rem;
+			padding: 0.85rem 1.05rem;
+			display: flex;
+			flex-direction: column;
+			gap: 0.4rem;
+			width: 100%;
+			border-radius: var(--vh-radius-md);
+			border-left: 3px solid var(--vh-main-color);
+			background-color: var(--vh-main-color-6);
+
+			&>.article-summary-label {
+				font-size: 0.75rem;
+				font-weight: 600;
+				letter-spacing: 0.02em;
+				color: var(--vh-main-color);
+			}
+
+			&>.article-summary-body {
+				display: flex;
+				align-items: flex-start;
+				gap: 2px;
+
+				&>.article-summary-text {
+					margin: 0;
+					font-size: 0.92rem;
+					line-height: 1.75;
+					color: var(--vh-font-66);
+					white-space: pre-wrap;
+					word-break: break-word;
+					min-height: 1.6em;
+				}
+
+				&>.article-summary-cursor {
+					flex-shrink: 0;
+					align-self: center;
+					width: 2px;
+					height: 1.1em;
+					background-color: var(--vh-main-color);
+					animation: vh-cursor-blink 0.9s steps(2, start) infinite;
+				}
+			}
+		}
+
+		// 打字完成后光标淡出
+		.article-summary.is-done {
+			.article-summary-cursor {
+				animation: none;
+				opacity: 0;
+				transition: opacity 0.4s ease;
+			}
+		}
+
 		.aplayer-list {
 			max-height: max-content !important;
 
@@ -202,4 +257,18 @@ article.vh-article-main {
 @keyframes vhRotate {
 	from { transform: rotate(0deg); }
 	to { transform: rotate(360deg); }
+}
+
+// 文章总结打字光标闪烁
+@keyframes vh-cursor-blink {
+	0%, 50% { opacity: 1; }
+	50.01%, 100% { opacity: 0; }
+}
+
+// 用户偏好减少动态效果时隐藏光标
+@media (prefers-reduced-motion: reduce) {
+	.article-summary-cursor {
+		animation: none;
+		opacity: 0;
+	}
 }

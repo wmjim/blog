@@ -1,7 +1,7 @@
 ---
 import { getDescription, fmtTime } from "@/utils/index";
 const { post, readTime = 0 } = Astro.props;
-const description = getDescription(post);
+const description = post.data.summary || getDescription(post);
 import "./ArticleCard.less";
 ---
 

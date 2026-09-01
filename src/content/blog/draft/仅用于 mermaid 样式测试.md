@@ -7,6 +7,7 @@ id: "8f047d24c3226ace"
 date: 2025-12-10 07:09:56
 cover: "https://raw.githubusercontent.com/wmjim/blogimages/main/20260619011149243.png"
 draft: true
+summary: "本文测试Mermaid图表在明暗主题下的显示效果，涵盖流程图与序列图。通过切换页面主题按钮，观察图表颜色变化，验证其能否自适应明暗模式，在亮色下使用浅底深字、暗色下使用深底浅字。"
 ---
 
 本文仅用于测试 Mermaid 图表在明暗主题下的显示效果。

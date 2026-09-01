@@ -9,6 +9,7 @@ tags:
 id: "17573323c0281d22"
 date: 2026-06-22 17:07:44
 cover: "https://raw.githubusercontent.com/wmjim/blogimages/main/20260901182410345.png"
+summary: "作者以NixOS为系统底座，通过Distrobox创建Arch和Ubuntu容器补充软件生态，并借助KVM虚拟机安装Windows以覆盖极端需求，从而实现兼顾声明式配置、通用Linux特性与Windows兼容性的“全都要”方案。"
 ---
 
 作为一个计算机用户总是贪心的，即想要 Linux 的编程体验、又想要 Windows 大而全支持的生态支持，还想要 MacOS 的高颜值。
