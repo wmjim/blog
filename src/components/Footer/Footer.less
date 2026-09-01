@@ -8,55 +8,6 @@
 	user-select: none;
 }
 
-// 三列主区域
-.vh-footer-main {
-	box-sizing: border-box;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 1.5rem;
-	width: 100%;
-	max-width: var(--vh-main-max-width);
-	margin: 0 auto 1.5rem;
-	padding: 0 1.25rem;
-}
-
-.vh-footer-col {
-	h4 {
-		margin: 0 0 0.75rem;
-		font-size: 0.8125rem;
-		font-weight: 600;
-		color: var(--vh-font-color);
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-	}
-
-	p {
-		margin: 0;
-		font-size: 0.8125rem;
-		color: var(--vh-font-56);
-		line-height: 1.6;
-	}
-}
-
-.vh-footer-links {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.5rem;
-
-	a {
-		font-size: 0.8125rem;
-		color: var(--vh-font-66);
-		text-decoration: none;
-		font-weight: 400;
-		transition: color var(--vh-transition-fast);
-		padding: 0.125rem 0;
-
-		&:hover {
-			color: var(--vh-main-color);
-		}
-	}
-}
-
 // 底部徽章区域
 .vh-footer-bottom {
 	box-sizing: border-box;
@@ -129,18 +80,5 @@
 			width: auto;
 			object-fit: contain;
 		}
-	}
-}
-
-// 移动端：单列
-@media screen and (max-width: 768px) {
-	.vh-footer-main {
-		grid-template-columns: 1fr;
-		gap: 1.25rem;
-		text-align: center;
-	}
-
-	.vh-footer-links {
-		justify-content: center;
 	}
 }
