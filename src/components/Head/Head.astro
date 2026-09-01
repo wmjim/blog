@@ -15,6 +15,8 @@ const ArticleData = { "@context": "https://schema.org", "@type": "BlogPosting", 
 
 // 基础 样式
 import "@/styles/Base.less";
+// 文章标题衬线字体（思源宋体变量，与文章排版一致）
+import "@fontsource-variable/noto-serif-sc";
 ---
 
 <head>
@@ -57,10 +59,8 @@ import "@/styles/Base.less";
 	<!-- DNS预解析 -->
 	{DNSOptimization.map((url: string) => <link rel="dns-prefetch" href={url} />)}
 	{DNSOptimization.map((url: string) => <link rel="preconnect" href={url} />)}
-		<!-- 字体加载：非阻塞样式表 + 预加载关键子集 -->
-		<link rel="preload" href={import.meta.env.BASE_URL + 'assets/font/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Regular/943c4d.woff2'} as="font" type="font/woff2" crossorigin="anonymous" />
-		<link rel="preload" href={import.meta.env.BASE_URL + 'assets/font/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold/6e5dcc.woff2'} as="font" type="font/woff2" crossorigin="anonymous" />
-		<link rel="stylesheet" href={import.meta.env.BASE_URL + 'assets/font/index.css'} />
+		<!-- 字体加载：自托管分片字体（LXGW WenKai Screen 正文 / Maple Mono CN 代码），cn-font-split 按 unicode-range 懒加载 -->
+		<link rel="stylesheet" href={import.meta.env.BASE_URL + 'fonts/index.css'} />
 		<!-- 预加载首屏关键资源 -->
 		<link rel="preload" href={import.meta.env.BASE_URL + 'assets/images/home-banner.webp'} as="image" />
 	<!-- LINK 标签 -->

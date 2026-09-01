@@ -1,4 +1,7 @@
 allowBuilds:
+  cn-font-split: true
   esbuild: true
+  koffi: true
+  protobufjs: true
   sharp: true
   swup: true
