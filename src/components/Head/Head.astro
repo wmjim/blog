@@ -1,17 +1,27 @@
 ---
 import SITE_CONFIG from "@/config";
+// dayjs utc 插件：文章日期统一按 UTC 输出（与全站 fmtTime 的 .utc() 显示口径一致，避免时区偏移一天）
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc.js";
+dayjs.extend(utc);
 // 当前页面的 URL 元地址
 const canonicalData = new URL(Astro.url.pathname, Astro.site);
 const canonicalURL = canonicalData.href.replace(/\/+$/, "");
 // 页面内容的元数据
-const { Title, Keywords, Description, PageCover } = Astro.props;
+const { Title, Keywords, Description, PageCover, Date: PageDate, Updated: PageUpdated } = Astro.props;
 const { Site, Title: SiteName, Subtitle, Author, DNSOptimization } = SITE_CONFIG;
 const WebTitle = Title || SiteName;
 const WebCover = PageCover;
 // Schema.org 结构化数据（JSON-LD）
 const SiteLogo = Site + '/assets/images/avator.jpg';
+// 发布时间/更新时间：优先取文章 frontmatter 日期，缺失时回退当前时刻
+// （旧实现直接 new Date()，导致每篇文章 datePublished 都是构建时刻）
+// 统一按 UTC 输出：YAML 把 "2025-12-09 20:30:42" 解析为 UTC 时刻，且全站 fmtTime 用 .utc() 展示，此口径与页面可见日期一致
+const toIsoDate = (d: Date) => dayjs(d).utc().format("YYYY-MM-DDTHH:mm:ss[Z]");
+const datePublished = PageDate ? toIsoDate(PageDate) : toIsoDate(new Date());
+const dateModified = PageUpdated ? toIsoDate(PageUpdated) : datePublished;
 const WebSiteData = { "@context": "https://schema.org", "@type": "WebSite", url: canonicalURL, name: WebTitle, description: Description, inLanguage: "zh-CN", image: WebCover || SiteLogo, publisher: { "@type": "Organization", name: WebTitle, logo: { "@type": "ImageObject", url: SiteLogo } } };
-const ArticleData = { "@context": "https://schema.org", "@type": "BlogPosting", mainEntityOfPage: { "@type": "WebPage", "@id": canonicalURL }, headline: WebTitle, description: Description, image: [WebCover || SiteLogo], datePublished: new Date().toISOString().replace("Z", `+08:00`), dateModified: new Date().toISOString().replace("Z", `+08:00`), author: { "@type": "Person", name: Author, url: Site }, publisher: { "@type": "Organization", name: SiteName, logo: { "@type": "ImageObject", url: SiteLogo } }, keywords: (Keywords || ["Astro", "分享", "博客"]).join(", ") };
+const ArticleData = { "@context": "https://schema.org", "@type": "BlogPosting", mainEntityOfPage: { "@type": "WebPage", "@id": canonicalURL }, headline: WebTitle, description: Description, image: [WebCover || SiteLogo], datePublished, dateModified, author: { "@type": "Person", name: Author, url: Site }, publisher: { "@type": "Organization", name: SiteName, logo: { "@type": "ImageObject", url: SiteLogo } }, keywords: (Keywords || ["Astro", "分享", "博客"]).join(", ") };
 
 // 基础 样式
 import "@/styles/Base.less";
