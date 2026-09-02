@@ -62,15 +62,6 @@ for (const v of VARIANTS) {
 	console.log(`[DONE] ${files.length} 分片, ${((Date.now() - t0) / 1000).toFixed(1)}s`);
 }
 
-// 汇总入口 CSS
-const indexCss = [
-	"/* 自托管字体：LXGW WenKai Screen（正文）+ Maple Mono CN（代码），cn-font-split 分片 */",
-	"@import url('./lxgw-wenkai-screen/regular/result.css');",
-	"@import url('./maple-mono-cn/regular/result.css');",
-	"@import url('./maple-mono-cn/italic/result.css');",
-	'',
-].join('\n');
-fs.writeFileSync(path.join(OUT_ROOT, 'index.css'), indexCss);
-console.log('[DONE] public/fonts/index.css 已生成');
+// 分片 CSS 由 src/components/Head/Head.astro 直接以 <link> 输出（避免 @import 串行），此处不再生成 index.css 入口
 
 process.exit(0);
