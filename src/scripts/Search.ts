@@ -125,14 +125,8 @@ const initKeyShortcut = () => {
     }
 
     if (e.key.toLowerCase() !== "f") return;
-    // Ctrl/Cmd + F：始终打开并聚焦搜索框
-    if (e.ctrlKey || e.metaKey) {
-      e.preventDefault();
-      openSearch();
-      return;
-    }
-    // 纯 F 键：避免影响正常输入，仅在非输入场景触发
-    if (e.altKey || e.shiftKey) return;
+    // 仅纯 F 键触发站内搜索；Ctrl/Cmd+F 放行给浏览器原生"页面内查找"
+    if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) return;
     const target = e.target as HTMLElement | null;
     if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable)) return;
     if (panel && isOpen) return;
@@ -192,7 +186,7 @@ const vhSearchInit = () => {
   searchListDOM.addEventListener("click", removeActive);
   // 搜索框初内容变化
   searchListDOM.querySelector(".search-input>input").addEventListener("input", searchInputChange);
-  // 键盘快捷键：Ctrl+F 或 F 打开搜索
+  // 键盘快捷键：纯 F 打开站内搜索；Ctrl+F 已放行给浏览器原生"页面内查找"
   initKeyShortcut();
 };
 
