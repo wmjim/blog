@@ -62,6 +62,6 @@ export default defineConfig({
 			langAlias: { dirs: 'bash', conf: 'ini' },
 		},
 	},
-	vite: { resolve: { alias: { "@": path.resolve(__dirname, "./src") } } },
+	vite: { resolve: { alias: { "@": path.resolve(__dirname, "./src") } }, build: { cssMinify: 'esbuild' } },
 	server: { host: '0.0.0.0' }
 });
