@@ -75,6 +75,20 @@ function initThemeToggle() {
   });
 }
 
+// 键盘可达性：role="button" 的可聚焦元素（Header 搜索/菜单/主题切换）支持 Enter/Space 激活。
+// 用 document 级事件委托，swup 换页替换 Header DOM 后无需重新绑定。
+function initRoleButtonKeyboard() {
+  document.addEventListener("keydown", (e: KeyboardEvent) => {
+    // closest 兜底：若焦点落在 span 内的 svg 子元素也能命中
+    const el = (e.target as HTMLElement | null)?.closest?.('[role="button"]');
+    if (!el) return;
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      (el as HTMLElement).click();
+    }
+  });
+}
+
 // ============================================================
 
 // 页面初始化 Only
@@ -131,6 +145,8 @@ const indexInit = async (only: boolean = true) => {
   // 主题切换初始化（每次页面切换都需重新绑定，因为 Swup 会替换 Header）
   initThemeToggle();
 };
+
+initRoleButtonKeyboard();
 
 export default () => {
   // 首次初始化

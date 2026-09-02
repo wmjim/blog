@@ -2,6 +2,7 @@
 import { getDescription, fmtTime } from "@/utils/index";
 import { getBlogPosts } from "@/utils/getBlogPosts";
 import { render } from "astro:content";
+import readingTime from "reading-time";
 export async function getStaticPaths() {
 	const posts = await getBlogPosts();
 	return posts.map((post: any) => ({ params: { article: post.data.id }, props: post }));
@@ -18,9 +19,10 @@ import SITE_CONFIG from "@/config";
 const { Site, Title, Author, GoogleAds } = SITE_CONFIG;
 // 处理文章内容
 const description = getDescription(post);
-const { Content, remarkPluginFrontmatter } = await render(post);
-// 文章字数和阅读时间
-const { reading_time, article_word_count } = remarkPluginFrontmatter;
+const { Content } = await render(post);
+// 文章字数和阅读时间：与列表页/归档页同源（reading-time 计算原始 markdown body），保证各处数字一致
+const { words: article_word_count, minutes } = readingTime(post.body || "");
+const reading_time = Math.ceil(minutes) || 1;
 // 公共 Layout
 import Layout from "@/layouts/Layout/Layout.astro";
 // Copyright 组件
@@ -55,7 +57,7 @@ import "@/styles/ArticleBase.less";
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path><path d="M12 12h3.5"></path><path d="M12 7v5"></path></svg>
 						<time>{fmtTime(post.data.date, "YYYY-MM-DD A")}</time>
 						<span class="count"><strong>{article_word_count || "一点"}</strong>字</span>
-						<span class="time"><strong>{parseFloat((Number(reading_time) || 0).toFixed(1).replace(/\.0+$/, ""))}</strong>分钟</span>
+						<span class="time"><strong>{reading_time}</strong>分钟</span>
 					</span>
 					<a class="article-meta-item" href={`${import.meta.env.BASE_URL}categories/${post.data.categories}`}>
 						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M4 6h16"></path><path d="M7 12h13"></path><path d="M10 18h10"></path></svg>

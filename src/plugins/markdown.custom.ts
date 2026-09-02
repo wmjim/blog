@@ -1,7 +1,5 @@
 // src/plugins/remark-note.js
 import { visit } from 'unist-util-visit';
-import getReadingTime from 'reading-time';
-import { toString } from 'mdast-util-to-string';
 
 // GitHub 风格 Note 标题映射
 const NOTE_TITLES: Record<string, string> = {
@@ -37,7 +35,7 @@ function createNoteTitleParagraph(type: string, customTitle?: string): any {
 
 // 处理标签
 const remarkNote = () => {
-  return (tree: any, { data: astroData }: any) => {
+  return (tree: any) => {
     visit(tree, (node) => {
       const { type, name, attributes } = node;
       // 处理组件
@@ -67,11 +65,6 @@ const remarkNote = () => {
         if (name === 'note' && attributes.type) {
           node.children.unshift(createNoteTitleParagraph(attributes.type));
         }
-        // 文章字数统计
-        const textOnPage = toString(tree);
-        const readingTime = getReadingTime(textOnPage);
-        astroData.astro.frontmatter.reading_time = readingTime.minutes
-        astroData.astro.frontmatter.article_word_count = readingTime.words
       }
     });
   };
