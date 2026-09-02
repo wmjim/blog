@@ -80,7 +80,7 @@ import "./Aside.less";
 						{recommendArticles.map((i, idx) => (
 							<a href={`${import.meta.env.BASE_URL}article/${i.id}`}>
 								<span>
-									{idx < 3 ? <i>{idx + 1}</i> : <em>{idx + 1}.</em>}
+									{idx < 3 ? <span class="vh-rank-badge">{idx + 1}</span> : <span class="vh-rank-num">{idx + 1}.</span>}
 									<cite class="vh-ellipsis">{i.title}</cite>
 								</span>
 								<time datetime={fmtDateTime(i.date)}>{fmtTime(i.date, "YYYY-MM-DD A")}</time>
