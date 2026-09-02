@@ -7,7 +7,15 @@ dayjs.extend(timezone);
 import 'dayjs/locale/zh-cn'
 dayjs.locale('zh-cn');
 // 获取文章的描述
-const getDescription = (post: any, num: number = 150) => (post.rendered ? post.rendered.html.replace(/<[^>]+>/g, "").replace(/\s+/g, "") : post.body.replace(/\n/g, "").replace(/#/g, "")).slice(0, num) || '暂无简介'
+// 说明：去除 HTML 标签 / markdown 标题符后，把所有空白（换行/空格）归一为单个空格，
+// 避免英文单词在段落边界粘连；仅删除行首的标题符，避免误伤 C#、#include 等内联 #。
+const getDescription = (post: any, num: number = 150) => {
+	const raw = post.rendered
+		// 标签替换为空格而非删除：</p><p> 这类相邻块级边界不会造成单词粘连
+		? post.rendered.html.replace(/<[^>]+>/g, " ")
+		: post.body.replace(/^#{1,6}\s+/gm, "");
+	return (raw.replace(/\s+/g, " ").trim().slice(0, num).replace(/\s+$/, "")) || '暂无简介';
+}
 //处理时间
 const fmtTime = (time: any, fmt: string = 'MMMM D, YYYY') => dayjs(time).utc().format(fmt)
 // 处理日期
