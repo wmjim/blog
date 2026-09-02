@@ -172,7 +172,8 @@ function getPlatformEmbed(rawUrl: string): string | null {
     const vid = biliMatch[1];
     const timeMatch = url.match(/[?&]t=([\d.]+)/);
     const time = timeMatch ? `&t=${timeMatch[1]}` : '';
-    return `//player.bilibili.com/player.html?bvid=${vid}&page=1${time}&high_quality=1&danmaku=0`;
+    // autoplay=0：显式禁止进入页面即自动播放，需用户点击播放按钮后才会开始
+    return `//player.bilibili.com/player.html?bvid=${vid}&page=1${time}&high_quality=1&danmaku=0&autoplay=0`;
   }
 
   // Bilibili 短链接: https://b23.tv/xxxxx — 需要跟随重定向，暂不支持
@@ -186,8 +187,8 @@ function getPlatformEmbed(rawUrl: string): string | null {
   }
   if (ytId) {
     const timeMatch = url.match(/[?&]t=(\d+)s?/);
-    const start = timeMatch ? `?start=${timeMatch[1]}` : '';
-    return `https://www.youtube.com/embed/${ytId}${start}`;
+    // autoplay=0：显式禁止自动播放，需用户点击播放按钮后才会开始
+    return `https://www.youtube.com/embed/${ytId}${timeMatch ? `?start=${timeMatch[1]}` : '?'}autoplay=0`;
   }
 
   return null;
@@ -228,7 +229,7 @@ const addClassNames = (options?: { base?: string }) => {
               properties: {
                 src: embedUrl,
                 allowfullscreen: '',
-                allow: 'autoplay; encrypted-media; picture-in-picture; fullscreen',
+                allow: 'encrypted-media; picture-in-picture; fullscreen',
                 frameborder: '0',
                 scrolling: 'no',
               },
