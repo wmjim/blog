@@ -6,7 +6,7 @@ tags:
   - 标签2
 id: "e98e010eedf5d67f"
 date: 2026-06-28 08:12:38
-cover: "封面图URL (为空默认随机内置封面 /public/assets/images/banner)"
+cover: "https://raw.githubusercontent.com/wmjim/blogimages/main/20260619011149243.png"
 draft: true
 summary: "文章介绍了基于修饰键的快捷键设计哲学，明确了Super、Ctrl、Shift等键的功能定位，并给出了系统控制、窗口管理及终端操作的完整快捷键方案，强调跨平台标准与效率优先。"
 ---
