@@ -18,6 +18,8 @@ const getDescription = (post: any, num: number = 150) => {
 }
 //处理时间
 const fmtTime = (time: any, fmt: string = 'MMMM D, YYYY') => dayjs(time).utc().format(fmt)
+// <time datetime> 机器可读时间：统一输出 UTC ISO，避免浏览器按本地时区把显示值误读偏移
+const fmtDateTime = (time: any) => dayjs(time).utc().format("YYYY-MM-DDTHH:mm:ss[Z]")
 // 处理日期
 const fmtDate = (time: string | Date, hours_status = true) => {
   const now = dayjs();
@@ -107,4 +109,4 @@ const $POST = async (url: string, data: Record<string, any>, headers: Record<str
 
 
 
-export { $GET, $POST, getDescription, fmtTime, fmtDate, fmtPage, LoadScript, LoadStyle }
+export { $GET, $POST, getDescription, fmtTime, fmtDateTime, fmtDate, fmtPage, LoadScript, LoadStyle }

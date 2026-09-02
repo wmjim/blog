@@ -1,6 +1,6 @@
 ---
 import { getRelatedPosts } from "@/utils/getPostInfo";
-import { fmtTime } from "@/utils/index";
+import { fmtTime, fmtDateTime } from "@/utils/index";
 const { currentId } = Astro.props;
 const related = await getRelatedPosts(currentId, 3);
 ---
@@ -14,7 +14,7 @@ const related = await getRelatedPosts(currentId, 3);
 					<span class="vh-related-title">{post.title}</span>
 					<span class="vh-related-meta">
 						<span class="vh-related-cat">{post.categories}</span>
-						<time datetime={fmtTime(post.date)}>{fmtTime(post.date, "YYYY-MM-DD")}</time>
+						<time datetime={fmtDateTime(post.date)}>{fmtTime(post.date, "YYYY-MM-DD")}</time>
 					</span>
 				</a>
 			))}

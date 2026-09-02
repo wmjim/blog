@@ -3,7 +3,7 @@
 // Svg 组件
 import Svg from "@/components/Svg/Svg.astro";
 // 时间处理
-import { fmtTime } from "@/utils/index";
+import { fmtTime, fmtDateTime } from "@/utils/index";
 // 获取用户配置数据
 import SITE_CONFIG from "@/config";
 const { Avatar, Author, Motto, WebSites, GoogleAds, AsideShow } = SITE_CONFIG;
@@ -83,7 +83,7 @@ import "./Aside.less";
 									{idx < 3 ? <i>{idx + 1}</i> : <em>{idx + 1}.</em>}
 									<cite class="vh-ellipsis">{i.title}</cite>
 								</span>
-								<time>{fmtTime(i.date, "YYYY-MM-DD A")}</time>
+								<time datetime={fmtDateTime(i.date)}>{fmtTime(i.date, "YYYY-MM-DD A")}</time>
 							</a>
 						))}
 					</div>
