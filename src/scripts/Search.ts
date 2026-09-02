@@ -11,9 +11,13 @@ const searchFn = async (value: string) => {
   renderSearch(findAndModifyElements(searchJson, value), value)
 }
 
+// HTML 转义：关键词最终会拼入 innerHTML，必须转义防止注入
+// 映射顺序无关，注意 & 要最先处理（否则 &lt; 会被二次转义）
+const escapeHTML = (s: string) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
+
 // 高亮关键词：将文本中匹配的关键词包裹到 <span> 标签（正则特殊字符已转义）
 const highlightKeyword = (text: string, keyword: string) =>
-  text.replace(new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "g"), `<span class="vh-hl">${keyword}</span>`);
+  text.replace(new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), "g"), `<span class="vh-hl">${escapeHTML(keyword)}</span>`);
 
 // 关键词匹配
 const findAndModifyElements = (arr: any[], keyword: string) => {
