@@ -12,6 +12,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeKatex from "rehype-katex";
 import remarkDirective from "remark-directive";
 import { remarkNote, addClassNames, rehypeGithubCallout } from './src/plugins/markdown.custom'
+import { unified } from '@astrojs/markdown-remark'
 import remarkMermaid from './src/plugins/remarkMermaid'
 // Markdown 配置================
 import SITE_INFO from './src/config';
@@ -43,16 +44,23 @@ export default defineConfig({
 	Compressor({ gzip: false, brotli: true, fileExtensions: [".html", ".css", ".js"] })
 	],
 	markdown: {
-		remarkPlugins: [remarkMermaid, remarkMath, remarkDirective, remarkNote,],
-		rehypePlugins: [[
-			rehypeKatex, {
-				output: 'mathml',
-				trust: true,
-				strict: false
-			}
-		], rehypeSlug, rehypeGithubCallout, [addClassNames, { base: '/blog/' }]],
+		// Astro 7 默认处理器为 satteri；本项目依赖 unified 管线的 remark/rehype 自定义插件，故显式指定 unified 处理器并在此挂载插件
+		processor: unified({
+			remarkPlugins: [remarkMermaid, remarkMath, remarkDirective, remarkNote],
+			rehypePlugins: [[
+				rehypeKatex, {
+					output: 'mathml',
+					trust: true,
+					strict: false
+				}
+			], rehypeSlug, rehypeGithubCallout, [addClassNames, { base: '/blog/' }]],
+		}),
 		syntaxHighlight: 'shiki',
-		shikiConfig: { themes: { light: 'github-light', dark: 'github-dark' } },
+		shikiConfig: {
+			themes: { light: 'github-light', dark: 'github-dark' },
+			// 自定义围栏语言别名：user-dirs.dirs 实为 shell 片段，user-dirs.conf 为 ini 风格键值
+			langAlias: { dirs: 'bash', conf: 'ini' },
+		},
 	},
 	vite: { resolve: { alias: { "@": path.resolve(__dirname, "./src") } } },
 	server: { host: '0.0.0.0' }

@@ -15,6 +15,7 @@
     "ondev": "astro preferences enable devToolbar"
   },
   "dependencies": {
+    "@astrojs/markdown-remark": "^7.3.0",
     "@astrojs/mdx": "^8.0.0",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
@@ -29,7 +30,7 @@
     "vh-plugin": "^1.2.2"
   },
   "devDependencies": {
-    "@anthropic-ai/sdk": "^0.122.0",
+    "@anthropic-ai/sdk": "^0.123.0",
     "@playform/compress": "^0.2.0",
     "@types/dplayer": "^1.25.5",
     "@types/nprogress": "^0.2.3",
@@ -45,7 +46,7 @@
     "remark-directive": "^4.0.0",
     "remark-math": "^6.0.0",
     "remark-sectionize": "^2.1.0",
-    "typescript": "^5.9.2",
+    "typescript": "^7.0.2",
     "unist-util-visit": "^5.0.0"
   }
 }

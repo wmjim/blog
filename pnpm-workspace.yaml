@@ -5,3 +5,5 @@ allowBuilds:
   protobufjs: true
   sharp: true
   swup: true
+minimumReleaseAgeExclude:
+  - '@anthropic-ai/sdk@0.123.0'
