@@ -21,7 +21,9 @@
 			font-size: 1rem;
 			width: 100%;
 			max-width: 100%;
-			word-break: break-all;
+			// 标题允许断行但优先词边界：break-all 会让 NixOS 这类英文词任意字符处折断
+			word-break: normal;
+			overflow-wrap: break-word;
 			font-weight: 600;
 			line-height: 1.35;
 			
