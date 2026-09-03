@@ -19,8 +19,6 @@ const TwikooFn = async (commentDOM: string) => {
 
 // Waline 评论
 const WalineFn = async (commentDOM: string, walineInit: any) => {
-  import('@waline/client/waline.css');
-  import('@waline/client/waline-meta.css');
   const { init } = await import('@waline/client');
   walineInit = init({
     el: commentDOM, path: window.location.pathname.replace(/\/$/, ''), serverURL: SITE_INFO.Comment.Waline.serverURL,
