@@ -12,5 +12,5 @@ export default () => {
     }
   });
   if (lazyLoadStatus) return lazyLoadStatus.update();
-  lazyLoadStatus = new LazyLoad({ elements_selector: "img:not(.view-image-container)", threshold: 0, data_src: "vh-lz-src" });
+  lazyLoadStatus = new LazyLoad({ elements_selector: "img:not(.view-image-container)", threshold: 200, data_src: "vh-lz-src" });
 }
