@@ -1,5 +1,7 @@
 .vh-toc {
 	flex-shrink: 0;
+	// 父级 flex 默认 stretch 会把本栏拉满高，使 sticky 失去位移空间而失效
+	align-self: flex-start;
 	position: sticky;
 	top: calc(var(--vh-header-height) + 1rem);
 	box-sizing: border-box;
@@ -48,7 +50,11 @@
 		&::-webkit-scrollbar-thumb { background-color: transparent; border-radius: 3px; }
 		&:hover::-webkit-scrollbar-thumb { background-color: var(--vh-font-16); }
 	}
+}
 
+// 目录条目样式 — 桌面目录与移动端抽屉共用
+.vh-toc-list,
+.vh-toc-overlay-content {
 	.vh-toc-item {
 		display: flex;
 		margin: 0;
@@ -221,6 +227,8 @@
 		flex: 1;
 		overflow-y: auto;
 		padding: 0.75rem;
+		margin: 0;
+		list-style: none;
 	}
 }
 
