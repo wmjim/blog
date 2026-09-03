@@ -65,11 +65,15 @@ import "@/styles/Base.less";
 	<link rel="sitemap" href={import.meta.env.BASE_URL + 'sitemap-index.xml'} />
 	<!-- DNS 预解析：preconnect 已隐含 DNS 解析，故不再重复输出 dns-prefetch -->
 	{DNSOptimization.map((url: string) => <link rel="preconnect" href={url} />)}
-		<!-- 字体加载：自托管分片字体（LXGW WenKai Screen 正文 / Maple Mono CN 代码），cn-font-split 按 unicode-range 懒加载。
-		     直接输出两条分片 CSS 的 link，避免经 index.css 的 @import 串行往返、让两条并行下载。
+		<!-- 字体加载：@font-face 声明不阻塞渲染（font-display:swap 已用回退字体先行绘制），
+		     用 preload + onload 切换 rel 实现异步加载，消除两条合计 ~120KB(gz) 的渲染阻塞。
 		     Maple Mono 斜体分片已移除：Shiki(github 双主题)不产生斜体 token，斜体字体全站无引用 -->
-		<link rel="stylesheet" href={import.meta.env.BASE_URL + 'fonts/lxgw-wenkai-screen/regular/result.css'} />
-		<link rel="stylesheet" href={import.meta.env.BASE_URL + 'fonts/maple-mono-cn/regular/result.css'} />
+		<link rel="preload" href={import.meta.env.BASE_URL + 'fonts/lxgw-wenkai-screen/regular/result.css'} as="style" onload="this.onload=null;this.rel='stylesheet'" />
+		<link rel="preload" href={import.meta.env.BASE_URL + 'fonts/maple-mono-cn/regular/result.css'} as="style" onload="this.onload=null;this.rel='stylesheet'" />
+		<noscript>
+			<link rel="stylesheet" href={import.meta.env.BASE_URL + 'fonts/lxgw-wenkai-screen/regular/result.css'} />
+			<link rel="stylesheet" href={import.meta.env.BASE_URL + 'fonts/maple-mono-cn/regular/result.css'} />
+		</noscript>
 	<!-- LINK 标签 -->
 	<link rel="canonical" href={canonicalURL} />
 	<link rel="icon" type="image/x-icon" href={import.meta.env.BASE_URL + 'assets/images/avator.jpg'} />
