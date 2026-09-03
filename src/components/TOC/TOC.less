@@ -1,10 +1,10 @@
 .vh-toc {
 	flex-shrink: 0;
 	position: sticky;
-	top: calc(3.25rem + 1rem);
+	top: calc(var(--vh-header-height) + 1rem);
 	box-sizing: border-box;
 	width: var(--vh-aside-width);
-	max-height: calc(100vh - 3.25rem - 2rem);
+	max-height: calc(100vh - var(--vh-header-height) - 2rem);
 	display: flex;
 	flex-direction: column;
 	padding: 1.125rem;

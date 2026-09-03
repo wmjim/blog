@@ -5,6 +5,8 @@
 	--vh-white-66: rgb(255 255 255 / 66%);
 	--vh-white-28: rgb(255 255 255 / 28%);
 	--vh-body-bg: #F4F6F8;
+	// 顶部固定 Header 高度（与 Header.less 同步）
+	--vh-header-height: 3.25rem;
 	--vh-border-color: #EBEEF2;
 	--vh-border-color-strong: #DDE1E7;
 
@@ -460,7 +462,7 @@ html.is-animating {
 }
 
 ::view-transition-new(theme-transition) {
-	animation: vh-theme-reveal 1s cubic-bezier(0.6, 0, 0.4, 1) forwards;
+	animation: vh-theme-reveal 0.4s cubic-bezier(0.6, 0, 0.4, 1) forwards;
 	clip-path: inset(0 0 0 0);
 	mix-blend-mode: normal;
 	z-index: 99;

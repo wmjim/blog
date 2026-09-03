@@ -40,7 +40,7 @@ import "./Layout.less";
 		<MobileSidebar />
 		<Header activeNav={activeNav} />
 		<main class="main" id="main-content">
-			<section class={showAside ? "main-inner" : "main-inner no-aside"} style="padding-top:calc(66px + 0.68rem)">
+			<section class={showAside ? "main-inner" : "main-inner no-aside"} style="padding-top:calc(var(--vh-header-height) + 0.68rem)">
 				<section class="main-inner-content">
 					<slot />
 				</section>
