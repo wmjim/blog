@@ -1,4 +1,4 @@
-// SmoothScroll 滚动优化
+// LivePhoto 初始化
 import { LoadScript } from "@/utils/index";
 declare const LivePhotosKit: any;
 export default async () => {
