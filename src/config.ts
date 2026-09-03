@@ -77,8 +77,8 @@ export default {
     },
     // Waline 评论
     Waline: {
-      enable: false,
-      serverURL: ''
+      enable: true,
+      serverURL: 'https://blog-comments-9u7m.vercel.app/'
     }
   },
   // Han Analytics 统计（https://github.com/uxiaohan/HanAnalytics）
