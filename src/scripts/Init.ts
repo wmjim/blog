@@ -14,7 +14,7 @@ import livePhotoInit from '@/scripts/LivePhoto'
 // 初始化BackTop组件
 import BackTopInitFn from "@/scripts/BackTop";
 // 搜索
-import { searchFn, vhSearchInit, vhSearchJumpInit } from "@/scripts/Search";
+import { vhSearchInit, vhSearchJumpInit } from "@/scripts/Search";
 // 图片懒加载
 import vhLzImgInit from "@/scripts/vhLazyImg";
 // 图片灯箱
@@ -132,9 +132,7 @@ const indexInit = async (only: boolean = true) => {
   HanAnalyticsInit();
   // 文章总结打字效果（每次页面进入都执行，swup 切换时元素是全新的会重新打字）
   ArticleSummaryInit();
-  // 预加载搜索数据
-  only && searchFn("");
-  // 初始化搜索功能
+  // 初始化搜索功能（搜索索引 vh-search.json 改为首次输入时懒加载，避免每页首屏多一次 17KB 请求）
   vhSearchInit();
   // 从 URL 定位搜索关键词并跳转（仅文章页生效）
   vhSearchJumpInit();
