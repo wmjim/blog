@@ -18,9 +18,12 @@ const TwikooFn = async (commentDOM: string) => {
 }
 
 // Waline 评论
-const WalineFn = async (commentDOM: string, walineInit: any) => {
+// commentList 是 Init.ts 传入的评论实例容器（{ walineInit: null }）。
+// 必须回写到其 .walineInit 属性——若像此前那样直接给形参赋值，只是改了局部引用，
+// 容器里的 walineInit 仍是 null，swup 切页时 outRouter 的 destroy() 便永远不生效
+const WalineFn = async (commentDOM: string, commentList: any) => {
   const { init } = await import('@waline/client');
-  walineInit = init({
+  commentList.walineInit = init({
     el: commentDOM, path: window.location.pathname.replace(/\/$/, ''), serverURL: SITE_INFO.Comment.Waline.serverURL,
     emoji: ['https://registry.npmmirror.com/@waline/emojis/1.3.0/files/alus', 'https://registry.npmmirror.com/@waline/emojis/1.3.0/files/bilibili', 'https://registry.npmmirror.com/@waline/emojis/1.3.0/files/bmoji', 'https://registry.npmmirror.com/@waline/emojis/1.3.0/files/qq', 'https://registry.npmmirror.com/@waline/emojis/1.3.0/files/tieba', 'https://registry.npmmirror.com/@waline/emojis/1.3.0/files/weibo', 'https://registry.npmmirror.com/@waline/emojis/1.3.0/files/soul-emoji'],
     reaction: [
@@ -50,14 +53,14 @@ const checkComment = () => {
 }
 
 // 初始化评论插件
-const commentInit = async (key: string, walineInit: any) => {
-  // 评论 DOM 
+const commentInit = async (key: string, commentList: any) => {
+  // 评论 DOM
   const commentDOM = '.vh-comment>section'
   if (!document.querySelector(commentDOM)) return;
   // 评论列表
   const CommentList: any = { TwikooFn, WalineFn };
   // 初始化评论
-  CommentList[`${key}Fn`](commentDOM, walineInit);
+  CommentList[`${key}Fn`](commentDOM, commentList);
 }
 
 export { checkComment, commentInit }
