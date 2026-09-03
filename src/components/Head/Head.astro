@@ -64,8 +64,7 @@ import "@fontsource-variable/noto-serif-sc";
 	<script type="application/ld+json" set:html={JSON.stringify(PageCover ? ArticleData : WebSiteData)} is:inline />
 	<!-- Sitemap -->
 	<link rel="sitemap" href={import.meta.env.BASE_URL + 'sitemap-index.xml'} />
-	<!-- DNS预解析 -->
-	{DNSOptimization.map((url: string) => <link rel="dns-prefetch" href={url} />)}
+	<!-- DNS 预解析：preconnect 已隐含 DNS 解析，故不再重复输出 dns-prefetch -->
 	{DNSOptimization.map((url: string) => <link rel="preconnect" href={url} />)}
 		<!-- 字体加载：自托管分片字体（LXGW WenKai Screen 正文 / Maple Mono CN 代码），cn-font-split 按 unicode-range 懒加载。
 		     直接输出三条分片 CSS 的 link，避免经 index.css 的 @import 串行往返、让三条并行下载 -->

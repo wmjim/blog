@@ -59,14 +59,11 @@ export default {
     // 是否展示推荐文章
     recommendArticleShow: true
   },
-  // DNS预解析地址
+  // DNS 预解析（preconnect）：仅保留当前构建中实际会请求的域名。
+  // 其余域名随对应功能开关启用时再加回：
+  //   评论头像 cn.cravatar.com（Waline/Twikoo）· 广告 pagead2.googlesyndication.com · 统计 analytics.vvhan.com
+  //   音乐 vh-api.4ce.cn · 直链视频 hls/dplayer registry.npmmirror.com · 动态 i0.wp.com
   DNSOptimization: [
-    'https://i0.wp.com',
-    'https://cn.cravatar.com',
-    'https://analytics.vvhan.com',
-    'https://vh-api.4ce.cn',
-    'https://registry.npmmirror.com',
-    'https://pagead2.googlesyndication.com',
     'https://raw.githubusercontent.com',
   ],
   // 博客音乐组件解析接口
