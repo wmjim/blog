@@ -25,8 +25,7 @@ const ArticleData = { "@context": "https://schema.org", "@type": "BlogPosting", 
 
 // 基础 样式
 import "@/styles/Base.less";
-// 文章标题衬线字体（思源宋体变量，与文章排版一致）
-import "@fontsource-variable/noto-serif-sc";
+// 文章标题衬线字体（思源宋体变量）已在内容样式 ArticleBase.less 的引入方按需加载，见 ArticleBase.less 顶部说明
 ---
 
 <head>
@@ -67,10 +66,10 @@ import "@fontsource-variable/noto-serif-sc";
 	<!-- DNS 预解析：preconnect 已隐含 DNS 解析，故不再重复输出 dns-prefetch -->
 	{DNSOptimization.map((url: string) => <link rel="preconnect" href={url} />)}
 		<!-- 字体加载：自托管分片字体（LXGW WenKai Screen 正文 / Maple Mono CN 代码），cn-font-split 按 unicode-range 懒加载。
-		     直接输出三条分片 CSS 的 link，避免经 index.css 的 @import 串行往返、让三条并行下载 -->
+		     直接输出两条分片 CSS 的 link，避免经 index.css 的 @import 串行往返、让两条并行下载。
+		     Maple Mono 斜体分片已移除：Shiki(github 双主题)不产生斜体 token，斜体字体全站无引用 -->
 		<link rel="stylesheet" href={import.meta.env.BASE_URL + 'fonts/lxgw-wenkai-screen/regular/result.css'} />
 		<link rel="stylesheet" href={import.meta.env.BASE_URL + 'fonts/maple-mono-cn/regular/result.css'} />
-		<link rel="stylesheet" href={import.meta.env.BASE_URL + 'fonts/maple-mono-cn/italic/result.css'} />
 	<!-- LINK 标签 -->
 	<link rel="canonical" href={canonicalURL} />
 	<link rel="icon" type="image/x-icon" href={import.meta.env.BASE_URL + 'assets/images/avator.jpg'} />

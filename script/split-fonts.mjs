@@ -8,7 +8,7 @@
  * 源字体来源（SIL OFL 协议，可自由自托管）：
  *   - LXGW WenKai Screen v1.522（静态常规字重，官方仅发布 Regular；正文加粗由浏览器合成）
  *     https://github.com/lxgw/LxgwWenKai-Screen/releases/download/v1.522/LXGWWenKaiScreen.ttf
- *   - Maple Mono CN v7.9（静态字重 TTF，取 Regular / Italic）
+ *   - Maple Mono CN v7.9（静态字重 TTF，取 Regular；斜体不生成——Shiki github 双主题不产生斜体 token）
  *     https://github.com/subframe7536/maple-font/releases/download/v7.9/MapleMono-CN.zip
  *
  * 产物：每个字重生成 result.css + 若干 .woff2 分片（浏览器只按需下载命中 unicode-range 的分片）。
@@ -20,7 +20,7 @@ import path from 'node:path';
 const FONT_SRC = process.env.FONTSRC || '/tmp/fontsrc';
 const OUT_ROOT = path.resolve('public/fonts');
 
-// 四个待分片变体：源文件 → 输出目录 / CSS 声明
+// 两个待分片变体：源文件 → 输出目录 / CSS 声明
 const VARIANTS = [
 	{
 		src: path.join(FONT_SRC, 'LXGWWenKaiScreen.ttf'),
@@ -31,11 +31,6 @@ const VARIANTS = [
 		src: path.join(FONT_SRC, 'MapleMono-CN-Regular.ttf'),
 		out: path.join(OUT_ROOT, 'maple-mono-cn/regular'),
 		css: { fontFamily: 'Maple Mono CN', fontWeight: '400', fontStyle: 'normal' },
-	},
-	{
-		src: path.join(FONT_SRC, 'MapleMono-CN-Italic.ttf'),
-		out: path.join(OUT_ROOT, 'maple-mono-cn/italic'),
-		css: { fontFamily: 'Maple Mono CN', fontWeight: '400', fontStyle: 'italic' },
 	},
 ];
 
