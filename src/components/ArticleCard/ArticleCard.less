@@ -68,6 +68,8 @@
 	.vh-article-thumb {
 		flex-shrink: 0;
 		display: block;
+		position: relative;
+		z-index: 1;
 		width: 14rem;
 		aspect-ratio: 16 / 10;
 		border-radius: var(--vh-radius-md);
@@ -101,6 +103,8 @@
 
 			.vh-article-cat {
 				flex-shrink: 0;
+				position: relative;
+				z-index: 1;
 				padding: 0.08rem 0.4rem;
 				font-size: 0.68rem;
 				font-weight: 600;
@@ -125,6 +129,13 @@
 					overflow: hidden;
 					text-overflow: ellipsis;
 					white-space: nowrap;
+
+					// 拉伸链接：覆盖整张卡片，让摘要/空白区域也可点击进入文章
+					&::after {
+						content: "";
+						position: absolute;
+						inset: 0;
+					}
 				}
 			}
 
@@ -151,6 +162,8 @@
 				font-size: 0.72rem;
 				color: var(--vh-font-56);
 				transition: color var(--vh-transition-base);
+				position: relative;
+				z-index: 1;
 
 				&:hover { color: var(--vh-main-color); }
 			}
