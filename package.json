@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "packageManager": "pnpm@11.5.2",
   "scripts": {
+    "prebuild": "node script/split-fonts.mjs",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -36,7 +37,6 @@
     "@types/nprogress": "^0.2.3",
     "@waline/client": "^3.6.0",
     "cheerio": "^1.1.2",
-    "cn-font-split": "^7.4.3",
     "dayjs": "^1.11.18",
     "less": "^4.4.1",
     "mdast-util-to-string": "^4.0.0",
@@ -46,6 +46,7 @@
     "remark-directive": "^4.0.0",
     "remark-math": "^6.0.0",
     "remark-sectionize": "^2.1.0",
+    "subset-font": "^2.7.0",
     "typescript": "^7.0.2",
     "unist-util-visit": "^5.0.0"
   }
