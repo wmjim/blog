@@ -6,9 +6,6 @@ const scrollChangeFn = () => {
   const percentage = (window.scrollY / (scrollHeight - clientHeight)) * 100;
   // 显示隐藏
   backTop.classList[percentage <= 0 ? "remove" : "add"]("active");
-  // 更新阅读进度条
-  const progressBar = document.getElementById("reading-progress");
-  if (progressBar) progressBar.style.width = `${Math.min(Math.max(percentage, 0), 100)}%`;
   // 进度为 不在范围内
   if (percentage < 0 || percentage > 100) return;
   // 进度不为 0
@@ -16,9 +13,7 @@ const scrollChangeFn = () => {
 };
 // 返回顶部事件
 const backTopFn = () => {
-  (window as any).vhlenis && (window as any).vhlenis.stop();
   window.scrollTo({ top: 0, behavior: "smooth" });
-  (window as any).vhlenis && (window as any).vhlenis.start();
 };
 // 页面更新，初始化函数======
 // 回顶部DOM
