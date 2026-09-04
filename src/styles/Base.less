@@ -305,6 +305,14 @@ img[data-vh-lz-src] {
 	}
 }
 
+// 按压缩放反馈 — 仅 :active 态生效，不覆写各元素自有 transition（自带 transform 过渡者平滑，无则即时）
+// 行内 <a> 无盒模型无法 transform，故不设全局 a:active，只覆盖按钮与导航等块级可点元素
+button:active:not(:disabled),
+[role="button"]:active,
+.nav-link:active {
+	transform: translateY(1px) scale(0.98);
+}
+
 // 超出一行省略
 .vh-ellipsis {
 	overflow: hidden;
