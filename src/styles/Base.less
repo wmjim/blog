@@ -154,6 +154,17 @@
 		}
 	}
 
+[data-theme="dark"] {
+	// 暗色环境光晕（Ambient Glow）：标题卡顶部两团极弱主色泛光，营造夜间阅读氛围
+	// 克制原则：仅覆盖 background-image，底色/文字对比不变；如需更淡可下探到 alpha 6 档
+	article.vh-article-main>header,
+	.vh-page-header {
+		background-image:
+			radial-gradient(52% 130% at 16% -25%, var(--vh-main-color-16), transparent 68%),
+			radial-gradient(40% 110% at 88% -30%, var(--vh-main-color-6), transparent 60%);
+	}
+}
+
 // ===================================================================== Base Elements
 
 *,
