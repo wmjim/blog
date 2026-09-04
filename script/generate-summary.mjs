@@ -4,6 +4,11 @@
  * 用法：
  *   pnpm summary                # 仅为缺少 summary 的文章生成
  *   pnpm summary --force        # 重新生成所有文章
+ *   pnpm summary --soft         # dev/build 前置步骤：静默生成，失败不阻塞运行
+ *
+ * 说明：
+ *   --soft 模式下若检测不到 API Key 会直接跳过（避免 CI/dev 空转网络请求）。
+ *   main() 仅在被当作脚本直接执行时运行，被 import（如单元测试）时不产生副作用。
  *
  * 默认使用 DeepSeek 的 Anthropic 兼容端点，可通过环境变量覆盖：
  *   ANTHROPIC_BASE_URL   接口地址（默认 https://api.deepseek.com/anthropic）
@@ -15,7 +20,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import Anthropic from "@anthropic-ai/sdk";
-import { fileURLToPath } from "url";
+import { fileURLToPath, pathToFileURL } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const BLOG_DIR = path.join(__dirname, "../src/content/blog");
@@ -25,7 +30,19 @@ const DEEPSEEK_BASE = "https://api.deepseek.com/anthropic";
 const FM_RE = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/;
 
 const ts = () => new Date().toISOString();
-const debug = (...args) => console.log(`[DEBUG] ${ts()}`, ...args);
+/** --soft 模式：作为 dev/build 前置步骤静默运行，失败不阻塞、失败不 exit(1) */
+const SOFT = process.argv.includes("--soft");
+const debug = (...args) => {
+  if (!SOFT) console.log(`[DEBUG] ${ts()}`, ...args);
+};
+
+/** 是否配置了可用的 API Key（--soft 模式下据此决定是否提前跳过） */
+const hasCredentials = () =>
+  Boolean(
+    process.env.DEEPSEEK_API_KEY ||
+      process.env.ANTHROPIC_API_KEY ||
+      process.env.ANTHROPIC_AUTH_TOKEN
+  );
 
 // ============ 纯函数（可测试） ============
 
@@ -168,7 +185,15 @@ const main = async () => {
   }
 
   if (!pending.length) {
-    console.log("🎉 所有文章都已有 summary，无需生成（使用 --force 强制重新生成）");
+    if (!SOFT) console.log("🎉 所有文章都已有 summary，无需生成（使用 --force 强制重新生成）");
+    return;
+  }
+
+  // --soft（dev/build 前置）下无 API Key 时提前跳过，避免在 CI/调试时反复空转网络请求
+  if (SOFT && !hasCredentials()) {
+    console.warn(
+      `⚠️ ${pending.length} 篇缺少 summary，但未检测到 API Key，已跳过（--soft 不阻塞运行，可手动 pnpm summary 生成）`
+    );
     return;
   }
 
@@ -195,11 +220,18 @@ const main = async () => {
   console.log(`成功: ${ok.length} 篇 | 失败: ${fail.length} 篇`);
   if (fail.length) {
     for (const { rel, err } of fail) console.error(`  - ${rel}: ${err.message}`);
-    process.exit(1);
+    if (!SOFT) process.exit(1);
   }
 };
 
-main().catch((err) => {
-  console.error("❌ 脚本异常退出:", err);
-  process.exit(1);
-});
+// 仅当被当作脚本直接执行时才运行主流程；
+// 被 import（如 generate-summary.test.mjs 导入纯函数）时不产生任何副作用，避免误触发 AI 调用
+const isDirectRun =
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href;
+if (isDirectRun) {
+  main().catch((err) => {
+    console.error("❌ 脚本异常退出:", err);
+    process.exit(1);
+  });
+}

@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "packageManager": "pnpm@11.5.2",
   "scripts": {
-    "prebuild": "node script/split-fonts.mjs",
+    "predev": "node script/generate-summary.mjs --soft",
+    "prebuild": "node script/split-fonts.mjs && node script/generate-summary.mjs --soft",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
