@@ -2,24 +2,30 @@
 import { getTagsList } from "@/utils/getArchive";
 import { getBlogPosts } from "@/utils/getBlogPosts";
 export async function getStaticPaths(): Promise<any> {
-  const posts = await getBlogPosts();
-  const tagSet = new Set<string>();
-  posts.forEach((post: any) => {
-    (post.data.tags || []).forEach((tag: string) => tagSet.add(tag));
-  });
-  return Array.from(tagSet).map((tag: string) => ({
-    params: { tags: tag },
-    props: { tag },
-  }));
+	const posts = await getBlogPosts();
+	const tagSet = new Set<string>();
+	posts.forEach((post: any) => {
+		(post.data.tags || []).forEach((tag: string) => tagSet.add(tag));
+	});
+	return Array.from(tagSet).map((tag: string) => ({
+		params: { tags: tag },
+		props: { tag },
+	}));
 }
 const { tags } = Astro.params;
-const articleList = await getTagsList(tags);
+// 获取标签下的文章列表（扁平为与首页一致的连续列表）
+const articleList = (await getTagsList(tags)).flatMap((group: any) => group.data);
 import SITE_CONFIG from "@/config";
 const { Description } = SITE_CONFIG;
 import Layout from "@/layouts/Layout/Layout.astro";
-import Archive from "@/components/Archive/Archive.astro";
+// 文章卡片组件（与首页列表一致的独立卡片）
+import ArticleCard from "@/components/ArticleCard/ArticleCard.astro";
 ---
 
 <Layout title={`标签 ${tags} 下的文章`} description={Description} activeNav="tags">
-  <Archive articleList={articleList} />
+	<section class="article-list-main" style="padding-bottom: 0">
+		<div class="article-list-card">
+			{articleList.map((post: any) => <ArticleCard post={{ data: post }} readTime={post.readTime} />)}
+		</div>
+	</section>
 </Layout>
