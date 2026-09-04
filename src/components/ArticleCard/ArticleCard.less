@@ -7,21 +7,17 @@
 	height: max-content;
 
 	// ========================================
-	// 卡片容器
+	// 卡片容器 — 仅负责纵向排列与卡片间距（无边框底色）
 	// ========================================
 	.article-list-card {
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
+		gap: 1rem;
 		width: 100%;
-		padding: 0 1.25rem;
-		border: 1px solid var(--vh-border-color);
-		border-radius: var(--vh-radius-lg);
-		background-color: var(--vh-white-color);
-		overflow: hidden;
 
 		// ========================================
-		// 列表项
+		// 文章卡片（每篇独立成卡）
 		// ========================================
 		.vh-article-item {
 			position: relative;
@@ -30,16 +26,18 @@
 			align-items: flex-start;
 			gap: 1.5rem;
 			width: 100%;
-			padding: 1.75rem 0;
-			border-bottom: 1px solid var(--vh-border-color);
-			transition: border-color var(--vh-transition-base);
-
-			&:last-child {
-				border-bottom: none;
-			}
+			padding: 1.25rem 1.5rem;
+			border: 1px solid var(--vh-border-color);
+			border-radius: var(--vh-radius-lg);
+			background-color: var(--vh-white-color);
+			box-shadow: var(--vh-box-shadow);
+			// 独立卡片可做整卡景深：悬停抬升并加深阴影制造层级，不再依赖行内填充反馈
+			transition: transform var(--vh-transition-base), box-shadow var(--vh-transition-base), border-color var(--vh-transition-base);
 
 			&:hover {
+				transform: translateY(-2px);
 				border-color: var(--vh-border-color-strong);
+				box-shadow: var(--vh-shadow-lg);
 
 				.title a { color: var(--vh-main-color); }
 				.vh-article-thumb img { transform: scale(1.06); }
@@ -177,7 +175,7 @@
 @media screen and (max-width: 768px) {
 	.article-list-main {
 		.article-list-card {
-			padding: 0 1rem;
+			gap: 0.875rem;
 		}
 
 		.vh-article-thumb {
@@ -186,7 +184,7 @@
 
 		.vh-article-item {
 			gap: 0.875rem;
-			padding: 1rem 0;
+			padding: 1rem 1.125rem;
 		}
 
 		.vh-article-body > header {
@@ -201,7 +199,7 @@
 @media screen and (max-width: 556px) {
 	.article-list-main {
 		.article-list-card {
-			padding: 0 0.75rem;
+			gap: 0.75rem;
 		}
 
 		.vh-article-thumb {
@@ -211,7 +209,7 @@
 
 		.vh-article-item {
 			gap: 0.75rem;
-			padding: 0.875rem 0;
+			padding: 0.875rem 1rem;
 		}
 
 		.vh-article-excerpt {
