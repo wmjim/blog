@@ -131,6 +131,21 @@
 	}
 }
 
+// 顶部阅读进度条：scaleX 由 JS 按整页滚动进度填充，压在毛玻璃 Header（z-index:9）之上
+.vh-reading-progress {
+	position: fixed;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	width: 100%;
+	height: 2px;
+	z-index: 11;
+	background-color: var(--vh-main-color);
+	transform: scaleX(0);
+	transform-origin: left;
+	pointer-events: none;
+}
+
 // 移动端浮动目录按钮
 .vh-toc-mobile-btn {
 	display: none;
