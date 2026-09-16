@@ -56,7 +56,8 @@ export default defineConfig({
 		}
 	}),
 	mdx({ extendMarkdownConfig: false }),
-	Compressor({ gzip: false, brotli: true, fileExtensions: [".html", ".css", ".js"] })
+	// GitHub Pages 只协商 gzip 预压缩（br/zstd 旁车文件实测不被读取，纯属上传体积浪费）
+	Compressor({ gzip: true, brotli: false, zstd: false, fileExtensions: [".html", ".css", ".js"] })
 	],
 	markdown: {
 		// Astro 7 默认处理器为 satteri；本项目依赖 unified 管线的 remark/rehype 自定义插件，故显式指定 unified 处理器并在此挂载插件
