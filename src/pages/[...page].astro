@@ -26,10 +26,11 @@ import ArticleCard from "@/components/ArticleCard/ArticleCard.astro";
 import Layout from "@/layouts/Layout/Layout.astro";
 // 分页组件
 import Pagination from "@/components/Pagination/Pagination.astro";
-const currentPage = page_data.url.current.replace("/", "");
+// page.currentPage 是数字，与 base 无关；url.current 含 base 会导致标题污染
+const { currentPage } = page;
 ---
 
-<Layout title={currentPage ? `第${currentPage}页文章` : ""} description={Description} showAside>
+<Layout title={currentPage > 1 ? `第${currentPage}页文章` : ""} description={Description} showAside>
 	<section class="article-list-main">
 		<div class="article-list-card">
 			<!-- 文章列表 -->
