@@ -55,7 +55,8 @@ export default defineConfig({
 			return { ...item, url, lastmod: lastmod ?? item.lastmod };
 		}
 	}),
-	mdx({ extendMarkdownConfig: false }),
+	// 继承 markdown 配置，.mdx 才能复用 unified 管线（KaTeX/mermaid/callout/slug）；置 false 会静默丢失这些插件
+	mdx(),
 	// GitHub Pages 只协商 gzip 预压缩（br/zstd 旁车文件实测不被读取，纯属上传体积浪费）
 	Compressor({ gzip: true, brotli: false, zstd: false, fileExtensions: [".html", ".css", ".js"] })
 	],
