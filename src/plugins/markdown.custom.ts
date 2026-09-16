@@ -82,7 +82,7 @@ function getElementText(node: any): string {
 // 处理 > [!info] 块引用语法 — 在 rehype 阶段将 <blockquote> 转为 GitHub 风格 note
 const rehypeGithubCallout = () => {
   return (tree: any) => {
-    visit(tree, 'element', (node: any, index: number | null, parent: any) => {
+    visit(tree, 'element', (node: any, index: number | null | undefined, parent: any) => {
       if (node.tagName !== 'blockquote') return;
       if (!parent || index === null) return;
 
@@ -194,14 +194,51 @@ function getPlatformEmbed(rawUrl: string): string | null {
   return null;
 }
 
+// 从站点地址提取宿主（如 https://wmjim.github.io/blog → wmjim.github.io），用于区分站内/站外链接
+function parseSiteHost(site?: string): string | null {
+  if (!site) return null;
+  try {
+    return new URL(site).host;
+  } catch {
+    return null;
+  }
+}
+
+// 判定是否为站外链接：仅带宿主且宿主不属于本站的 http(s) 链接才需新窗口打开 + nofollow
+// 页内锚点、协议链接（mailto:/tel: 等）与相对路径均视为站内，避免权重流失与错误跳转
+function isExternalLink(href: string, siteHost: string | null): boolean {
+  if (!href) return false;
+  const trimmed = href.trim();
+  if (trimmed.startsWith('#')) return false;
+  // 非 http(s) 协议（mailto:/tel:/javascript: 等）不是网页跳转，无需 target/rel
+  if (/^[a-z][a-z\d+.-]*:/i.test(trimmed) && !/^https?:/i.test(trimmed)) return false;
+  // 协议相对链接（//example.com/x）补全协议后统一走 URL 解析
+  const normalized = trimmed.startsWith('//') ? `https:${trimmed}` : trimmed;
+  try {
+    const url = new URL(normalized);
+    if (!/^https?:$/.test(url.protocol)) return false;
+    // 未提供站点宿主时无法判定归属，保守按外链处理
+    if (!siteHost) return true;
+    return url.host !== siteHost;
+  } catch {
+    // 解析失败 → 相对路径，属于站内
+    return false;
+  }
+}
+
 //  处理 HTML 标签
-const addClassNames = (options?: { base?: string }) => {
+const addClassNames = (options?: { base?: string; site?: string }) => {
   const base = options?.base || '/';
+  const siteHost = parseSiteHost(options?.site);
   return (tree: any) => {
     visit(tree, (node, index, parent) => {
       // 处理 a 标签
       if (node.tagName === 'a') {
-        node.properties.target = '_blank', node.properties.rel = 'noopener nofollow'
+        // 仅站外链接新窗口打开并标记 nofollow，站内交叉链接保持当前窗口且不流失权重
+        if (isExternalLink(node.properties?.href, siteHost)) {
+          node.properties.target = '_blank';
+          node.properties.rel = 'noopener noreferrer nofollow';
+        }
         node.children = [{ type: 'element', tagName: 'span', children: node.children || [] }];
         // 处理 pre 标签
       } else if (node.tagName === 'pre') {

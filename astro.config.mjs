@@ -70,7 +70,7 @@ export default defineConfig({
 					trust: true,
 					strict: false
 				}
-			], rehypeSlug, rehypeGithubCallout, [addClassNames, { base: '/blog/' }]],
+			], rehypeSlug, rehypeGithubCallout, [addClassNames, { base: '/blog/', site: SITE_INFO.Site }]],
 		}),
 		syntaxHighlight: 'shiki',
 		shikiConfig: {
