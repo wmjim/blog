@@ -51,12 +51,6 @@ importers:
       '@playform/compress':
         specifier: ^0.2.0
         version: 0.2.3(@types/node@25.9.3)(less@4.6.6)(rollup@2.80.0)(typescript@7.0.2)
-      '@types/dplayer':
-        specifier: ^1.25.5
-        version: 1.25.6
-      '@types/nprogress':
-        specifier: ^0.2.3
-        version: 0.2.3
       '@waline/client':
         specifier: ^3.6.0
         version: 3.15.2(typescript@7.0.2)
@@ -2274,9 +2268,6 @@ packages:
   '@types/debug@4.1.13':
     resolution: {integrity: sha512-KSVgmQmzMwPlmtljOomayoR89W4FynCAi3E8PPs7vmDVPe84hT+vGPKkJfThkmXs0x0jAaa9U8uW8bbfyS2fWw==}
 
-  '@types/dplayer@1.25.6':
-    resolution: {integrity: sha512-pgGZZ/2Tt6JL8HNAgOxHPrUEsRTOBuoHqNRhWOj9aUjjHzS1nWYHg8vnoxRwIlHIMPwyRpITjBCehwCJLpY3/g==}
-
   '@types/estree-jsx@1.0.5':
     resolution: {integrity: sha512-52CcUVNFyfb1A2ALocQw/Dd1BQFNmSdkuC3BkZ6iqhdMfQz7JWOFRuJFloOzjk+6WijU56m9oKXFAXc7o3Towg==}
 
@@ -2318,9 +2309,6 @@ packages:
 
   '@types/node@25.9.3':
     resolution: {integrity: sha512-603BddQMv3pUcr4U2dhujk83N2tTDVr/34wII2B6bJy6g+8WD6yUb11jszNs0gdi4PesVWl7ABt8nYMVpnLUcg==}
-
-  '@types/nprogress@0.2.3':
-    resolution: {integrity: sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==}
 
   '@types/parse-json@4.0.2':
     resolution: {integrity: sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==}
@@ -8115,8 +8103,6 @@ snapshots:
     dependencies:
       '@types/ms': 2.1.0
 
-  '@types/dplayer@1.25.6': {}
-
   '@types/estree-jsx@1.0.5':
     dependencies:
       '@types/estree': 1.0.9
@@ -8158,8 +8144,6 @@ snapshots:
   '@types/node@25.9.3':
     dependencies:
       undici-types: 7.24.6
-
-  '@types/nprogress@0.2.3': {}
 
   '@types/parse-json@4.0.2': {}
 
