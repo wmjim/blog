@@ -10,6 +10,8 @@ export async function GET(context: any) {
 		title: Title,
 		description: Description,
 		site: context.site,
+		// 站内文章链接与 sitemap 均无尾斜杠，link/guid 在此统一，避免 isPermaLink guid 与实际页面 URL 不符
+		trailingSlash: false,
 		items: posts.filter(i => !i.data.hide).map((post) => ({
 			title: post.data.title,
 			pubDate: post.data.updated || post.data.date,
@@ -19,6 +21,6 @@ export async function GET(context: any) {
 	});
 	// 添加 XML 样式表指令
 	const xmlHead = '<?xml version="1.0" encoding="UTF-8"?>';
-	const xmlMain = res.replace(xmlHead, `${xmlHead}<?xml-stylesheet type="text/xsl" href="${import.meta.env.BASE_URL}rss.xsl" ?>`).replace(/\/<\/link>/g, '</link>');
+	const xmlMain = res.replace(xmlHead, `${xmlHead}<?xml-stylesheet type="text/xsl" href="${import.meta.env.BASE_URL}rss.xsl" ?>`);
 	return new Response(xmlMain, { headers: { 'Content-Type': 'application/xml' } });
 }
