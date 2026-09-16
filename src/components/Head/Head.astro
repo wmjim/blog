@@ -63,6 +63,8 @@ import "@/styles/Base.less";
 	<script type="application/ld+json" set:html={JSON.stringify(PageCover ? ArticleData : WebSiteData)} is:inline />
 	<!-- Sitemap -->
 	<link rel="sitemap" href={import.meta.env.BASE_URL + 'sitemap-index.xml'} />
+	<!-- RSS 订阅地址：供阅读器自动发现，标题与 feed 通道 title 保持一致 -->
+	<link rel="alternate" type="application/rss+xml" title={SiteName} href={import.meta.env.BASE_URL + 'rss.xml'} />
 	<!-- DNS 预解析：preconnect 已隐含 DNS 解析，故不再重复输出 dns-prefetch -->
 	{DNSOptimization.map((url: string) => <link rel="preconnect" href={url} />)}
 		<!-- 字体加载：@font-face 声明不阻塞渲染（font-display:swap 已用回退字体先行绘制），
