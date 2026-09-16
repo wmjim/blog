@@ -42,7 +42,7 @@ export default defineConfig({
 		updateBodyClass: false,
 		globalInstance: true
 	}),
-	Compress({ Image: false, Action: { Passed: async () => true } }),
+	Compress({ Image: false }),
 	sitemap({
 		// 处理末尾带 / 的 url；文章页与列表页补 lastmod（updated ?? date）供爬虫增量抓取
 		serialize: (item) => {
