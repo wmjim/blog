@@ -24,6 +24,8 @@ const LASTMODS = getArticleLastmods();
 const LISTING_LASTMODS = getListingLastmods();
 // 站点部署子路径，serialize 据此把绝对 url 折算成列表页查表用的相对路径
 const BASE = '/blog';
+// gzip 预压缩目标扩展名（astro-compressor v2 由 hooks.fileFilter 接管，不再用 fileExtensions）
+const COMPRESS_EXTENSIONS = new Set(['.html', '.css', '.js']);
 // https://astro.build/config
 export default defineConfig({
 	site: SITE_INFO.Site,
@@ -58,7 +60,11 @@ export default defineConfig({
 	// 继承 markdown 配置，.mdx 才能复用 unified 管线（KaTeX/mermaid/callout/slug）；置 false 会静默丢失这些插件
 	mdx(),
 	// GitHub Pages 只协商 gzip 预压缩（br/zstd 旁车文件实测不被读取，纯属上传体积浪费）
-	Compressor({ gzip: true, brotli: false, zstd: false, fileExtensions: [".html", ".css", ".js"] })
+	// v2 用 hooks.fileFilter 取代 fileExtensions（后者将在 v2.1 移除）
+	Compressor({
+		gzip: true, brotli: false, zstd: false,
+		hooks: { fileFilter: ({ filePath }) => COMPRESS_EXTENSIONS.has(path.extname(filePath)) },
+	})
 	],
 	markdown: {
 		// Astro 7 默认处理器为 satteri；本项目依赖 unified 管线的 remark/rehype 自定义插件，故显式指定 unified 处理器并在此挂载插件
