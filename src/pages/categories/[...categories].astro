@@ -3,7 +3,13 @@ import { getCategoriesList } from "@/utils/getArchive";
 import { getBlogPosts } from "@/utils/getBlogPosts";
 export async function getStaticPaths(): Promise<any> {
 	const posts = await getBlogPosts();
-	return posts.map((post: any) => ({ params: { categories: post.data.categories }, props: post }));
+	// 多篇文章共用同一分类是常态，去重后每个分类只生成一条路由；否则会产生与自身冲突的重复路由
+	const categorySet = new Set<string>();
+	posts.forEach((post: any) => categorySet.add(post.data.categories));
+	return Array.from(categorySet).map((categories: string) => ({
+		params: { categories },
+		props: { categories },
+	}));
 }
 // 获取分类下的文章列表（扁平为与首页一致的连续列表）
 const { categories } = Astro.params;

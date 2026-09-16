@@ -1,6 +1,6 @@
 ---
 title: "搭建Linux平台下单片机开发环境"
-categories: linux
+categories: Linux
 tags:
   - 标签1
   - 标签2

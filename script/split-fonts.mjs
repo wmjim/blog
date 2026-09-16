@@ -10,6 +10,8 @@
  *     https://github.com/lxgw/LxgwWenKai-Screen/releases/download/v1.522/LXGWWenKaiScreen.ttf
  *   - Maple Mono CN v7.9（静态字重 TTF，取 Regular；斜体不生成——Shiki github 双主题不产生斜体 token）
  *     https://github.com/subframe7536/maple-font/releases/download/v7.9/MapleMono-CN.zip
+ *   - Noto Serif SC（变量字体，wght 钉到 600 供文章标题使用）
+ *     https://github.com/google/fonts/raw/main/ofl/notoserifsc/NotoSerifSC%5Bwght%5D.ttf
  *
  * 产物：每个字重生成 result.css + 1 个紧致 woff2（全站约 1000 个用字，首访字体下载从 ~1.6MB 降至 ~300KB）。
  * 说明：曾尝试 cn-font-split 的 subsets 入参，但其 v7 手动分包控制已失效（见其 v6 迁移指南），故改用 subset-font。
@@ -52,7 +54,7 @@ function collectChars() {
 	return [...chars].sort((a, b) => a - b).map((c) => String.fromCodePoint(c)).join('');
 }
 
-// 两个待子集化变体：源文件 → 输出目录 / CSS 声明
+// 待子集化变体：源文件 → 输出目录 / CSS 声明 / 变量轴处理
 const VARIANTS = [
 	{
 		src: path.join(FONT_SRC, 'LXGWWenKaiScreen.ttf'),
@@ -63,6 +65,14 @@ const VARIANTS = [
 		src: path.join(FONT_SRC, 'MapleMono-CN-Regular.ttf'),
 		out: path.join(OUT_ROOT, 'maple-mono-cn/regular'),
 		css: { fontFamily: 'Maple Mono CN', fontWeight: '400', fontStyle: 'normal' },
+	},
+	{
+		// 文章 h1–h6 的衬线标题字体。标题仅用 600 字重，把 wght 轴钉到 600：
+		// 去掉 gvar 变量差值后体积约为保留整条轴的一半，且不再需要 @fontsource 整包的 102 个 unicode-range 分片
+		src: path.join(FONT_SRC, 'NotoSerifSC[wght].ttf'),
+		out: path.join(OUT_ROOT, 'noto-serif-sc/semibold'),
+		css: { fontFamily: 'Noto Serif SC', fontWeight: '600', fontStyle: 'normal' },
+		variationAxes: { wght: 600 },
 	},
 ];
 
@@ -85,7 +95,11 @@ for (const v of VARIANTS) {
 	const ttf = new Uint8Array(fs.readFileSync(v.src).buffer);
 	console.log(`[SUBSET] ${path.basename(v.src)} -> ${v.out}`);
 	const t0 = Date.now();
-	const woff2 = await subsetFont(Buffer.from(ttf), charset, { targetFormat: 'woff2' });
+	const woff2 = await subsetFont(Buffer.from(ttf), charset, {
+		targetFormat: 'woff2',
+		// 变体可通过 variationAxes 把变量轴钉到单一位置（变体为静态字体时忽略）
+		variationAxes: v.variationAxes,
+	});
 	const woff2Name = 'subset.woff2';
 	fs.writeFileSync(path.join(v.out, woff2Name), woff2);
 	const css = `@font-face{font-family:"${v.css.fontFamily}";src:local("${v.css.fontFamily}"),url("./${woff2Name}")format("woff2");font-style:${v.css.fontStyle};font-display:swap;font-weight:${v.css.fontWeight}}`;

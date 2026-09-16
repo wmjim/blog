@@ -12,8 +12,6 @@ import Comment from "@/components/Comment/Comment.astro";
 import "./ToolLayout.less";
 // 文章内容基础样式
 import "@/styles/ArticleBase.less";
-// 文章标题衬线字体（思源宋体变量），随内容页按需加载，避免进入全站 Layout 全局 CSS
-import "@fontsource-variable/noto-serif-sc";
 ---
 
 <Layout title={frontmatter.title || Title} description={Description} activeNav={frontmatter.type || "-"}>
