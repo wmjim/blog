@@ -1,8 +1,9 @@
 // 文章页：资料卡落到右栏
 // Layout 的 .main-inner 默认 row-reverse（资料卡在左），本文件只在文章页加载，故在此覆盖
+// 构建后本文件的 CSS 可能排在 Layout 之前，用 section 抬高特异性，不依赖文件加载顺序
 // ≤888px 时交回 Layout 的单列堆叠规则，不参与覆盖
 @media screen and (min-width: 889px) {
-	main.main>.main-inner {
+	main.main>section.main-inner {
 		flex-direction: row;
 	}
 }
