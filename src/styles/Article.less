@@ -1,6 +1,24 @@
+// 文章页：资料卡落到右栏
+// Layout 的 .main-inner 默认 row-reverse（资料卡在左），本文件只在文章页加载，故在此覆盖
+// ≤888px 时交回 Layout 的单列堆叠规则，不参与覆盖
+@media screen and (min-width: 889px) {
+	main.main>.main-inner {
+		flex-direction: row;
+	}
+}
+
+// 宽度不足以同时容纳「资料卡 + 正文 + 目录」时先撤资料卡，目录保留
+// 阈值：资料卡 300 + 目录 300 + 内容内边距 64 + 间距 20 + 正文下限 40em ≈ 1324px
+@media screen and (max-width: 1320px) {
+	main.main>.main-inner>aside.vh-aside {
+		display: none;
+	}
+}
+
 .article-wrapper {
 	display: flex;
-	flex-direction: row;
+	// 目录 DOM 在正文之后，反向排列后落到左栏
+	flex-direction: row-reverse;
 	gap: 1.25rem;
 	width: 100%;
 	height: max-content;
