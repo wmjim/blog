@@ -50,7 +50,6 @@ export default {
     { text: 'Github', link: 'https://github.com/wmjim', icon: 'WebSite_github' },
     { text: 'X', link: 'https://x.com/Voidy7rp', icon: 'WebSite_x' },
     { text: 'Email', link: 'mailto:meng.w1016@outlook.com', icon: 'WebSite_email' },
-    { text: 'HanAnalytics', link: 'https://analytics.vvhan.com', icon: 'WebSite_analytics' },
   ],
   // 侧边栏展示
   AsideShow: {
