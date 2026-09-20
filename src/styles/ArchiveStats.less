@@ -3,7 +3,6 @@
 section.vh-archive-stats {
   display: flex;
   padding: 1.25rem 0;
-  border-radius: 1rem;
   background-color: var(--vh-white-color);
 
   .stat-item {
@@ -14,13 +13,14 @@ section.vh-archive-stats {
     gap: 0.25rem;
 
     & + .stat-item {
-      border-left: 1px dashed rgba(0, 0, 0, 0.12);
+      border-left: 1px dashed var(--vh-border-color-strong);
     }
 
     .num {
-      color: var(--vh-font-color);
+      font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+      color: var(--vh-main-color);
       font-size: 1.75rem;
-      font-weight: 700;
+      font-weight: 600;
       font-variant-numeric: tabular-nums;
       line-height: 1;
     }

@@ -23,6 +23,7 @@ const related = await getRelatedPosts(currentId, 3);
 )}
 
 <style>
+	// 相关文章 —— 沿用 nvie 的「» + 衬线标题 + 行内元信息」列表语言
 	.vh-related {
 		margin-top: 2rem;
 		padding-top: 1.25rem;
@@ -30,41 +31,57 @@ const related = await getRelatedPosts(currentId, 3);
 	}
 
 	.vh-related h3 {
-		font-size: 1rem;
-		font-weight: 600;
-		color: var(--vh-font-color);
+		display: flex;
+		align-items: center;
+		gap: 0.625rem;
 		margin: 0 0 0.75rem;
+		font-size: 0.72rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--vh-font-56);
+	}
+
+	.vh-related h3::after {
+		content: '';
+		flex: 1;
+		height: 1px;
+		background-color: var(--vh-border-color);
 	}
 
 	.vh-related-list {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
 	}
 
 	.vh-related-item {
 		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		gap: 0.75rem;
-		padding: 0.625rem 0.875rem;
-		border: 1px solid var(--vh-border-color);
-		border-radius: var(--vh-radius-sm);
-		text-decoration: none;
-		transition: all var(--vh-transition-base);
+		align-items: baseline;
+		gap: 0.625rem;
+		padding: 0.5rem 0;
 	}
 
-	.vh-related-item:hover {
-		border-color: var(--vh-main-color-28);
-		background: var(--vh-main-color-6);
+	.vh-related-item::before {
+		flex-shrink: 0;
+		content: '»';
+		color: var(--vh-font-28);
+	}
+
+	.vh-related-item:hover .vh-related-title {
+		color: var(--vh-link-color-hover);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+		text-decoration-thickness: 1px;
 	}
 
 	.vh-related-title {
-		font-size: 0.875rem;
-		font-weight: 500;
-		color: var(--vh-font-color);
 		flex: 1;
 		min-width: 0;
+		font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+		font-size: 1.0625rem;
+		font-weight: 600;
+		line-height: 1.5;
+		color: var(--vh-link-color);
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -72,19 +89,15 @@ const related = await getRelatedPosts(currentId, 3);
 
 	.vh-related-meta {
 		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		font-size: 0.75rem;
+		align-items: baseline;
+		gap: 0.625rem;
+		font-size: 0.78rem;
 		color: var(--vh-font-56);
 		flex-shrink: 0;
 	}
 
 	.vh-related-cat {
-		background: var(--vh-main-color-6);
 		color: var(--vh-main-color);
-		padding: 0.125rem 0.5rem;
-		border-radius: var(--vh-radius-sm);
-		font-size: 0.6875rem;
-		font-weight: 500;
+		font-size: 0.78rem;
 	}
 </style>

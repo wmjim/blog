@@ -20,14 +20,14 @@ export default {
   // 博客主题配置
   Theme: {
     // 颜色请用 16 进制颜色码
-    // 主题颜色
-    "--vh-main-color": "#5B889C",
-    // 字体颜色 — 加深以增强对比度
-    "--vh-font-color": "#1E2D3D",
+    // 主题颜色 — 暖橙，用于站点名与各级标题（对比度 5.2:1，正文尺寸也可读）
+    "--vh-main-color": "#C2410C",
+    // 字体颜色 — 近黑正文
+    "--vh-font-color": "#333333",
     // 侧边栏宽度
     "--vh-aside-width": "300px",
-    // 全局圆角 — 统一为中等圆角
-    "--vh-main-radius": "0.5rem",
+    // 全局圆角 — 近乎直角，层次交给细线与留白
+    "--vh-main-radius": "0.25rem",
     // 主体内容宽度
     "--vh-main-max-width": "1400px",
   },

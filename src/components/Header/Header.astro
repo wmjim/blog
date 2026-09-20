@@ -4,8 +4,6 @@ const { activeNav } = Astro.props;
 // 站点配置
 import SITE_CONFIG from "@/config";
 const { Navs } = SITE_CONFIG;
-// Svg 组件
-import Svg from "@/components/Svg/Svg.astro";
 // 搜索框组件
 import Search from "@/components/Search/Search.astro";
 // 顶部 Header 样式
@@ -23,7 +21,6 @@ import "./Header.less";
 				Navs.map(i => (
 					<a class={`nav-link vh-hover${i.link.includes(activeNav) ? " active" : ""}`} href={import.meta.env.BASE_URL + i.link.slice(1)} target={i.target ? "_blank" : "_self"}>
 						{i.text}
-						<Svg src={i.icon} />
 					</a>
 				))
 			}

@@ -202,7 +202,8 @@
 		background: var(--vh-white-color);
 		display: flex;
 		flex-direction: column;
-		box-shadow: var(--vh-shadow-lg);
+		// 抽屉属于浮层，保留一层柔和投影（全站卡片已改为无投影）
+		box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12);
 		transform: translateX(100%);
 		transition: transform var(--vh-transition-slow);
 	}

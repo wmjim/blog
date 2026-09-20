@@ -3,6 +3,11 @@ const { title, keywords, description, pagecover, date, updated, activeNav, showA
 // 网站配置
 import SITE_INFO from "@/config";
 const { GoogleAds, Theme } = SITE_INFO;
+// 站点报头文案（参考 nvie.com 的站点名 + 副标题）
+const SITE_NAME = SITE_INFO.Title;
+const SITE_SUBTITLE = SITE_INFO.Subtitle;
+// 首页（无自身标题）用 h1 承载站点名，其余页面用 p，避免单页出现两个 h1
+const MastheadTag = title ? "p" : "h1";
 const { ad_Client, asideAD_Slot, articleAD_Slot } = GoogleAds;
 // Head 依赖
 import Head from "@/components/Head/Head.astro";
@@ -40,8 +45,13 @@ import "./Layout.less";
 		<MobileSidebar />
 		<Header activeNav={activeNav} />
 		<main class="main" id="main-content">
-			<section class={showAside ? "main-inner" : "main-inner no-aside"} style="padding-top:calc(var(--vh-header-height) + 0.68rem)">
+			<section class={showAside ? "main-inner" : "main-inner no-aside"}>
 				<section class="main-inner-content">
+					<!-- 站点报头：站点名 + 副标题 + 细线（参考 nvie.com 的页首排版） -->
+					<header class="vh-masthead">
+						<MastheadTag class="vh-masthead-title"><a href={import.meta.env.BASE_URL}>{SITE_NAME}</a></MastheadTag>
+						<p class="vh-masthead-tagline">{SITE_SUBTITLE}</p>
+					</header>
 					<slot />
 				</section>
 				{showAside && <Aside />}

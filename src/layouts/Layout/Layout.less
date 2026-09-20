@@ -23,7 +23,7 @@ main.main {
 		&>.main-inner-content {
 			flex: 1 1 0%;
 			box-sizing: border-box;
-			padding: 1rem 1.25rem;
+			padding: 1.25rem 1.25rem 1.5rem;
 			width: 100%;
 			min-width: 0;
 			height: max-content;
@@ -35,6 +35,80 @@ main.main {
 		// 内容自身还有 1.25rem 左右内边距，故最终正文宽度与文章页一致（约 740px）
 		&.no-aside {
 			max-width: calc(var(--vh-main-max-width) - var(--vh-aside-width) - 1.25rem - var(--vh-aside-width));
+		}
+	}
+}
+
+// ============================================================
+// 站点报头 —— 参考 nvie.com：大号衬线站点名 + 灰色副标题 + 一条细线
+// 使用高特异性选择器，避免被 ArticleBase 的正文标题/段落排版规则覆盖
+// ============================================================
+main.main>.main-inner>.main-inner-content>.vh-masthead {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 46rem;
+	padding: 1.75rem 0 1.25rem;
+	margin-bottom: 1.75rem;
+	border-bottom: 1px solid var(--vh-border-color);
+
+	&>.vh-masthead-title {
+		display: block;
+		box-sizing: border-box;
+		width: auto;
+		margin: 0;
+		padding: 0;
+		font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+		font-size: 1.75rem;
+		font-weight: 600;
+		line-height: 1.15;
+		letter-spacing: -0.01em;
+		color: var(--vh-main-color);
+
+		// 抵消 ArticleBase 给正文标题加的行内锚点
+		&::before {
+			content: none;
+		}
+
+		&>a {
+			color: inherit;
+			transition: color var(--vh-transition-base);
+
+			&:hover {
+				color: var(--vh-main-color-66);
+			}
+		}
+	}
+
+	&>.vh-masthead-tagline {
+		display: block;
+		margin: 0;
+		padding: 0.5rem 0 0;
+		font-size: 0.95rem;
+		font-weight: 400;
+		line-height: 1.6;
+		color: var(--vh-font-56);
+	}
+}
+
+@media screen and (min-width: 768px) {
+	main.main>.main-inner>.main-inner-content {
+		padding: 1.5rem 2rem 2rem;
+	}
+
+	// nvie 的报头在桌面端明显放大
+	main.main>.main-inner>.main-inner-content>.vh-masthead {
+		padding: 2rem 0 1.5rem;
+
+		&>.vh-masthead-title {
+			font-size: 2.5rem;
+			line-height: 1.1;
+		}
+
+		&>.vh-masthead-tagline {
+			padding-top: 0.625rem;
+			font-size: 1.05rem;
 		}
 	}
 }

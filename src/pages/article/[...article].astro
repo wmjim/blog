@@ -65,6 +65,12 @@ import "@/styles/ArticleBase.less";
 				</div>
 			</header>
 			<main>
+				<!-- 文章封面：列表页不再放缩略图，封面在此处作引图 -->
+				{ARTICLE_COVER && (
+					<figure class="vh-article-cover">
+						<img class="vh-article-img" src={import.meta.env.BASE_URL + 'assets/images/lazy-loading.webp'} data-vh-lz-src={ARTICLE_COVER} alt={post.data.title} />
+					</figure>
+				)}
 				<!-- AI 生成的文章总结（打字机效果） -->
 				{post.data.summary && (
 					<div class="article-summary">
