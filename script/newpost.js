@@ -20,7 +20,6 @@ tags:
   - 标签2
 id: "${articleID.slice(0, 16)}"
 date: ${dayjs().format('YYYY-MM-DD HH:mm:ss')}
-cover: "封面图URL (为空默认随机内置封面 /public/assets/images/banner)"
 recommend: false # 是否推荐文章
 top: false # 是否置顶文章
 hide: false # 是否隐藏文章

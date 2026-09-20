@@ -6,7 +6,6 @@ tags:
   - 标签2
 id: "1e5ad4f6a8f6e1df"
 date: 2026-09-04 15:19:55
-cover: "封面图URL (为空默认随机内置封面 /public/assets/images/banner)"
 recommend: false # 是否推荐文章
 top: false # 是否置顶文章
 hide: false # 是否隐藏文章

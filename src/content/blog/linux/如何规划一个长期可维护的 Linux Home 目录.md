@@ -6,7 +6,6 @@ tags:
   - 标签2
 id: "27e6d95ca91dccaf"
 date: 2026-06-28 07:18:34
-cover: "https://raw.githubusercontent.com/wmjim/blogimages/main/20260619011149243.png"
 draft: true
 summary: "这篇文章介绍了如何规划并维护一个整洁的 Linux 用户家目录，包括修改 XDG 配置以去除中文目录、转移软件数据至统一归档目录，并设计个人专属的目录结构，有助于提升命令行操作效率与长期可维护性。"
 ---

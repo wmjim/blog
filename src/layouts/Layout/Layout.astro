@@ -1,5 +1,5 @@
 ---
-const { title, keywords, description, pagecover, date, updated, activeNav, showAside = false } = Astro.props;
+const { title, keywords, description, isArticle = false, date, updated, activeNav, showAside = false } = Astro.props;
 // 网站配置
 import SITE_INFO from "@/config";
 const { GoogleAds, Theme } = SITE_INFO;
@@ -30,7 +30,7 @@ import "./Layout.less";
 ---
 
 <html lang="zh-CN">
-	<Head Title={title} Keywords={keywords} Description={description} PageCover={pagecover} Date={date} Updated={updated}>
+	<Head Title={title} Keywords={keywords} Description={description} IsArticle={isArticle} Date={date} Updated={updated}>
 		<!-- 谷歌广告JS加载项 -->
 		{ad_Client && (asideAD_Slot || articleAD_Slot) && <script is:inline async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ad_Client}`} crossorigin="anonymous" />}
 		<!-- 设置主题颜色 -->
