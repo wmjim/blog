@@ -5,6 +5,7 @@ import {
   yamlQuote,
   upsertSummary,
   cleanSummary,
+  spaceCJKLatin,
   getBodyText,
   writeSummaryBack,
 } from "./generate-summary.mjs";
@@ -69,6 +70,18 @@ test("cleanSummary 去除引号、前缀并压缩空白", () => {
   assert.equal(cleanSummary("摘要：这是正文。"), "这是正文。");
   assert.equal(cleanSummary("多  个\n\n空白"), "多 个 空白");
   assert.equal(cleanSummary("「标签前缀」核心内容"), "标签前缀」核心内容");
+});
+
+test("spaceCJKLatin 在中英文之间插入空格", () => {
+  assert.equal(spaceCJKLatin("用NixOS管理配置"), "用 NixOS 管理配置");
+  assert.equal(spaceCJKLatin("占用2GB内存"), "占用 2GB 内存");
+  assert.equal(spaceCJKLatin("已有空格的 English 单词"), "已有空格的 English 单词");
+  assert.equal(spaceCJKLatin("纯中文不加空格"), "纯中文不加空格");
+  assert.equal(spaceCJKLatin("标点符号、，。不受影响"), "标点符号、，。不受影响");
+});
+
+test("cleanSummary 为中英文边界补空格", () => {
+  assert.equal(cleanSummary("本文介绍Arch与NixOS的日用组合"), "本文介绍 Arch 与 NixOS 的日用组合");
 });
 
 test("cleanSummary 超长时截断到 120 字", () => {

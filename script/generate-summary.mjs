@@ -70,12 +70,20 @@ export const upsertSummary = (fmBody, summary) => {
     : `${fmBody}\n${line}`;
 };
 
-/** 清洗模型输出的摘要：去引号/前缀、压缩空白、限长 */
+/** 在中文字符与英文/数字之间插入空格，与正文写作格式对齐（prompt 不保证模型遵守，确定性兜底） */
+const CJK = "\\u4e00-\\u9fff\\u3400-\\u4dbf\\uf900-\\ufaff"; // 汉字：基本区 + 扩展 A + 兼容表意文字
+export const spaceCJKLatin = (s) =>
+  String(s)
+    .replace(new RegExp(`([${CJK}])([A-Za-z0-9])`, "g"), "$1 $2")
+    .replace(new RegExp(`([A-Za-z0-9])([${CJK}])`, "g"), "$1 $2");
+
+/** 清洗模型输出的摘要：去引号/前缀、压缩空白、中英文加空格、限长 */
 export const cleanSummary = (raw) => {
   let s = String(raw).trim();
   s = s.replace(/^["'“”「『]+|["'“”」』]+$/g, "").trim();
   s = s.replace(/^(摘要|总结|文章总结|简介)\s*[:：]\s*/, "");
   s = s.replace(/\s+/g, " ");
+  s = spaceCJKLatin(s);
   if (s.length > 120) s = `${s.slice(0, 120)}…`;
   return s;
 };
@@ -134,6 +142,7 @@ const SYSTEM_PROMPT = [
   "你是一名博客文章摘要助手。",
   "请为给定的博客文章生成一段简短、准确、吸引人的中文摘要。",
   "要求：2~3 句话，不超过 100 字；用第三人称客观概括；",
+  "中文与英文、数字之间保留一个空格，与正文写作格式一致；",
   "不要任何前缀、引号、列表或额外解释；只输出摘要正文。",
 ].join("");
 
