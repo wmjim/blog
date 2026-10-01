@@ -43,18 +43,18 @@
 		width: 100%;
 		min-width: 0;
 
-		// 分类：小号强调色标签，取代原来的胶囊徽章
+		// 分类：小号元数据标签，灰色，与文章页 meta 行统一（橙色让给标题）
 		&>.vh-article-cat {
 			width: max-content;
 			margin-bottom: 0.5rem;
 			font-size: 0.75rem;
 			font-weight: 600;
 			letter-spacing: 0.06em;
-			color: var(--vh-main-color);
+			color: var(--vh-font-66);
 			transition: color var(--vh-transition-base);
 
 			&:hover {
-				color: var(--vh-main-color-66);
+				color: var(--vh-link-color);
 			}
 		}
 
@@ -73,7 +73,8 @@
 				font-weight: 600;
 				line-height: 1.45;
 				letter-spacing: -0.01em;
-				color: var(--vh-font-color);
+				// 与文章页大标题同一「标题声部」：橙色；可点性交给 hover 下划线，不用色相表达
+				color: var(--vh-main-color);
 				word-break: normal;
 				overflow-wrap: break-word;
 
@@ -82,11 +83,9 @@
 				}
 
 				a {
-					color: var(--vh-link-color);
-					transition: color var(--vh-transition-base);
+					color: inherit;
 
 					&:hover {
-						color: var(--vh-link-color-hover);
 						text-decoration: underline;
 						text-underline-offset: 0.2em;
 						text-decoration-thickness: 1px;

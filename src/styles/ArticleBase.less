@@ -61,6 +61,12 @@
 		h3 { font-size: 1.1875rem; line-height: 1.4; }
 		h4 { font-size: 1.0625rem; line-height: 1.45; }
 
+		// 层级：橙色只标记到 h2；h3 起回到近黑，仅靠字号分层。
+		// 六级全橙会让「标题声部」失去标记作用，眼睛找不到一节的起点
+		h3, h4, h5, h6 {
+			color: var(--vh-font-color);
+		}
+
 		// 段落 & 列表
 		p,
 		ul:not(.vh-vhMusic ul, .vh-comment ul),
