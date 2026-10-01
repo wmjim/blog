@@ -23,15 +23,17 @@ header.vh-header {
 		height: var(--vh-header-height);
 		max-width: var(--vh-main-max-width);
 
-		// 回到首页：与导航同款文字链接
+		// 回到首页：站点名小号版，与报头同一衬线家族与暖橙，只做尺寸缩放
 		&>.home {
 			box-sizing: border-box;
 			display: flex;
 			align-items: center;
 			width: max-content;
 			height: max-content;
-			color: var(--vh-link-color);
-			font-size: 0.86rem;
+			font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+			font-weight: 600;
+			color: var(--vh-main-color);
+			font-size: 0.95rem;
 			line-height: 1;
 			transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
