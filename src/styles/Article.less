@@ -82,24 +82,24 @@ article.vh-article-main {
 				align-items: center;
 				gap: 0.35rem;
 				width: max-content;
-				color: var(--vh-font-56);
+				color: var(--vh-font-66);
 
 				&>svg {
 					flex-shrink: 0;
 					height: 0.9rem;
 					width: auto;
 					object-fit: contain;
-					color: var(--vh-font-28);
+					color: var(--vh-font-36);
 				}
 
 				&>time {
-					color: var(--vh-font-56);
+					color: var(--vh-font-66);
 					font-size: 0.85rem;
 				}
 
 				&>span {
 					font-size: 0.85rem;
-					color: var(--vh-font-56);
+					color: var(--vh-font-66);
 
 					strong {
 						font-weight: 600;
@@ -151,10 +151,6 @@ article.vh-article-main {
 			}
 
 			&>.article-summary-body {
-				display: flex;
-				align-items: flex-start;
-				gap: 2px;
-
 				&>.article-summary-text {
 					margin: 0;
 					font-size: 0.95rem;
@@ -162,26 +158,7 @@ article.vh-article-main {
 					color: var(--vh-font-66);
 					white-space: pre-wrap;
 					word-break: break-word;
-					min-height: 1.6em;
 				}
-
-				&>.article-summary-cursor {
-					flex-shrink: 0;
-					align-self: center;
-					width: 2px;
-					height: 1.1em;
-					background-color: var(--vh-main-color);
-					animation: vh-cursor-blink 0.9s steps(2, start) infinite;
-				}
-			}
-		}
-
-		// 打字完成后光标淡出
-		.article-summary.is-done {
-			.article-summary-cursor {
-				animation: none;
-				opacity: 0;
-				transition: opacity 0.4s ease;
 			}
 		}
 
@@ -224,7 +201,7 @@ article.vh-article-main {
 				border-radius: var(--vh-radius-sm);
 				font-size: 0.78rem;
 				font-weight: 400;
-				color: var(--vh-font-56);
+				color: var(--vh-font-66);
 				transition: color var(--vh-transition-base),
 							border-color var(--vh-transition-base);
 				overflow: hidden;
@@ -279,18 +256,4 @@ article.vh-article-main {
 @keyframes vhRotate {
 	from { transform: rotate(0deg); }
 	to { transform: rotate(360deg); }
-}
-
-// 文章总结打字光标闪烁
-@keyframes vh-cursor-blink {
-	0%, 50% { opacity: 1; }
-	50.01%, 100% { opacity: 0; }
-}
-
-// 用户偏好减少动态效果时隐藏光标
-@media (prefers-reduced-motion: reduce) {
-	.article-summary-cursor {
-		animation: none;
-		opacity: 0;
-	}
 }

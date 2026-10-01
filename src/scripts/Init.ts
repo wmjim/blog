@@ -1,6 +1,4 @@
 import { inRouter, outRouter } from "@/utils/updateRouter";
-// 文章总结打字效果
-import ArticleSummaryInit from "@/scripts/ArticleSummary";
 // 初始化文章代码块
 import codeInit from "@/scripts/Code";
 // 初始化 Mermaid 图表
@@ -126,8 +124,6 @@ const indexInit = async (only: boolean = true) => {
   checkComment() && commentInit(checkComment(), commentLIst)
   // Han Analytics 统计
   HanAnalyticsInit();
-  // 文章总结打字效果（每次页面进入都执行，swup 切换时元素是全新的会重新打字）
-  ArticleSummaryInit();
   // 初始化搜索功能（搜索索引 vh-search.json 改为首次输入时懒加载，避免每页首屏多一次 17KB 请求）
   vhSearchInit();
   // 从 URL 定位搜索关键词并跳转（仅文章页生效）

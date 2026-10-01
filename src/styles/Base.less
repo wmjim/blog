@@ -35,11 +35,9 @@
 	--vh-shadow-md: none;
 	--vh-shadow-lg: none;
 
-	// ===== Radius Tokens — 近乎直角，只保留微弱圆角 =====
+	// ===== Radius Tokens — 近乎直角：行内元素 2px，容器面板 4px =====
 	--vh-radius-sm: 2px;
-	--vh-radius-md: 3px;
-	--vh-radius-lg: 5px;
-	--vh-radius-xl: 6px;
+	--vh-radius-md: 4px;
 
 	// ===== Spacing Scale =====
 	--vh-space-xs: 0.25rem;
@@ -59,10 +57,9 @@
 
 	// 字体颜色 alpha 变体
 	--vh-font-88: rgb(from var(--vh-font-color) r g b / 88%);
-	--vh-font-66: rgb(from var(--vh-font-color) r g b / 66%);
 	// 次要文本下限 66%：白色背景对比度约 4.7:1，满足 WCAG AA
-	--vh-font-56: rgb(from var(--vh-font-color) r g b / 66%);
-	--vh-font-28: rgb(from var(--vh-font-color) r g b / 36%);
+	--vh-font-66: rgb(from var(--vh-font-color) r g b / 66%);
+	--vh-font-36: rgb(from var(--vh-font-color) r g b / 36%);
 	--vh-font-16: rgb(from var(--vh-font-color) r g b / 16%);
 	--vh-font-6: rgb(from var(--vh-font-color) r g b / 6%);
 
@@ -441,7 +438,7 @@ html.is-animating {
 	overflow: hidden;
 
 	&>span {
-		background-color: var(--vh-font-28);
+		background-color: var(--vh-font-36);
 		position: relative;
 		width: 4px;
 		height: 4px;

@@ -4,15 +4,15 @@ export default {
   // 网站地址
   Site: 'https://wmjim.github.io/blog',
   // 网站副标题
-  Subtitle: 'Hello, World!',
+  Subtitle: '记录学习、感想与生活点滴',
   // 网站描述
   Description: '专注于分享和总结，记录我的学习、感想和生活点滴.',
   // 网站作者
   Author: 'Void',
   // 作者头像
   Avatar: import.meta.env.BASE_URL + 'assets/images/avator.jpg',
-  // 网站座右铭
-  Motto: 'Be the change you wish to see in the world.',
+  // 网站座右铭 (不填写即不开启)
+  Motto: '',
   // 网站侧边栏公告 (不填写即不开启)
   Tips: '<p>欢迎光临我的博客 🎉</p><p>这里会分享我的日常和学习中的收集、整理及总结，希望能对你有所帮助:) 💖</p>',
   // 网站创建时间
@@ -26,8 +26,6 @@ export default {
     "--vh-font-color": "#333333",
     // 侧边栏宽度
     "--vh-aside-width": "300px",
-    // 全局圆角 — 近乎直角，层次交给细线与留白
-    "--vh-main-radius": "0.25rem",
     // 主体内容宽度
     "--vh-main-max-width": "1400px",
   },
