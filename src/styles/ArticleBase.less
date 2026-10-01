@@ -18,7 +18,9 @@
 			// 子集里只有 600 一档真字重，其余字重都会被浏览器合成，故统一钉在 600，靠字号拉开层级
 			font-weight: 600;
 			line-height: 1.35;
-			letter-spacing: -0.01em;
+			// 中文衬线标题不收紧字距：负 letter-spacing 是为拉丁组词设计的，
+			// 中文字符间本就需呼吸，-0.01em 会让宋体显得局促
+			letter-spacing: 0;
 			// 与站点报头同一套“标题声部”：正文各级标题统一暖橙
 			color: var(--vh-main-color);
 
