@@ -9,21 +9,32 @@
 	max-height: calc(100vh - var(--vh-header-height) - 2rem);
 	display: flex;
 	flex-direction: column;
-	padding: 1.125rem;
-	border: 1px solid var(--vh-border-color);
-	border-radius: var(--vh-radius-md);
-	background-color: var(--vh-white-color);
 	overflow: hidden;
 
+	// 分节标题与侧栏一致：小号大写 + 一条延伸到底的细线（不再用描边盒子）
 	.vh-toc-title {
 		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		gap: 0.625rem;
+		box-sizing: border-box;
+		// 与下方条目的左内边距对齐
+		padding-left: 0.75rem;
+		width: 100%;
 		margin: 0 0 0.75rem;
 		font-size: 0.72rem;
 		font-weight: 600;
 		color: var(--vh-font-66);
 		text-transform: uppercase;
-		letter-spacing: 0.08em;
+		letter-spacing: 0.12em;
 		user-select: none;
+
+		&::after {
+			content: '';
+			flex: 1;
+			height: 1px;
+			background-color: var(--vh-border-color);
+		}
 	}
 
 	.vh-toc-list {
@@ -74,12 +85,10 @@
 			outline: none;
 			box-shadow: none !important;
 			background: none;
-			border-radius: var(--vh-radius-sm);
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
-			transition: color var(--vh-transition-fast),
-			            background-color var(--vh-transition-fast);
+			transition: color var(--vh-transition-fast);
 
 			// 左侧指示条 — 默认隐藏
 			&::before {
@@ -97,12 +106,10 @@
 
 			&:hover {
 				color: var(--vh-main-color);
-				background-color: var(--vh-main-color-6);
 			}
 
 			&.active {
 				color: var(--vh-main-color);
-				background-color: transparent;
 
 				&::before {
 					transform: translateY(-50%) scaleY(1);

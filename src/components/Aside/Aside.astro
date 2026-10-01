@@ -8,9 +8,7 @@ import { fmtTime, fmtDateTime } from "@/utils/index";
 import SITE_CONFIG from "@/config";
 const { Avatar, Author, Motto, WebSites, GoogleAds, AsideShow } = SITE_CONFIG;
 // 获取文章数据
-import { getRecommendArticles, getCountInfo } from "@/utils/getPostInfo";
-// 获取网站统计数据
-const CountInfo = await getCountInfo();
+import { getRecommendArticles } from "@/utils/getPostInfo";
 // 最新文章
 const recommendArticles = await getRecommendArticles();
 // Google 广告组件
@@ -33,20 +31,6 @@ import "./Aside.less";
 							<Svg src={item.icon} />
 						</a>
 					))}
-				</section>
-				<section class="vh-aside-info">
-					<div class="art-item count">
-						<span>{CountInfo.ArticleCount}</span>
-						<p>文章数</p>
-					</div>
-					<div class="cat-item count">
-						<span>{CountInfo.CategoryCount}</span>
-						<p>分类数</p>
-					</div>
-					<div class="tag-item count">
-						<span>{CountInfo.TagCount}</span>
-						<p>标签数</p>
-					</div>
 				</section>
 			</section>
 		)
@@ -80,7 +64,7 @@ import "./Aside.less";
 						{recommendArticles.map((i, idx) => (
 							<a href={`${import.meta.env.BASE_URL}article/${i.id}`}>
 								<span>
-									{idx < 3 ? <span class="vh-rank-badge">{idx + 1}</span> : <span class="vh-rank-num">{idx + 1}.</span>}
+									<span class="vh-rank-num">{idx + 1}.</span>
 									<cite class="vh-ellipsis">{i.title}</cite>
 								</span>
 								<time datetime={fmtDateTime(i.date)}>{fmtTime(i.date, "YYYY-MM-DD A")}</time>
