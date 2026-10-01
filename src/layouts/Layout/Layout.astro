@@ -47,11 +47,14 @@ import "./Layout.less";
 		<main class="main" id="main-content">
 			<section class={showAside ? "main-inner" : "main-inner no-aside"}>
 				<section class="main-inner-content">
-					<!-- 站点报头：站点名 + 副标题 + 细线（参考 nvie.com 的页首排版） -->
-					<header class="vh-masthead">
-						<MastheadTag class="vh-masthead-title"><a href={import.meta.env.BASE_URL}>{SITE_NAME}</a></MastheadTag>
-						<p class="vh-masthead-tagline">{SITE_SUBTITLE}</p>
-					</header>
+					{/* 站点报头：站点名 + 副标题 + 细线（参考 nvie.com 的页首排版）。
+					    文章页不渲染：文章自身有大标题，报头会让首屏多一层重复信息 */}
+					{!isArticle && (
+						<header class="vh-masthead">
+							<MastheadTag class="vh-masthead-title"><a href={import.meta.env.BASE_URL}>{SITE_NAME}</a></MastheadTag>
+							<p class="vh-masthead-tagline">{SITE_SUBTITLE}</p>
+						</header>
+					)}
 					<slot />
 				</section>
 				{showAside && !isArticle && <Aside />}
