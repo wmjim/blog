@@ -54,7 +54,7 @@ import "./Layout.less";
 					</header>
 					<slot />
 				</section>
-				{showAside && <Aside />}
+				{showAside && !isArticle && <Aside />}
 			</section>
 			<BackTop />
 		</main>
