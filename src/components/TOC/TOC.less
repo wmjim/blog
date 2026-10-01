@@ -139,15 +139,16 @@
 }
 
 // 顶部阅读进度条：scaleX 由 JS 按整页滚动进度填充，压在毛玻璃 Header（z-index:9）之上
+// 1px + 半透明：存在感弱于正文，滚动时仍可感知
 .vh-reading-progress {
 	position: fixed;
 	top: 0;
 	left: 0;
 	box-sizing: border-box;
 	width: 100%;
-	height: 2px;
+	height: 1px;
 	z-index: 11;
-	background-color: var(--vh-main-color);
+	background-color: var(--vh-main-color-56);
 	transform: scaleX(0);
 	transform-origin: left;
 	pointer-events: none;
