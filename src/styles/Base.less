@@ -8,8 +8,10 @@
 	--vh-body-bg: #fff;
 	// 顶部导航条高度（sticky，与 Header.less / scripts/TOC.ts 同步）
 	--vh-header-height: 3.25rem;
-	--vh-border-color: #ececec;
-	--vh-border-color-strong: #d8d8d8;
+	// 发丝线是这套设计唯一的结构手段（无卡片、无投影），必须可靠可见：
+	// #ececec 贴白底约 1.2:1，1px 下近乎隐形；统一提一档
+	--vh-border-color: #e2e2e2;
+	--vh-border-color-strong: #cccccc;
 
 	// 链接色（正文内链、文章标题、导航）— 与暖橙强调色分工：橙用于标题，蓝用于可点文字
 	--vh-link-color: #4878b8;
@@ -102,8 +104,8 @@
 		--vh-white-66: rgb(26 26 46 / 66%);
 		--vh-white-28: rgb(26 26 46 / 28%);
 		--vh-body-bg: #1a1a2e;
-		--vh-border-color: #2e2e4a;
-		--vh-border-color-strong: #3d3d5c;
+		--vh-border-color: #34344e;
+		--vh-border-color-strong: #444462;
 		--vh-font-color: #d4d4e0;
 		// 暗色强调色取 nvie 的浅橙，链接取浅蓝
 		--vh-main-color: #f0923f;
