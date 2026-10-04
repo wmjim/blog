@@ -76,7 +76,7 @@ export default () => {
   document.querySelectorAll(".main-inner>.main-inner-content img:not(.view-image-container):not(.vh-article-img)").forEach((i: any) => {
     if (!i.hasAttribute("data-vh-lz-src")) {
       i.setAttribute("data-vh-lz-src", i.getAttribute("src"));
-      i.setAttribute("src", "/blog/assets/images/lazy-loading.webp");
+      i.setAttribute("src", import.meta.env.BASE_URL + "assets/images/lazy-loading.webp");
     }
   });
   // 卡片缩略图/头像等固定盒图片维持原 lazy-load 行为

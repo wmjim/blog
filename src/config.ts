@@ -2,7 +2,7 @@ export default {
   // 网站标题
   Title: "Void",
   // 网站地址
-  Site: 'https://wmjim.github.io/blog',
+  Site: 'https://blog.meng-w1016.workers.dev',
   // 网站副标题
   Subtitle: '记录学习、感想与生活点滴',
   // 网站描述

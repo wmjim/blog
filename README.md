@@ -1,8 +1,10 @@
 ### 部署
 
-唯一生效的部署是 `.github/workflows/deploy.yml`：推送 `main` 后由 Actions 构建并发布到 GitHub Pages。
+部署目标为 Cloudflare Workers 静态资源，配置见 `wrangler.jsonc`（`assets.directory: ./dist`），上线地址 `https://blog.meng-w1016.workers.dev`。
 
-仓库内不应出现其他部署配置。本站是纯静态输出，不使用 Cloudflare（无 `wrangler.jsonc`）；评论服务 Waline 是独立项目 `blog-comments-bgst`，不要在本目录执行 `vercel` 链接。
+站点部署在域名根路径，`astro.config.mjs` 的 `base` 为 `/`。若改回子路径部署，需同步修改 `base` 与 `src/config.ts` 的 `Site`。
+
+评论服务 Waline 是独立项目 `blog-comments-bgst`，不要在本目录执行 `vercel` 链接。`.github/workflows/deploy.yml` 为旧的 GitHub Pages 通道，已不再使用。
 
 ### 本地开发
 

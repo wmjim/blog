@@ -22,14 +22,15 @@ import { getArticleLastmods, getListingLastmods } from './script/sitemap-lastmod
 const LASTMODS = getArticleLastmods();
 // 列表页相对路径 -> lastmod，供 sitemap serialize 填充 <lastmod>
 const LISTING_LASTMODS = getListingLastmods();
-// 站点部署子路径，serialize 据此把绝对 url 折算成列表页查表用的相对路径
-const BASE = '/blog';
+// 站点部署根路径。部署在独立域名/子域的根（Cloudflare Workers），故为 '/'；
+// 若改回子路径部署（如 GitHub Pages 项目页），此处同步改为 '/blog' 即可。
+const BASE = '/';
 // gzip 预压缩目标扩展名（astro-compressor v2 由 hooks.fileFilter 接管，不再用 fileExtensions）
 const COMPRESS_EXTENSIONS = new Set(['.html', '.css', '.js']);
 // https://astro.build/config
 export default defineConfig({
 	site: SITE_INFO.Site,
-	base: `${BASE}/`,
+	base: BASE === '/' ? '/' : `${BASE}/`,
 	build: { assets: 'vh_static' },
 	integrations: [swup({
 		theme: false,
@@ -76,7 +77,7 @@ export default defineConfig({
 					trust: true,
 					strict: false
 				}
-			], rehypeSlug, rehypeGithubCallout, [addClassNames, { base: '/blog/', site: SITE_INFO.Site }]],
+			], rehypeSlug, rehypeGithubCallout, [addClassNames, { base: `${BASE}/`, site: SITE_INFO.Site }]],
 		}),
 		syntaxHighlight: 'shiki',
 		shikiConfig: {
