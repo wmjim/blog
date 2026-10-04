@@ -1,45 +1,51 @@
 :root {
-	// ===== Color Tokens =====
-	// 参考 nvie.com：纸白底 + 暖橙强调 + 石板灰次要文本 + 亮蓝链接
-	--vh-white-color: #fff;
-	--vh-white-88: rgb(255 255 255 / 88%);
-	--vh-white-66: rgb(255 255 255 / 66%);
-	--vh-white-28: rgb(255 255 255 / 28%);
-	--vh-body-bg: #fff;
+	// ===== Pocket Reference — 一册随身技术手册的视觉世界 =====
+	// 参考 O'Reilly Nutshell 便携参考书：暖白纸面、墨黑正文、谷仓红书标、
+	// 青色链接、等宽小标签、发丝线与双线分节。无卡片投影，层次全靠线与留白。
+
+	// —— 纸面 ——
+	--vh-white-color: #fffdf8;   // 纸面（面板/列表/表格底）
+	--vh-white-88: rgb(255 253 248 / 88%);
+	--vh-white-66: rgb(255 253 248 / 66%);
+	--vh-white-28: rgb(255 253 248 / 28%);
+	--vh-body-bg: #fffdf8;       // 页面即纸面，满幅铺开
+	--vh-panel-bg: #f4f1e9;      // 微微内凹的奶油面板（书标、代码、引用）
+
 	// 顶部导航条高度（sticky，与 Header.less / scripts/TOC.ts 同步）
-	--vh-header-height: 3.25rem;
-	// 发丝线是这套设计唯一的结构手段（无卡片、无投影），必须可靠可见：
-	// #ececec 贴白底约 1.2:1，1px 下近乎隐形；统一提一档
-	--vh-border-color: #e2e2e2;
-	--vh-border-color-strong: #cccccc;
+	--vh-header-height: 3.5rem;
 
-	// 链接色（正文内链、文章标题、导航）— 与暖橙强调色分工：橙用于标题，蓝用于可点文字
-	--vh-link-color: #4878b8;
-	--vh-link-color-hover: #3868a5;
+	// —— 发丝线：这套设计唯一的结构手段，必须可靠可见 ——
+	--vh-border-color: #ddd8c8;
+	--vh-border-color-strong: #c7c1ad;
 
-	// 代码块：nvie 的暖奶油底
-	--vh-code-bg: #fffbf1;
-	--vh-code-border: #f7e1c7;
+	// —— 强调色分工：谷仓红用于书标/章节号/标签；青蓝用于可点文字 ——
+	--vh-main-color: #b8392c;        // 谷仓红（书标 / § 章节号 / 标签）
+	--vh-link-color: #1f6f8f;        // 青蓝（正文内链、导航）
+	--vh-link-color-hover: #174f68;
+
+	// 代码块：暖奶油面板，与纸面区分
+	--vh-code-bg: #f7f5ee;
+	--vh-code-border: #ddd8c8;
 	// 引用块
-	--vh-quote-bg: #f8f8f8;
-	--vh-quote-border: #eeeeee;
+	--vh-quote-bg: #f4f1e9;
+	--vh-quote-border: #ddd8c8;
 
-	// 正文图片：亮色下走留白 + 一条发丝线；暗色下补底色（见下方 dark 覆盖）
+	// 正文图片：留白 + 一条发丝线
 	--vh-img-bg: transparent;
 	--vh-img-radius: 2px;
 	--vh-img-padding: 0;
 	--vh-img-border: 1px solid var(--vh-border-color);
 
-	// ===== Shadow Tokens — 排版型博客不用投影，层次靠细线与留白 =====
+	// ===== Shadow Tokens — 手册不用投影，层次靠细线与留白 =====
 	--vh-box-shadow: none;
 	--vh-box-shadow-hover: none;
 	--vh-shadow-sm: none;
 	--vh-shadow-md: none;
 	--vh-shadow-lg: none;
 
-	// ===== Radius Tokens — 近乎直角：行内元素 2px，容器面板 4px =====
+	// ===== Radius Tokens — 近直角：行内 2px，容器 3px =====
 	--vh-radius-sm: 2px;
-	--vh-radius-md: 4px;
+	--vh-radius-md: 3px;
 
 	// ===== Spacing Scale =====
 	--vh-space-xs: 0.25rem;
@@ -54,12 +60,18 @@
 	--vh-transition-base: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 	--vh-transition-slow: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
+	// ===== 字体族 =====
+	// 正文字体（楷体阅读面）、标题衬线、等宽标签/代码 —— 三族合一册手册的排版嗓音
+	--vh-font-body: 'LXGW WenKai Screen', 'LXGW WenKai', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--vh-font-serif: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+	--vh-font-mono: 'Maple Mono CN', 'Maple Mono', 'SF Mono', 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Consolas', 'Monaco', 'Menlo', ui-monospace, monospace;
+
 	// Back Top 按钮位置
 	--vh-back-top: calc((calc(100vw - 2rem) - min((100vw - 2rem), var(--vh-main-max-width))) / 2 + 1rem);
 
 	// 字体颜色 alpha 变体
 	--vh-font-88: rgb(from var(--vh-font-color) r g b / 88%);
-	// 次要文本下限 66%：白色背景对比度约 4.7:1，满足 WCAG AA
+	// 次要文本下限 66%：纸面上对比度约 4.6:1，满足 WCAG AA
 	--vh-font-66: rgb(from var(--vh-font-color) r g b / 66%);
 	--vh-font-36: rgb(from var(--vh-font-color) r g b / 36%);
 	--vh-font-16: rgb(from var(--vh-font-color) r g b / 16%);
@@ -79,52 +91,52 @@
 	--vh-info: #3253b4;
 	--vh-info-hover: #3253b418;
 	--vh-info-56: rgb(from var(--vh-info) r g b / 56%);
-	--vh-success: #01C4B6;
-	--vh-success-hover: #01C4B618;
+	--vh-success: #1c7a52;
+	--vh-success-hover: #1c7a5218;
 	--vh-success-56: rgb(from var(--vh-success) r g b / 56%);
-	--vh-warning: #DD8636;
-	--vh-warning-hover: #DD863618;
+	--vh-warning: #a8620f;
+	--vh-warning-hover: #a8620f18;
 	--vh-warning-56: rgb(from var(--vh-warning) r g b / 56%);
-	--vh-error: #DE3C3D;
-	--vh-error-hover: #DE3C3D18;
+	--vh-error: #b8392c;
+	--vh-error-hover: #b8392c18;
 	--vh-error-56: rgb(from var(--vh-error) r g b / 56%);
-	--vh-import: #B984DF;
-	--vh-import-hover: #B984DF18;
+	--vh-import: #8a4bb0;
+	--vh-import-hover: #8a4bb018;
 	--vh-import-56: rgb(from var(--vh-import) r g b / 56%);
 
 	// ===== Component Accents =====
-	--vh-comment-accent: #7C7CB8;
+	--vh-comment-accent: #6d6a8a;
 
 	// 主题切换窗帘方向（切换到暗色时：从顶部向下揭示）
 	--vh-theme-reveal-from: 100% 0 0 0;
 }
 
 	// ============================================================
-	// Dark Mode
+	// Dark Mode — 同一册手册的夜读版本：深墨底 + 暖纸字 + 同一红青分工
 	// ============================================================
 	[data-theme="dark"] {
-		// —— 深夜蓝：nvie 的暗色基调 ——
-		--vh-white-color: #1a1a2e;
-		--vh-white-88: rgb(26 26 46 / 88%);
-		--vh-white-66: rgb(26 26 46 / 66%);
-		--vh-white-28: rgb(26 26 46 / 28%);
-		--vh-body-bg: #1a1a2e;
-		--vh-border-color: #34344e;
-		--vh-border-color-strong: #444462;
-		--vh-font-color: #d4d4e0;
-		// 暗色强调色取 nvie 的浅橙，链接取浅蓝
-		--vh-main-color: #f0923f;
-		--vh-link-color: #6a9fd8;
-		--vh-link-color-hover: #8ab8e8;
+		--vh-white-color: #1f1d1a;
+		--vh-white-88: rgb(31 29 26 / 88%);
+		--vh-white-66: rgb(31 29 26 / 66%);
+		--vh-white-28: rgb(31 29 26 / 28%);
+		--vh-body-bg: #1a1815;
+		--vh-panel-bg: #24211d;
+		--vh-border-color: #3a352d;
+		--vh-border-color-strong: #4d473c;
+		--vh-font-color: #e6e0d4;
+		// 暗色下强调色取更亮的红，链接取更亮的青
+		--vh-main-color: #e0776a;
+		--vh-link-color: #6fb8d4;
+		--vh-link-color-hover: #97cee4;
 
-		--vh-code-bg: #0f0f23;
-		--vh-code-border: #2a2a44;
-		--vh-quote-bg: #22223a;
-		--vh-quote-border: #2e2e4a;
+		--vh-code-bg: #141210;
+		--vh-code-border: #332e27;
+		--vh-quote-bg: #24211d;
+		--vh-quote-border: #332e27;
 
-		// nvie：暗色下图片自带底色与内边距，避免深色截图边缘融进页面
-		--vh-img-bg: #2e2e4a;
-		--vh-img-radius: 6px;
+		// 暗色下图片自带底色与内边距，避免深色截图边缘融进页面
+		--vh-img-bg: #24211d;
+		--vh-img-radius: 4px;
 		--vh-img-padding: 8px;
 		--vh-img-border: 1px solid transparent;
 
@@ -179,9 +191,6 @@
 		}
 	}
 
-// 注：原「暗色环境光晕」依赖标题卡的实色底（背景泛光铺在卡片上）。
-// 报头/文章头改为无底色的细线分节后，泛光会落到透明区域形成游离的橙色色块，故一并移除。
-
 // ===================================================================== Base Elements
 
 *,
@@ -203,7 +212,7 @@
 	box-shadow: 0 0 0 1px var(--vh-main-color-28);
 }
 
-// 设置文本选中颜色
+// 设置文本选中颜色 — 手册的红
 ::selection {
 	color: #fff;
 	background: var(--vh-main-color-88);
@@ -248,9 +257,9 @@ html {
 		width: 100vw;
 		height: max-content;
 		color: var(--vh-font-color);
-		font-family: 'LXGW WenKai Screen', 'LXGW WenKai', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-family: var(--vh-font-body);
 		font-weight: 400;
-		// 正文节奏（参考 nvie）：桌面端略放大字号，行高按中文习惯放宽
+		// 正文节奏：桌面端略放大字号，行高按中文习惯放宽
 		font-size: 1rem;
 		line-height: 1.8;
 		background-color: var(--vh-body-bg);
@@ -280,7 +289,17 @@ img {
 // 代码字体
 pre,
 code {
-	font-family: 'Maple Mono CN', 'Maple Mono', 'SF Mono', 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Consolas', 'Monaco', 'Menlo', ui-monospace, monospace !important;
+	font-family: var(--vh-font-mono) !important;
+}
+
+// 手册的小标签：等宽、大写、字距 — 全站统一的“手册声部”
+.vh-label {
+	font-family: var(--vh-font-mono);
+	font-size: 0.7rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--vh-font-66);
 }
 
 a {

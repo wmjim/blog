@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-04T16:45:00+00:00",
+  "title": "Design System: Void — Pocket Reference",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Warm Paper", "canonical": "oklch(99.5% 0.008 88)", "tonalRamp": ["oklch(15% 0.008 88)", "oklch(27% 0.008 88)", "oklch(39% 0.008 88)", "oklch(51% 0.008 88)", "oklch(63% 0.008 88)", "oklch(75% 0.008 88)", "oklch(86% 0.008 88)", "oklch(95% 0.008 88)"] },
+      "panel": { "role": "neutral", "displayName": "Cream Panel", "canonical": "oklch(95.5% 0.014 90)", "tonalRamp": ["oklch(15% 0.014 90)", "oklch(27% 0.014 90)", "oklch(39% 0.014 90)", "oklch(51% 0.014 90)", "oklch(63% 0.014 90)", "oklch(75% 0.014 90)", "oklch(86% 0.014 90)", "oklch(95% 0.014 90)"] },
+      "code-surface": { "role": "neutral", "displayName": "Code Cream", "canonical": "oklch(96.7% 0.013 95)", "tonalRamp": ["oklch(15% 0.013 95)", "oklch(27% 0.013 95)", "oklch(39% 0.013 95)", "oklch(51% 0.013 95)", "oklch(63% 0.013 95)", "oklch(75% 0.013 95)", "oklch(86% 0.013 95)", "oklch(95% 0.013 95)"] },
+      "ink": { "role": "neutral", "displayName": "Manual Ink", "canonical": "oklch(27% 0.012 75)", "tonalRamp": ["oklch(15% 0.012 75)", "oklch(27% 0.012 75)", "oklch(39% 0.012 75)", "oklch(51% 0.012 75)", "oklch(63% 0.012 75)", "oklch(75% 0.012 75)", "oklch(86% 0.012 75)", "oklch(95% 0.012 75)"] },
+      "barn-red": { "role": "primary", "displayName": "Barn Red Bookstamp", "canonical": "oklch(50% 0.16 30)", "tonalRamp": ["oklch(15% 0.16 30)", "oklch(27% 0.16 30)", "oklch(39% 0.16 30)", "oklch(50% 0.16 30)", "oklch(62% 0.16 30)", "oklch(74% 0.16 30)", "oklch(86% 0.16 30)", "oklch(95% 0.16 30)"] },
+      "link-teal": { "role": "secondary", "displayName": "Teal Link Ink", "canonical": "oklch(51% 0.09 226)", "tonalRamp": ["oklch(15% 0.09 226)", "oklch(27% 0.09 226)", "oklch(39% 0.09 226)", "oklch(51% 0.09 226)", "oklch(63% 0.09 226)", "oklch(75% 0.09 226)", "oklch(86% 0.09 226)", "oklch(95% 0.09 226)"] },
+      "link-teal-hover": { "role": "secondary", "displayName": "Teal Link (Deep)", "canonical": "oklch(40% 0.075 226)", "tonalRamp": ["oklch(15% 0.075 226)", "oklch(27% 0.075 226)", "oklch(39% 0.075 226)", "oklch(51% 0.075 226)", "oklch(63% 0.075 226)", "oklch(75% 0.075 226)", "oklch(86% 0.075 226)", "oklch(95% 0.075 226)"] },
+      "hairline": { "role": "neutral", "displayName": "Hairline", "canonical": "oklch(87.5% 0.018 93)", "tonalRamp": ["oklch(15% 0.018 93)", "oklch(27% 0.018 93)", "oklch(39% 0.018 93)", "oklch(51% 0.018 93)", "oklch(63% 0.018 93)", "oklch(75% 0.018 93)", "oklch(86% 0.018 93)", "oklch(95% 0.018 93)"] },
+      "hairline-strong": { "role": "neutral", "displayName": "Hairline Strong", "canonical": "oklch(79% 0.025 93)", "tonalRamp": ["oklch(15% 0.025 93)", "oklch(27% 0.025 93)", "oklch(39% 0.025 93)", "oklch(51% 0.025 93)", "oklch(63% 0.025 93)", "oklch(75% 0.025 93)", "oklch(86% 0.025 93)", "oklch(95% 0.025 93)"] },
+      "semantic-info": { "role": "tertiary", "displayName": "Note Blue", "canonical": "oklch(46% 0.16 265)", "tonalRamp": ["oklch(15% 0.16 265)", "oklch(27% 0.16 265)", "oklch(39% 0.16 265)", "oklch(51% 0.16 265)", "oklch(63% 0.16 265)", "oklch(75% 0.16 265)", "oklch(86% 0.16 265)", "oklch(95% 0.16 265)"] },
+      "semantic-success": { "role": "tertiary", "displayName": "Note Green", "canonical": "oklch(52% 0.12 158)", "tonalRamp": ["oklch(15% 0.12 158)", "oklch(27% 0.12 158)", "oklch(39% 0.12 158)", "oklch(51% 0.12 158)", "oklch(63% 0.12 158)", "oklch(75% 0.12 158)", "oklch(86% 0.12 158)", "oklch(95% 0.12 158)"] },
+      "semantic-warning": { "role": "tertiary", "displayName": "Note Amber", "canonical": "oklch(55% 0.13 65)", "tonalRamp": ["oklch(15% 0.13 65)", "oklch(27% 0.13 65)", "oklch(39% 0.13 65)", "oklch(51% 0.13 65)", "oklch(63% 0.13 65)", "oklch(75% 0.13 65)", "oklch(86% 0.13 65)", "oklch(95% 0.13 65)"] },
+      "semantic-import": { "role": "tertiary", "displayName": "Note Violet", "canonical": "oklch(52% 0.16 305)", "tonalRamp": ["oklch(15% 0.16 305)", "oklch(27% 0.16 305)", "oklch(39% 0.16 305)", "oklch(51% 0.16 305)", "oklch(63% 0.16 305)", "oklch(75% 0.16 305)", "oklch(86% 0.16 305)", "oklch(95% 0.16 305)"] },
+      "night-ground": { "role": "neutral", "displayName": "Night Ground", "canonical": "oklch(15% 0.01 75)", "tonalRamp": ["oklch(15% 0.01 75)", "oklch(27% 0.01 75)", "oklch(39% 0.01 75)", "oklch(51% 0.01 75)", "oklch(63% 0.01 75)", "oklch(75% 0.01 75)", "oklch(86% 0.01 75)", "oklch(95% 0.01 75)"] },
+      "night-paper": { "role": "neutral", "displayName": "Night Paper Ink", "canonical": "oklch(90% 0.02 85)", "tonalRamp": ["oklch(15% 0.02 85)", "oklch(27% 0.02 85)", "oklch(39% 0.02 85)", "oklch(51% 0.02 85)", "oklch(63% 0.02 85)", "oklch(75% 0.02 85)", "oklch(86% 0.02 85)", "oklch(95% 0.02 85)"] },
+      "night-panel": { "role": "neutral", "displayName": "Night Panel", "canonical": "oklch(21% 0.012 75)", "tonalRamp": ["oklch(15% 0.012 75)", "oklch(27% 0.012 75)", "oklch(39% 0.012 75)", "oklch(51% 0.012 75)", "oklch(63% 0.012 75)", "oklch(75% 0.012 75)", "oklch(86% 0.012 75)", "oklch(95% 0.012 75)"] },
+      "night-code-surface": { "role": "neutral", "displayName": "Night Code", "canonical": "oklch(12% 0.008 70)", "tonalRamp": ["oklch(15% 0.008 70)", "oklch(27% 0.008 70)", "oklch(39% 0.008 70)", "oklch(51% 0.008 70)", "oklch(63% 0.008 70)", "oklch(75% 0.008 70)", "oklch(86% 0.008 70)", "oklch(95% 0.008 70)"] },
+      "night-hairline": { "role": "neutral", "displayName": "Night Hairline", "canonical": "oklch(28% 0.015 80)", "tonalRamp": ["oklch(15% 0.015 80)", "oklch(27% 0.015 80)", "oklch(39% 0.015 80)", "oklch(51% 0.015 80)", "oklch(63% 0.015 80)", "oklch(75% 0.015 80)", "oklch(86% 0.015 80)", "oklch(95% 0.015 80)"] },
+      "night-barn-red": { "role": "primary", "displayName": "Night Bookstamp Red", "canonical": "oklch(66% 0.13 30)", "tonalRamp": ["oklch(15% 0.13 30)", "oklch(27% 0.13 30)", "oklch(39% 0.13 30)", "oklch(51% 0.13 30)", "oklch(63% 0.13 30)", "oklch(75% 0.13 30)", "oklch(86% 0.13 30)", "oklch(95% 0.13 30)"] },
+      "night-link-teal": { "role": "secondary", "displayName": "Night Link Teal", "canonical": "oklch(73% 0.08 220)", "tonalRamp": ["oklch(15% 0.08 220)", "oklch(27% 0.08 220)", "oklch(39% 0.08 220)", "oklch(51% 0.08 220)", "oklch(63% 0.08 220)", "oklch(75% 0.08 220)", "oklch(86% 0.08 220)", "oklch(95% 0.08 220)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Masthead", "purpose": "Site name in the masthead only; ink serif, one true weight (600)." },
+      "headline": { "displayName": "Chapter Title", "purpose": "Article h1 and body h1; ink serif." },
+      "title": { "displayName": "Section Title", "purpose": "h2 (earns § + hairline), h3/h4, and list-card titles." },
+      "body": { "displayName": "Reading Face", "purpose": "Kai body text; 46rem measure, lh 1.8." },
+      "label": { "displayName": "Micro-Label", "purpose": "Mono uppercase tracking: categories, side headings, badges." },
+      "mono": { "displayName": "Code / Data", "purpose": "Code blocks, metadata, dates, tags." }
+    },
+    "shadows": [
+      { "name": "content-none", "value": "none", "purpose": "Every in-flow content surface: list entries, callouts, code, tables, cards. The manual is flat." },
+      { "name": "overlay-drawer", "value": "-8px 0 32px rgba(0,0,0,0.12)", "purpose": "Mobile TOC drawer only — a layer floating above the page." },
+      { "name": "overlay-search", "value": "0 12px 40px rgba(0,0,0,0.15)", "purpose": "Full-screen search panel only." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Default easing for all state transitions." },
+      { "name": "transition-fast", "value": "0.15s cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Hover color/opacity on small controls (TOC entries, search rows)." },
+      { "name": "transition-base", "value": "0.2s cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Default component state transition." },
+      { "name": "transition-slow", "value": "0.3s cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Drawer slide and larger surface transitions." },
+      { "name": "theme-reveal", "value": "0.4s cubic-bezier(0.6, 0, 0.4, 1)", "purpose": "View-transition curtain when switching light/dark." },
+      { "name": "enter", "value": "0.25s vh-init-show cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "First-load rise of page content." }
+    ],
+    "breakpoints": [
+      { "name": "xs", "value": "556px" },
+      { "name": "sm", "value": "768px" },
+      { "name": "aside-collapse", "value": "888px" },
+      { "name": "article-type", "value": "999px" },
+      { "name": "toc-collapse", "value": "1150px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Running Head",
+      "kind": "nav",
+      "refersTo": "article-card",
+      "description": "Sticky header as the manual's running head: paper + frosted blur, hairline bottom, 2px barn-red binding line at its base.",
+      "html": "<header class=\"ds-running-head\"><a href=\"#\" class=\"ds-brand\"><span class=\"ds-brand-mark\"></span>VOID</a><nav class=\"ds-nav\"><a href=\"#\" class=\"ds-nav-link ds-nav-link--active\">归档</a><a href=\"#\" class=\"ds-nav-link\">分类</a><a href=\"#\" class=\"ds-nav-link\">标签</a></nav></header>",
+      "css": ".ds-running-head{display:flex;align-items:center;justify-content:space-between;box-sizing:border-box;height:3.5rem;padding:0 1.25rem;background:var(--vh-white-88,rgba(255,253,248,.88));backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--vh-border-color,#ddd8c8);box-shadow:inset 0 -3px 0 -1px var(--vh-main-color,#b8392c);font-family:var(--vh-font-mono,'Maple Mono CN',ui-monospace,monospace);} .ds-brand{display:inline-flex;align-items:center;gap:.55rem;font-weight:700;font-size:.92rem;letter-spacing:.22em;text-transform:uppercase;color:var(--vh-font-color,#2b2721);text-decoration:none;} .ds-brand:hover{color:var(--vh-main-color,#b8392c);} .ds-brand-mark{width:.5rem;height:.5rem;background:var(--vh-main-color,#b8392c);} .ds-nav{display:flex;align-items:center;gap:1.4rem;} .ds-nav-link{position:relative;font-size:.76rem;letter-spacing:.08em;color:var(--vh-link-color,#1f6f8f);text-decoration:none;transition:color .25s cubic-bezier(.4,0,.2,1);} .ds-nav-link:hover{color:var(--vh-link-color-hover,#174f68);} .ds-nav-link--active{font-weight:700;color:var(--vh-main-color,#b8392c);box-shadow:inset 0 -1px 0 var(--vh-main-color,#b8392c);}"
+    },
+    {
+      "name": "Masthead",
+      "kind": "custom",
+      "refersTo": "article-card",
+      "description": "The cover-page stamp: bookstamp rule + red top mark, serif site name, 66% ink tagline.",
+      "html": "<header class=\"ds-masthead\"><h1 class=\"ds-masthead-title\"><a href=\"#\">Void</a></h1><p class=\"ds-masthead-tagline\">记录学习、感想与生活点滴</p></header>",
+      "css": ".ds-masthead{position:relative;box-sizing:border-box;display:flex;flex-direction:column;max-width:46rem;padding:1.5rem 0 1.25rem;border-top:2px solid var(--vh-font-color,#2b2721);border-bottom:1px solid var(--vh-border-color,#ddd8c8);} .ds-masthead::before{content:'';position:absolute;top:0;left:0;width:2.75rem;height:.28rem;background:var(--vh-main-color,#b8392c);} .ds-masthead-title{margin:0;font-family:var(--vh-font-serif,'Noto Serif SC',serif);font-size:1.8rem;font-weight:600;line-height:1.16;letter-spacing:0;color:var(--vh-font-color,#2b2721);} .ds-masthead-title a{color:inherit;text-decoration:none;transition:color .2s cubic-bezier(.4,0,.2,1);} .ds-masthead-title a:hover{color:var(--vh-main-color,#b8392c);} .ds-masthead-tagline{margin:0;padding-top:.5rem;font-size:.95rem;font-weight:400;line-height:1.6;color:var(--vh-font-66,rgba(43,39,33,.66));}"
+    },
+    {
+      "name": "Article Header with Metadata Band",
+      "kind": "custom",
+      "refersTo": "article-meta",
+      "description": "Chapter opening: bookstamp, ink serif h1, monospace metadata band with hairline ticks.",
+      "html": "<header class=\"ds-article-head\"><h1>在 NixOS 上搭建多系统开发环境</h1><div class=\"ds-article-meta\"><a class=\"ds-meta-item\" href=\"#\">NixOS</a><span class=\"ds-meta-item\">2026-10-04</span><span class=\"ds-meta-item\">3,240 字</span><span class=\"ds-meta-item\">12 min</span></div></header>",
+      "css": ".ds-article-head{position:relative;box-sizing:border-box;display:flex;flex-direction:column;gap:.85rem;padding:1.1rem 0 1rem;border-top:2px solid var(--vh-font-color,#2b2721);border-bottom:1px solid var(--vh-border-color,#ddd8c8);} .ds-article-head::before{content:'';position:absolute;top:0;left:0;width:3rem;height:.28rem;background:var(--vh-main-color,#b8392c);} .ds-article-head h1{margin:0;font-family:var(--vh-font-serif,'Noto Serif SC',serif);font-size:1.8rem;font-weight:600;line-height:1.24;letter-spacing:0;color:var(--vh-font-color,#2b2721);} .ds-article-meta{display:flex;flex-wrap:wrap;align-items:center;font-family:var(--vh-font-mono,'Maple Mono CN',ui-monospace,monospace);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--vh-font-66,rgba(43,39,33,.66));} .ds-meta-item{display:flex;align-items:center;color:inherit;} .ds-meta-item:not(:last-child)::after{content:'';width:1px;height:.7rem;margin:0 .75rem;background:var(--vh-border-color-strong,#c7c1ad);} a.ds-meta-item{color:var(--vh-main-color,#b8392c);text-decoration:none;transition:color .2s cubic-bezier(.4,0,.2,1);} a.ds-meta-item:hover{color:var(--vh-link-color,#1f6f8f);}"
+    },
+    {
+      "name": "Catalog Entry (Article Card)",
+      "kind": "card",
+      "refersTo": "article-card",
+      "description": "A list entry, not a card: hairline-separated row with red mono category, serif title, mono date, 66% excerpt, tag list.",
+      "html": "<article class=\"ds-entry\"><a href=\"#\" class=\"ds-entry-cat\">NixOS</a><header><h2 class=\"ds-entry-title\"><a href=\"#\">用 Termux 搭一套 Android 开发环境</a></h2><time>2026-10-04</time></header><p class=\"ds-entry-excerpt\">从零准备一个可复现的移动端工具链，记录踩过的坑与最终方案。</p><div class=\"ds-entry-tags\"><a href=\"#\">#android</a><a href=\"#\">#termux</a></div></article>",
+      "css": ".ds-entry{position:relative;box-sizing:border-box;padding:1.5rem 0;border-top:1px solid var(--vh-border-color,#ddd8c8);} .ds-entry::before{content:'';position:absolute;left:-.85rem;top:1.75rem;width:.3rem;height:.3rem;background:var(--vh-main-color,#b8392c);opacity:0;transition:opacity .2s cubic-bezier(.4,0,.2,1);} .ds-entry:hover::before{opacity:1;} .ds-entry-cat{display:inline-block;margin-bottom:.5rem;font-family:var(--vh-font-mono,'Maple Mono CN',ui-monospace,monospace);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--vh-main-color,#b8392c);text-decoration:none;transition:color .2s cubic-bezier(.4,0,.2,1);} .ds-entry-cat:hover{color:var(--vh-link-color,#1f6f8f);} .ds-entry header{font-size:0;} .ds-entry-title{display:inline;margin:0;font-family:var(--vh-font-serif,'Noto Serif SC',serif);font-size:1.375rem;font-weight:600;line-height:1.45;letter-spacing:0;color:var(--vh-font-color,#2b2721);} .ds-entry-title a{color:inherit;text-decoration:none;} .ds-entry-title a:hover{color:var(--vh-link-color,#1f6f8f);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px;} .ds-entry time{margin-left:.625rem;font-family:var(--vh-font-mono,'Maple Mono CN',ui-monospace,monospace);font-size:.75rem;color:var(--vh-font-66,rgba(43,39,33,.66));white-space:nowrap;} .ds-entry-excerpt{margin:.5rem 0 0;font-size:.95rem;line-height:1.75;color:var(--vh-font-66,rgba(43,39,33,.66));} .ds-entry-tags{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:.7rem;} .ds-entry-tags a{font-family:var(--vh-font-mono,'Maple Mono CN',ui-monospace,monospace);font-size:.72rem;letter-spacing:.03em;color:var(--vh-font-66,rgba(43,39,33,.66));text-decoration:none;transition:color .2s cubic-bezier(.4,0,.2,1);} .ds-entry-tags a:hover{color:var(--vh-link-color,#1f6f8f);}"
+    },
+    {
+      "name": "Callout (Margin Note)",
+      "kind": "custom",
+      "refersTo": "callout",
+      "description": "Cream panel with a top accent bar (never a left color bar), colored by type; icon mask in the accent color.",
+      "html": "<div class=\"ds-callout ds-callout--info\"><p class=\"ds-callout-title\">提示</p><p class=\"ds-callout-body\">先跑 nix flake check，再执行切换。</p></div>",
+      "css": ".ds-callout{--ds-accent:var(--vh-info,#3253b4);position:relative;box-sizing:border-box;display:flex;flex-direction:column;gap:.3rem;padding:.9rem 1.05rem;border:1px solid var(--vh-border-color,#ddd8c8);border-radius:2px;background:var(--vh-panel-bg,#f4f1e9);} .ds-callout::before{content:'';position:absolute;top:-1px;left:-1px;width:2.25rem;height:2px;background:var(--ds-accent);} .ds-callout--info{--ds-accent:var(--vh-info,#3253b4);} .ds-callout--success{--ds-accent:var(--vh-success,#1c7a52);} .ds-callout--warning{--ds-accent:var(--vh-warning,#a8620f);} .ds-callout--error{--ds-accent:var(--vh-error,#b8392c);} .ds-callout-title{display:flex;align-items:center;gap:.5rem;margin:0 0 .25rem;font-size:.875rem;font-weight:600;line-height:1.5;color:var(--ds-accent);} .ds-callout-title::before{content:'';flex-shrink:0;width:1rem;height:1rem;background:currentColor;} .ds-callout-body{margin:0;font-size:.875rem;line-height:1.6;color:var(--vh-font-66,rgba(43,39,33,.66));}"
+    },
+    {
+      "name": "Code Block",
+      "kind": "custom",
+      "refersTo": "code-block",
+      "description": "Cream code panel with hairline border, gutter rule and line numbers, and a top-right copy affordance.",
+      "html": "<section class=\"ds-code-box\"><span class=\"ds-code-copy\" aria-hidden=\"true\"></span><pre class=\"ds-code\"><code><span>nix flake check</span>\n<span>sudo nixos-rebuild switch --flake .#host</span></code></pre></section>",
+      "css": ".ds-code-box{position:relative;margin:1rem 0;font-family:var(--vh-font-mono,'Maple Mono CN',ui-monospace,monospace);} .ds-code{box-sizing:border-box;margin:0;padding:1rem 1.125rem;border:1px solid var(--vh-code-border,#ddd8c8);border-radius:3px;background:var(--vh-code-bg,#f7f5ee);overflow:auto;} .ds-code code{display:block;font-size:.875rem;line-height:1.75;color:var(--vh-font-88,rgba(43,39,33,.88));} .ds-code code span{display:block;} .ds-code-copy{position:absolute;right:.5rem;top:.5rem;width:1.75rem;height:1.75rem;border:1px solid rgba(125,125,125,.15);border-radius:2px;background:rgba(125,125,125,.1);cursor:pointer;opacity:.45;transition:opacity .2s cubic-bezier(.4,0,.2,1);} .ds-code-copy:hover{opacity:1;}"
+    },
+    {
+      "name": "Tag Chip",
+      "kind": "chip",
+      "refersTo": "tag-chip",
+      "description": "Square index-term chip; on hover it inverts to a solid barn-red fill with white text.",
+      "html": "<a href=\"#\" class=\"ds-tag\">#nixos</a>",
+      "css": ".ds-tag{box-sizing:border-box;padding:.28rem .65rem;display:inline-flex;align-items:center;border:1px solid var(--vh-border-color-strong,#c7c1ad);border-radius:2px;font-family:var(--vh-font-mono,'Maple Mono CN',ui-monospace,monospace);font-size:.72rem;letter-spacing:.04em;color:var(--vh-font-66,rgba(43,39,33,.66));text-decoration:none;transition:color .2s cubic-bezier(.4,0,.2,1),border-color .2s cubic-bezier(.4,0,.2,1),background-color .2s cubic-bezier(.4,0,.2,1);} .ds-tag:hover{color:#fff;border-color:var(--vh-main-color,#b8392c);background:var(--vh-main-color,#b8392c);} .ds-tag:focus-visible{outline:3px solid var(--vh-main-color-56,rgba(184,57,44,.56));outline-offset:2px;}"
+    },
+    {
+      "name": "TOC Rail (Thumb Index)",
+      "kind": "nav",
+      "refersTo": "article-meta",
+      "description": "Thumb-index rail: red mono title with a hairline to the edge, level-indented entries, red bookmark square on active.",
+      "html": "<nav class=\"ds-toc\"><p class=\"ds-toc-title\">目录</p><ul class=\"ds-toc-list\"><li class=\"ds-toc-item ds-toc-level-2\"><a href=\"#\" class=\"ds-active\">环境准备</a></li><li class=\"ds-toc-item ds-toc-level-3\"><a href=\"#\">安装依赖</a></li><li class=\"ds-toc-item ds-toc-level-2\"><a href=\"#\">清理与复盘</a></li></ul></nav>",
+      "css": ".ds-toc{width:280px;display:flex;flex-direction:column;} .ds-toc-title{display:flex;align-items:center;gap:.625rem;margin:0 0 .75rem;padding-left:.75rem;font-family:var(--vh-font-mono,'Maple Mono CN',ui-monospace,monospace);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--vh-main-color,#b8392c);} .ds-toc-title::after{content:'';flex:1;height:1px;background:var(--vh-border-color,#ddd8c8);} .ds-toc-list{display:flex;flex-direction:column;margin:0;padding:0;list-style:none;} .ds-toc-item>a{position:relative;display:block;padding:.375rem .625rem .375rem .75rem;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none;color:var(--vh-font-88,rgba(43,39,33,.88));transition:color .15s cubic-bezier(.4,0,.2,1);} .ds-toc-item>a::before{content:'';position:absolute;left:0;top:50%;width:.32rem;height:.32rem;transform:translateY(-50%) scale(0);background:var(--vh-main-color,#b8392c);transition:transform .2s cubic-bezier(.4,0,.2,1);} .ds-toc-item>a:hover{color:var(--vh-main-color,#b8392c);} .ds-toc-item>a.ds-active{color:var(--vh-main-color,#b8392c);} .ds-toc-item>a.ds-active::before{transform:translateY(-50%) scale(1);} .ds-toc-level-2>a{font-size:.82rem;font-weight:500;} .ds-toc-level-3{padding-left:1.125rem;} .ds-toc-level-3>a{font-size:.78rem;font-weight:400;color:var(--vh-font-66,rgba(43,39,33,.66));}"
+    },
+    {
+      "name": "Pagination",
+      "kind": "nav",
+      "refersTo": "pagination-item",
+      "description": "Square-ish page tiles; hover tints the border red and lifts 1px; active is a solid red tile.",
+      "html": "<nav class=\"ds-pagination\"><a href=\"#\" class=\"ds-page\">1</a><a href=\"#\" class=\"ds-page ds-page--active\">2</a><a href=\"#\" class=\"ds-page ds-page--disabled\">3</a></nav>",
+      "css": ".ds-pagination{display:flex;align-items:center;justify-content:center;gap:.5rem;} .ds-page{display:flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;border:1px solid var(--vh-border-color,#ddd8c8);border-radius:3px;background:var(--vh-white-color,#fffdf8);font-size:.875rem;font-weight:500;color:var(--vh-font-66,rgba(43,39,33,.66));text-decoration:none;transition:all .2s cubic-bezier(.4,0,.2,1);} .ds-page:hover{color:var(--vh-main-color,#b8392c);border-color:var(--vh-main-color-28,rgba(184,57,44,.28));background:var(--vh-main-color-6,rgba(184,57,44,.06));transform:translateY(-1px);} .ds-page--active{background:var(--vh-main-color,#b8392c);border-color:var(--vh-main-color,#b8392c);color:var(--vh-white-color,#fffdf8);font-weight:600;pointer-events:none;} .ds-page--disabled{opacity:.25;pointer-events:none;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Pocket Reference",
+    "overview": "The whole blog is one narrow O'Reilly Nutshell-style pocket technical manual. Every page is a spread from the same book: warm paper ground, ink body, a barn-red bookstamp, monospace micro-labels, and hairlines doing all the structural work. Nothing is a \"card\"; a post is a numbered catalog entry, a section is a bookstamp-ruled chapter, a callout is a margin note in a cream panel.\n\nThe world refuses the personal-blog default of centered single column plus avatar header plus card grid. Identity comes from the book's binding vocabulary instead — a hairline masthead, a running head stamped VOID in uppercase mono, red § section marks, and an index-style table of contents rail. Removal of the site name should still read as the same manual.\n\nDensity is reading-first: prose is the product, hierarchy is carried by type and whitespace, and every decorative element must double as a wayfinding device. Depth is not simulated on content — no card shadows — but floating layers (search overlay, mobile drawer) are allowed a single soft shadow because they must detach from the page.",
+    "keyCharacteristics": [
+      "Warm paper #fffdf8 ground and cream #f4f1e9 panels; ink #2b2721 body set at runtime.",
+      "Barn red #b8392c is a markup ink, never a surface: category labels, § marks, side headings, bookstamp, bookmark squares.",
+      "Hairlines (#ddd8c8 / #c7c1ad) plus the 2px-ink-over-1px-hairline \"bookstamp\" as the only section device.",
+      "Monospace micro-labels: uppercase, ~0.14em tracking, 600–700 weight.",
+      "Flat content surfaces, near-square radii (2px / 3px), no shadow on any content element."
+    ],
+    "rules": [
+      { "name": "The Markup-Ink Rule", "body": "Barn red is ink, not paint. It appears only on labels, § marks, side headings, the binding rule, and bookmark marks — never as a filled surface, never on body text. If red is covering more than the marks, it is wrong.", "section": "colors" },
+      { "name": "The Two-Inks Rule", "body": "Red marks structure; teal marks interactivity. Body links and nav adopt teal; the moment a mark is a destination, red yields to teal on hover.", "section": "colors" },
+      { "name": "The No-Gray-Secondary Rule", "body": "Secondary text is ink at 66% (rgb(from var(--vh-font-color) r g b / 66%)), never a neutral gray — secondary text stays warm-toned paper ink.", "section": "colors" },
+      { "name": "The Serif-For-Heading Rule", "body": "Headings and post titles are Noto Serif SC at weight 600 only — the self-hosted subset carries just one true weight, so hierarchy steps by size, never by weight.", "section": "typography" },
+      { "name": "The Zero-Tracking Rule", "body": "Chinese serif headings set letter-spacing: 0. Negative tracking is for Latin word-shapes; on Song characters it cramps the face.", "section": "typography" },
+      { "name": "The Mono-Is-Not-Costume Rule", "body": "Monospace is used for real code, dates, tags, and measurement labels — the manual's printed apparatus. It is never used to make a headline \"look technical.\"", "section": "typography" },
+      { "name": "The Flat-At-Rest Rule", "body": "Content surfaces never cast a shadow, at rest or on hover. Hover is answered with a hairline color shift, a red dot, or a background tint — not with lift.", "section": "elevation" },
+      { "name": "The Shadow-Means-Floating Rule", "body": "A shadow may appear only when the element is physically above the page (modal, drawer, sticky frosted bar). If it lives in the reading flow, it gets a hairline instead.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the reading column at 46rem and center it, so list, masthead, and article share one measure.",
+      "Do open every major section with the bookstamp — 2px ink top rule + 1px hairline bottom + short red top-left mark.",
+      "Do set every micro-label in Maple Mono CN, uppercase, 0.14em tracking (0.7rem).",
+      "Do use barn red strictly as markup ink: labels, § marks, side headings, binding line, bookmark squares.",
+      "Do convey grouping with hairlines and cream-vs-paper tonal shifts; content shadows stay none.",
+      "Do set secondary text as ink at 66%, not gray.",
+      "Do use 2px / 3px radii, reserving circles for genuinely circular controls."
+    ],
+    "donts": [
+      "Don't put a shadow on any in-flow content surface; a shadow means the element is floating.",
+      "Don't fill a large surface with barn red, or set body text in it — red marks, teal interacts.",
+      "Don't use a colored border-left/border-right bar on callouts, quotes, or list items; callouts use a top accent bar.",
+      "Don't introduce card containers, thumbnails, or rounded-card silhouettes into the list — entries are hairline-separated rows.",
+      "Don't put a kicker or eyebrow above a heading; let the serif heading carry its own weight.",
+      "Don't tighten letter-spacing on Chinese serif headings (keep letter-spacing: 0).",
+      "Don't step heading hierarchy by font weight — the serif subset has one weight (600); step by size."
+    ]
+  }
+}

@@ -40,7 +40,9 @@ main.main {
 }
 
 // ============================================================
-// 站点报头 —— 参考 nvie.com：大号衬线站点名 + 灰色副标题 + 一条细线
+// 站点报头 —— Pocket Reference 的“封面页签”：
+// 顶部一条双线书标、左上角一枚书标红块、大号衬线书名（墨色）、
+// 副标题用墨色 66%（tail-ghost），不用中性灰。
 // 使用高特异性选择器，避免被 ArticleBase 的正文标题/段落排版规则覆盖
 // ============================================================
 main.main>.main-inner>.main-inner-content>.vh-masthead {
@@ -49,9 +51,23 @@ main.main>.main-inner>.main-inner-content>.vh-masthead {
 	flex-direction: column;
 	width: 100%;
 	max-width: 46rem;
-	padding: 1.75rem 0 1.25rem;
+	padding: 1.5rem 0 1.25rem;
 	margin-bottom: 1.75rem;
+	// 双线书标：2px 墨线 + 1px 发丝线，手册分节的标准动作
+	border-top: 2px solid var(--vh-font-color);
 	border-bottom: 1px solid var(--vh-border-color);
+	position: relative;
+
+	// 书标红块：书眉左上角一枚，手册的身份印
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 2.75rem;
+		height: 0.28rem;
+		background-color: var(--vh-main-color);
+	}
 
 	&>.vh-masthead-title {
 		display: block;
@@ -59,12 +75,12 @@ main.main>.main-inner>.main-inner-content>.vh-masthead {
 		width: auto;
 		margin: 0;
 		padding: 0;
-		font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
-		font-size: 1.75rem;
+		font-family: var(--vh-font-serif);
+		font-size: 1.8rem;
 		font-weight: 600;
-		line-height: 1.15;
+		line-height: 1.16;
 		letter-spacing: 0;
-		color: var(--vh-main-color);
+		color: var(--vh-font-color);
 
 		// 抵消 ArticleBase 给正文标题加的行内锚点
 		&::before {
@@ -76,7 +92,7 @@ main.main>.main-inner>.main-inner-content>.vh-masthead {
 			transition: color var(--vh-transition-base);
 
 			&:hover {
-				color: var(--vh-main-color-66);
+				color: var(--vh-main-color);
 			}
 		}
 	}
@@ -97,12 +113,11 @@ main.main>.main-inner>.main-inner-content>.vh-masthead {
 		padding: 1.5rem 2rem 2rem;
 	}
 
-	// nvie 的报头在桌面端明显放大
 	main.main>.main-inner>.main-inner-content>.vh-masthead {
-		padding: 2rem 0 1.5rem;
+		padding: 1.75rem 0 1.5rem;
 
 		&>.vh-masthead-title {
-			font-size: 2.5rem;
+			font-size: 2.35rem;
 			line-height: 1.1;
 		}
 

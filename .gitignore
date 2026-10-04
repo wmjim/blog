@@ -29,3 +29,10 @@ test/
   
 .vercel
 .env*
+
+# Impeccable 设计流程临时产物（保留 DESIGN.md 与 .impeccable/design.json 作为交付物）
+.impeccable/mocks/
+.impeccable/questions/
+.impeccable/review/
+.impeccable/config.local.json
+.impeccable/hook.cache.json

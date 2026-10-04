@@ -24,6 +24,7 @@ section.vh-archive-main {
         &>span {
           flex-shrink: 0;
           width: 5.05rem;
+          font-family: var(--vh-font-serif);
           color: var(--vh-font-color);
           font-size: 1.5rem;
           font-weight: 600;
@@ -63,18 +64,19 @@ section.vh-archive-main {
           }
         }
 
-        // 日期列
+        // 日期列 — 等宽小字，手册的页脚元数据
         &>.date {
           flex-shrink: 0;
           width: 5.05rem;
-          color: var(--vh-font-36);
-          font-size: 0.875rem;
-          font-weight: 500;
+          font-family: var(--vh-font-mono);
+          color: var(--vh-font-66);
+          font-size: 0.78rem;
+          font-weight: 400;
           font-style: normal;
           text-align: right;
         }
 
-        // 时间轴圆点 + 虚线
+        // 时间轴方标 + 虚线（书签方标替代圆点）
         &>i.dot {
           position: relative;
           flex-shrink: 0;
@@ -88,10 +90,9 @@ section.vh-archive-main {
             top: 50%;
             transform: translate(-50%, -50%);
             display: block;
-            width: 0.36rem;
-            height: 0.36rem;
-            border: solid 0.28rem var(--vh-font-36);
-            border-radius: 50%;
+            width: 0.4rem;
+            height: 0.4rem;
+            border: 1px solid var(--vh-border-color-strong);
             background-color: var(--vh-white-color);
             transition: all .3s;
           }
@@ -121,7 +122,8 @@ section.vh-archive-main {
           &>.title {
             flex: 1;
             min-width: 0;
-            color: var(--vh-main-color);
+            font-family: var(--vh-font-serif);
+            color: var(--vh-font-color);
             font-size: 1rem;
             font-weight: 600;
           }
@@ -130,7 +132,8 @@ section.vh-archive-main {
             flex-shrink: 0;
             margin-left: auto;
             padding-left: 0.75rem;
-            font-size: 0.8rem;
+            font-family: var(--vh-font-mono);
+            font-size: 0.72rem;
             color: var(--vh-font-66);
             font-weight: 400;
             white-space: nowrap;

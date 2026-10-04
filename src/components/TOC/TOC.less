@@ -11,7 +11,7 @@
 	flex-direction: column;
 	overflow: hidden;
 
-	// 分节标题与侧栏一致：小号大写 + 一条延伸到底的细线（不再用描边盒子）
+	// 分节标题：等宽大写小红标 + 一条延伸到底的细线（手册的页边小标题）
 	.vh-toc-title {
 		flex-shrink: 0;
 		display: flex;
@@ -22,11 +22,12 @@
 		padding-left: 0.75rem;
 		width: 100%;
 		margin: 0 0 0.75rem;
-		font-size: 0.72rem;
-		font-weight: 600;
-		color: var(--vh-font-66);
-		// 「目录」是中文，uppercase 无作用，只靠字距撑出小标题感
-		letter-spacing: 0.12em;
+		font-family: var(--vh-font-mono);
+		font-size: 0.7rem;
+		font-weight: 700;
+		color: var(--vh-main-color);
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
 		user-select: none;
 
 		&::after {
@@ -90,16 +91,15 @@
 			white-space: nowrap;
 			transition: color var(--vh-transition-fast);
 
-			// 左侧指示条 — 默认隐藏
+			// 左侧“书签”方标 — 当前节标记（替代被禁的 3px 色条）
 			&::before {
 				content: "";
 				position: absolute;
 				left: 0;
 				top: 50%;
-				transform: translateY(-50%) scaleY(0);
-				width: 3px;
-				height: 1em;
-				border-radius: 2px;
+				transform: translateY(-50%) scale(0);
+				width: 0.32rem;
+				height: 0.32rem;
 				background-color: var(--vh-main-color);
 				transition: transform var(--vh-transition-base);
 			}

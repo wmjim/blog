@@ -1,5 +1,6 @@
-// 文章列表 —— 参考 nvie.com 的文章流：
-// 不用卡片、不用缩略图、不用投影，靠衬线标题 + 行内日期 + 摘要形成节奏。
+// 文章列表 —— Pocket Reference 的“目录条目”：
+// 每条一篇手册条目：等宽红色分类标签 + 衬线墨色标题 + 等宽日期；
+// 不用卡片、不用缩略图、不用投影，靠发丝线在小节之间分栏。
 .article-list-main {
 	position: relative;
 	box-sizing: border-box;
@@ -12,7 +13,7 @@
 		box-sizing: border-box;
 		display: flex;
 		flex-direction: column;
-		gap: 2.5rem;
+		gap: 0;
 		width: 100%;
 
 		// 单篇条目
@@ -20,18 +21,45 @@
 			position: relative;
 			box-sizing: border-box;
 			width: 100%;
+			// 目录条目的分栏发丝线，第一条去掉（避免与报头底边重线）
+			border-top: 1px solid var(--vh-border-color);
+			padding: 1.5rem 0;
+
+			&:first-child {
+				border-top: none;
+				padding-top: 0.25rem;
+			}
 
 			// 置顶标记
 			&.active .vh-article-cat::after {
 				content: "置顶";
 				margin-left: 0.5rem;
 				padding: 0.05rem 0.35rem;
-				font-size: 0.62rem;
+				font-family: var(--vh-font-mono);
+				font-size: 0.6rem;
 				font-weight: 600;
+				letter-spacing: 0.08em;
 				line-height: 1.5;
-				color: var(--vh-white-color);
+				color: #fff;
 				background-color: var(--vh-main-color);
 				vertical-align: middle;
+			}
+
+			// 悬停时左侧浮现一枚书标红点，提示“可进入”
+			&::before {
+				content: "";
+				position: absolute;
+				left: -0.85rem;
+				top: 1.75rem;
+				width: 0.3rem;
+				height: 0.3rem;
+				background-color: var(--vh-main-color);
+				opacity: 0;
+				transition: opacity var(--vh-transition-base);
+			}
+
+			&:hover::before {
+				opacity: 1;
 			}
 		}
 	}
@@ -43,14 +71,16 @@
 		width: 100%;
 		min-width: 0;
 
-		// 分类：小号元数据标签，灰色，与文章页 meta 行统一（橙色让给标题）
+		// 分类：等宽大写红色标签，手册的分类索引
 		&>.vh-article-cat {
 			width: max-content;
 			margin-bottom: 0.5rem;
-			font-size: 0.75rem;
-			font-weight: 600;
-			letter-spacing: 0.06em;
-			color: var(--vh-font-66);
+			font-family: var(--vh-font-mono);
+			font-size: 0.7rem;
+			font-weight: 700;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: var(--vh-main-color);
 			transition: color var(--vh-transition-base);
 
 			&:hover {
@@ -58,7 +88,7 @@
 			}
 		}
 
-		// 标题与日期同行（nvie 的核心排版特征）
+		// 标题与日期同行（手册目录的排版特征）
 		&>header {
 			width: 100%;
 			font-size: 0;
@@ -68,13 +98,13 @@
 				// 覆写 ArticleBase 给正文标题的块级盒模型
 				width: auto;
 				margin: 0;
-				font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+				font-family: var(--vh-font-serif);
 				font-size: 1.375rem;
 				font-weight: 600;
 				line-height: 1.45;
 				letter-spacing: 0;
-				// 与文章页大标题同一「标题声部」：橙色；可点性交给 hover 下划线，不用色相表达
-				color: var(--vh-main-color);
+				// 目录条目标题：墨色，可点性交给 hover 下划线
+				color: var(--vh-font-color);
 				word-break: normal;
 				overflow-wrap: break-word;
 
@@ -86,6 +116,7 @@
 					color: inherit;
 
 					&:hover {
+						color: var(--vh-link-color);
 						text-decoration: underline;
 						text-underline-offset: 0.2em;
 						text-decoration-thickness: 1px;
@@ -95,7 +126,8 @@
 
 			time {
 				margin-left: 0.625rem;
-				font-size: 0.8125rem;
+				font-family: var(--vh-font-mono);
+				font-size: 0.75rem;
 				font-weight: 400;
 				white-space: nowrap;
 				color: var(--vh-font-66);
@@ -114,11 +146,13 @@
 		.vh-article-taglist {
 			display: flex;
 			flex-wrap: wrap;
-			gap: 0.75rem;
-			margin-top: 0.625rem;
+			gap: 0.85rem;
+			margin-top: 0.7rem;
 
 			a {
-				font-size: 0.78rem;
+				font-family: var(--vh-font-mono);
+				font-size: 0.72rem;
+				letter-spacing: 0.03em;
 				color: var(--vh-font-66);
 				transition: color var(--vh-transition-base);
 
@@ -132,7 +166,8 @@
 
 .vh-article-readtime {
 	margin-left: 0.625rem;
-	font-size: 0.8125rem;
+	font-family: var(--vh-font-mono);
+	font-size: 0.75rem;
 	font-weight: 400;
 	color: var(--vh-font-66);
 }
@@ -142,11 +177,8 @@
 // ========================================
 @media screen and (min-width: 768px) {
 	.article-list-main .article-list-card {
-		gap: 3rem;
-
 		.vh-article-body>.vh-article-cat {
-			margin-bottom: 0.625rem;
-			font-size: 0.78rem;
+			font-size: 0.72rem;
 		}
 
 		.vh-article-body>header .title {
@@ -157,8 +189,8 @@
 
 @media screen and (max-width: 556px) {
 	.article-list-main {
-		.article-list-card {
-			gap: 2rem;
+		.article-list-card .vh-article-item {
+			padding: 1.25rem 0;
 		}
 
 		.vh-article-body {
@@ -173,7 +205,7 @@
 		}
 
 		.vh-article-readtime {
-			margin-left: 0.5rem;
+			margin-left: 0;
 		}
 	}
 }

@@ -33,16 +33,18 @@ aside.vh-aside {
 		max-width: 100%;
 		height: max-content;
 
-		// 分节标题：小号 + 一条延伸到底的细线（中文标题，uppercase 无作用）
+		// 分节标题：等宽大写小红标 + 一条延伸到底的细线（手册的页边小标题）
 		&>h3 {
 			display: flex;
 			align-items: center;
 			gap: 0.625rem;
 			width: 100%;
-			font-size: 0.72rem;
-			font-weight: 600;
-			letter-spacing: 0.12em;
-			color: var(--vh-font-66);
+			font-family: var(--vh-font-mono);
+			font-size: 0.7rem;
+			font-weight: 700;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: var(--vh-main-color);
 
 			&::after {
 				content: '';
@@ -98,7 +100,7 @@ aside.vh-aside {
 						&>.vh-rank-num {
 							flex-shrink: 0;
 							width: 0.9rem;
-							font-family: 'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+							font-family: var(--vh-font-serif);
 							font-style: normal;
 							font-size: 0.8rem;
 							font-weight: 600;

@@ -299,7 +299,7 @@
             // 主体
             &>.tk-replies {
               padding-left: 1rem;
-              border-left: 0.25rem solid rgba(0, 0, 0, 0.06);
+              border-left: 1px solid var(--vh-border-color);
             }
           }
         }
@@ -408,7 +408,9 @@
           }
 
           &>.wl-quote {
-            border-left: solid 0.25rem var(--vh-main-color-28);
+            // 引用标记：1px 发丝线（手册世界允许 1px 彩色引线，超过 1px 才是被禁的色条）
+            border-left: 1px solid var(--vh-main-color);
+            padding-left: 0.75rem;
           }
         }
 

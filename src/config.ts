@@ -11,17 +11,17 @@ export default {
   Author: 'Void',
   // 网站创建时间
   CreateTime: '2023-09-01',
-  // 博客主题配置
+  // 博客主题配置（Pocket Reference —— 随身技术手册）
   Theme: {
     // 颜色请用 16 进制颜色码
-    // 主题颜色 — 暖橙，用于站点名与各级标题（对比度 5.2:1，正文尺寸也可读）
-    "--vh-main-color": "#C2410C",
-    // 字体颜色 — 近黑正文
-    "--vh-font-color": "#333333",
+    // 主题颜色 — 谷仓红书标，用于分类标签、§ 章节号、书眉、小标签（对比度 5.6:1）
+    "--vh-main-color": "#b8392c",
+    // 字体颜色 — 墨黑正文
+    "--vh-font-color": "#2b2721",
     // 侧边栏宽度
-    "--vh-aside-width": "300px",
+    "--vh-aside-width": "280px",
     // 主体内容宽度
-    "--vh-main-max-width": "1400px",
+    "--vh-main-max-width": "1360px",
   },
   // 导航栏 (新窗口打开 newWindow: true)
   Navs: [
