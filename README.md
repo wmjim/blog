@@ -4,7 +4,7 @@
 
 站点部署在域名根路径，`astro.config.mjs` 的 `base` 为 `/`。若改回子路径部署，需同步修改 `base` 与 `src/config.ts` 的 `Site`。
 
-评论服务 Waline 是独立项目 `blog-comments-bgst`，不要在本目录执行 `vercel` 链接。`.github/workflows/deploy.yml` 为旧的 GitHub Pages 通道，已不再使用。
+评论服务 Waline 是独立项目 `blog-comments-bgst`，不要在本目录执行 `vercel` 链接。
 
 ### 本地开发
 
