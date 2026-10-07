@@ -8,7 +8,7 @@ id: "1e5ad4f6a8f6e1df"
 date: 2026-09-04 15:19:55
 recommend: false # 是否推荐文章
 top: false # 是否置顶文章
-hide: false # 是否隐藏文章
+hide: true # 是否隐藏文章
 summary: "本文系统介绍了在 Linux 平台搭建 STM32 开发环境的完整流程，涵盖从源代码编写、交叉编译、链接、二进制提取到 OpenOCD 烧录与 GDB 调试的全链条，并推荐了 STM32CubeMX、VS Code、arm-none-eab…"
 ---
 
