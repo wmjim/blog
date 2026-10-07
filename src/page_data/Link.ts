@@ -38,6 +38,12 @@ export default {
       "link": "https://kirigaya.cn/home",
       "avatar": "https://innei.in/_next/image?url=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F41265413%3Fv%3D5&w=256&q=75",
       "descr": "Hi, I'm Innei 👋 I orchestrate ideas into products with ✦AI Agents."
-    },             
+    },
+    {
+      "name": "Silent Star",
+      "link": "https://blog.silencestar.com/",
+      "avatar": "",
+      "descr": "深度长文、代码教程与项目拆解，把我做 Agent 时踩过的坑、想明白的事，一篇篇写下来。"
+    },               
   ]
 }
